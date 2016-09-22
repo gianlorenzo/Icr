@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.icr.model.Utente;
-import it.uniroma3.icr.service.impl.FacadeTask;
-import it.uniroma3.icr.service.impl.FacadeUtente;
+import it.uniroma3.icr.model.User;
+import it.uniroma3.icr.service.impl.TaskFacade;
+import it.uniroma3.icr.service.impl.UserFacade;
 
 @Controller
-public class ControllerUtente {
+public class UserController {
 	
 	@Autowired
-	private FacadeUtente facadeUtente;
+	private UserFacade userFacade;
 	
 	//	@Autowired
 //	@Qualifier("validatorUtente")
@@ -36,32 +36,32 @@ public class ControllerUtente {
 //		binder.setValidator(validator);
 //	}
 	
-	@RequestMapping(value="/registrazione", method = RequestMethod.GET)
-	public String registrazione(@ModelAttribute Utente utente) {
-		return "registrazione";
+	@RequestMapping(value="/registration", method = RequestMethod.GET)
+	public String registrazione(@ModelAttribute User user) {
+		return "registration";
 	}
 	
 	
-	@RequestMapping(value="/aggiungiUtente", method = RequestMethod.POST)
-	public String confermaUtente(@ModelAttribute Utente utente, Model model, @Validated Utente u, BindingResult bindingResult) {
+	@RequestMapping(value="/addUser", method = RequestMethod.POST)
+	public String confirmUser(@ModelAttribute User user, Model model, @Validated User u, BindingResult bindingResult) {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String passwordEncode = passwordEncoder.encode(utente.getPassword());
-		utente.setPassword(passwordEncode);
-		facadeUtente.addUtente(utente);
+		String passwordEncode = passwordEncoder.encode(user.getPassword());
+		user.setPassword(passwordEncode);
+		userFacade.addUser(user);
 		return "login";
 	}
 	
-	@RequestMapping(value="/confermaUtente", method = RequestMethod.POST)
-	public String aggiungiUtente(@ModelAttribute Utente utente, Model model, @Validated Utente u,BindingResult bindingResult) {
-		Utente p = facadeUtente.retrieveUtente(utente.getUsername());
+	@RequestMapping(value="/confirmUser", method = RequestMethod.POST)
+	public String addUser(@ModelAttribute User user, Model model, @Validated User u,BindingResult bindingResult) {
+		User p = userFacade.retrieveUser(user.getUsername());
 		if(bindingResult.hasErrors()) {
-			return "registrazione";
+			return "registration";
 		}
 		if(p != null) {
 			model.addAttribute("usernameErrore", "Username esistente");
-			return "registrazione";
+			return "registration";
 		}
-			model.addAttribute("utente", utente);
-		return "registrazione";
+			model.addAttribute("utente", user);
+		return "registration";
 	}
 }

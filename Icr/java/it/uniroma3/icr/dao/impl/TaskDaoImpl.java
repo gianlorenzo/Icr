@@ -38,12 +38,12 @@ public class TaskDaoImpl implements TaskDao {
 	}
 
 	@Override
-	public Task findTask(String titolo) {
+	public Task findTask(String title) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s ="FROM Task t WHERE t.titolo = :titolo";
+		String s ="FROM Task t WHERE t.title = :title";
 		Query query = session.createQuery(s);
-		query.setParameter("titolo", titolo);
+		query.setParameter("title", title);
 		Task t = (Task)query.uniqueResult();
 		return t;
 	}

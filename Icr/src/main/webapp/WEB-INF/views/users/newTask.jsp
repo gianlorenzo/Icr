@@ -11,11 +11,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Trascrizioni Medievali</title>
+<title>ICR</title>
 </head>
 <body>
 	<div align="center">
-	<h1>${task.titolo}</h1>
+	<h1>${task.title}</h1>
 	</div>
 	
 	<img src="<c:url value="/resources/sources/rv12/tipo1/74_295.png" />" /><br>

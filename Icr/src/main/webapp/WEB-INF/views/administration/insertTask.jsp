@@ -9,37 +9,37 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Trascrizioni Medievali</title>
+<title>ICR</title>
 </head>
 <body>
 	
 	<h1>
-		<center>Inserisci un nuovo Task</center>
+		<center>Insert a new Task</center>
 	</h1>
 	
 	<div align="center">
 	
-	<form:form method="post" action="aggiungiTask" modelAttribute="task" name="form">
+	<form:form method="post" action="addTask" modelAttribute="task" name="form">
 		
 		
-		<td>Titolo : </td>
-		<td> <form:textarea path="Titolo" rows="5" cols="30" /></td><br>
+		<td>Title : </td>
+		<td> <form:textarea path="Title" rows="5" cols="30" /></td><br>
 		
 		
-		<td><input type="submit" value="Invia" /></td>
+		<td><input type="submit" value="Send" /></td>
 		</form:form>
 		
 		<br>
 		
-		<c:if test="${not empty task.titolo }">
+		<c:if test="${not empty task.title }">
 		
 		
 		
 		
-		<form:input type="hidden" path="Titolo" placeholder="Titolo"/><br>
+		<form:input type="hidden" path="Title" placeholder="Title"/><br>
 		
 		
-		<td><input type="submit" value="Conferma" /></td>
+		<td><input type="submit" value="Confirm" /></td>
 		
 		
 		

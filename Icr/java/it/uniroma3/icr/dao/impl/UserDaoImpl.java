@@ -7,30 +7,30 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import it.uniroma3.icr.dao.UtenteDao;
-import it.uniroma3.icr.model.Utente;
+import it.uniroma3.icr.dao.UserDao;
+import it.uniroma3.icr.model.User;
 
 @Repository
-public class UtenteDaoImpl implements UtenteDao {
+public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public void insertUtente(Utente utente){
+	public void insertUser(User user){
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.save(utente);
+		session.save(user);
 		session.getTransaction().commit();
 		
 	}
 	
-	public Utente findUtente(String username) {
+	public User findUser(String username) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "FROM Utente u WHERE u.username = :username";
+		String s = "FROM User u WHERE u.username = :username";
 		Query query = session.createQuery(s);
 		query.setParameter("username", username);
-		Utente u = (Utente)query.uniqueResult();
+		User u = (User)query.uniqueResult();
 		return u;
 		
 		

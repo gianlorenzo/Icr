@@ -8,11 +8,11 @@
 </head>
 <body>
 <div align="center">
-<strong>Benvenuto nel pannello di amministrazione: &nbsp <font color="red">${pageContext.request.userPrincipal.name}</font></strong>
+<strong>Welcome to Admin Page: &nbsp <font color="red">${pageContext.request.userPrincipal.name}</font></strong>
 
 <br><br>
 
-<a href="inserisciTask">Inserisci un nuovo Task</a><br><br>
+<a href="insertTask">Insert a new Task</a><br><br>
 <a href="logout">Logout</a>
 
 

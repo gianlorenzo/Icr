@@ -7,10 +7,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.icr.model.Utente;
+import it.uniroma3.icr.model.User;
 
 @Controller
-public class ControllerLogin {
+public class LoginController {
 	
 	@RequestMapping(value="/logout", method = RequestMethod.GET)
 	public String logout() {
@@ -19,17 +19,17 @@ public class ControllerLogin {
 	
 	@RequestMapping(value="/admin**", method = RequestMethod.GET)
 	public String loginAdmin() {
-		return "amministrazione/homeAdmin";
+		return "administration/homeAdmin";
 	}
 	
-	@RequestMapping(value="/utente**", method = RequestMethod.GET)
-	public String loginUtente() {
-		return "utenti/lavoro";
+	@RequestMapping(value="/user**", method = RequestMethod.GET)
+	public String loginUser() {
+		return "users/Task";
 	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login (ModelMap model) {
-		model.addAttribute("user", new Utente());
+		model.addAttribute("user", new User());
 		return "login";
 
 	}
@@ -41,9 +41,9 @@ public class ControllerLogin {
 
 	        String targetUrl = "";
 	        if(role.contains("ROLE_USER")) {
-	            targetUrl = "/utenti/lavoro";
+	            targetUrl = "/users/job";
 	        } else if(role.contains("ROLE_ADMIN")) {
-	            targetUrl = "/amministrazione/homeAdmin";
+	            targetUrl = "/administration/homeAdmin";
 	        }
 	        return targetUrl;
 	    }

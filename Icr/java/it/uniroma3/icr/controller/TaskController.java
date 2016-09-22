@@ -19,64 +19,64 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.icr.model.Simbolo;
+import it.uniroma3.icr.model.Symbol;
 import it.uniroma3.icr.model.Task;
-import it.uniroma3.icr.model.Utente;
-import it.uniroma3.icr.service.impl.FacadeSimbolo;
-import it.uniroma3.icr.service.impl.FacadeTask;
+import it.uniroma3.icr.model.User;
+import it.uniroma3.icr.service.impl.SymbolFacade;
+import it.uniroma3.icr.service.impl.TaskFacade;
 
 @Controller
-public class ControllerTask {
+public class TaskController {
 	
 	@Autowired
-	private FacadeTask facadeTask;
+	private TaskFacade facadeTask;
 	
 	@Autowired
-	private FacadeSimbolo facadeSimbolo;
+	private SymbolFacade facadeSimbolo;
 	
-	@RequestMapping(value="/inserisciTask")
+	@RequestMapping(value="/insertTask")
 	private String newTask(@ModelAttribute Task task, Model model) {
 		
-		return"amministrazione/inserisciTask";
+		return"administration/insertTask";
 	}
 	
-	@RequestMapping(value="/inserisciInformazioniTask", method = RequestMethod.POST)
-	public String inserisciInformazioni(@ModelAttribute String simbolo, @ModelAttribute Task task, Model model) {
-		model.addAttribute("simboli", facadeSimbolo.retriveAllSimboli());
+	@RequestMapping(value="/insertTaskInformation", method = RequestMethod.POST)
+	public String inserisciInformazioni(@ModelAttribute String symbol, @ModelAttribute Task task, Model model) {
+		model.addAttribute("symbols", facadeSimbolo.retriveAllSymbols());
 
 		
 			
 		
 		
 		
-		return "amministrazione/inserisciInformazioniTask";
+		return "administration/insertTaskInformation";
 	}
 	
-	@RequestMapping(value="/aggiungiTask", method = RequestMethod.POST)
-	public String confermaTask(@ModelAttribute Task task, Model model, @Validated Task t, BindingResult bindingResult) {
-		model.addAttribute("simboli", facadeSimbolo.retriveAllSimboli());
+	@RequestMapping(value="/addTask", method = RequestMethod.POST)
+	public String confirmTask(@ModelAttribute Task task, Model model, @Validated Task t, BindingResult bindingResult) {
+		model.addAttribute("symbols", facadeSimbolo.retriveAllSymbols());
 
 		facadeTask.addTask(task);
 		model.addAttribute("task", task);
-		return "amministrazione/inserisciInformazioniTask";
+		return "administration/insertTaskInformation";
 	}
 	
-	@RequestMapping(value="/confermaTask", method = RequestMethod.POST)
-	public String aggiungiTask(@ModelAttribute Task task, Model model, @Validated Task t,BindingResult bindingResult) {
-		Task p = facadeTask.retriveTask(task.getTitolo());
+	@RequestMapping(value="/confirmTask", method = RequestMethod.POST)
+	public String addTask(@ModelAttribute Task task, Model model, @Validated Task t,BindingResult bindingResult) {
+		Task p = facadeTask.retriveTask(task.getTitle());
 		if(bindingResult.hasErrors()) {
-			return "amministrazione/inserisciTask";
+			return "administration/insertTaskInformation";
 		}
 		if(p!=null) {
 			model.addAttribute("nomeErrore", "Nome esistente");
-			return "amministrazione/inserisciTask";
+			return "administration/insertTaskInformation";
 		}
 			model.addAttribute("task", task);
-		return "amministrazione/inserisciTask";
+		return "administration/insertTaskInformation";
 	}
 	
-	@RequestMapping(value="/nuovoLavoro", method = RequestMethod.GET)
-	public String lavoro(@ModelAttribute Task task, Model model) {
+	@RequestMapping(value="/newTask", method = RequestMethod.GET)
+	public String task(@ModelAttribute Task task, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		List<Task> tasks = new ArrayList<>();
 
@@ -86,7 +86,7 @@ public class ControllerTask {
 		}
 		
 		
-		return "utenti/nuovoLavoro";
+		return "users/newTask";
 		
 		
 	}

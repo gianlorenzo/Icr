@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Immagine {
+public class Image {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,27 +30,27 @@ public class Immagine {
 	private int height;
 	
 	@Column(nullable = false)
-	private String pagina;
+	private String page;
 	
 	@Column(nullable = false)
-	private String manoscritto;
+	private String manuscript;
 	
 	@Column(nullable=false)
-	private String tipo;
+	private String type;
 	
 	@ManyToMany
 	private List<Task> tasks;
 
-	public Immagine(Long id, int x, int y, int width, int height, String pagina, String manoscritto, String tipo) {
+	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type) {
 		super();
 		this.id = id;
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.pagina = pagina;
-		this.manoscritto = manoscritto;
-		this.tipo = tipo;
+		this.page = page;
+		this.manuscript = manuscript;
+		this.type = type;
 		this.tasks = new ArrayList<>();
 	}
 
@@ -94,28 +94,28 @@ public class Immagine {
 		this.height = height;
 	}
 
-	public String getPagina() {
-		return pagina;
+	public String getPage() {
+		return page;
 	}
 
-	public void setPagina(String pagina) {
-		this.pagina = pagina;
+	public void setPage(String page) {
+		this.page = page;
 	}
 
-	public String getManoscritto() {
-		return manoscritto;
+	public String getManuscript() {
+		return manuscript;
 	}
 
-	public void setManoscritto(String manoscritto) {
-		this.manoscritto = manoscritto;
+	public void setManuscript(String manuscript) {
+		this.manuscript = manuscript;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getType() {
+		return type;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public List<Task> getTasks() {
@@ -128,8 +128,8 @@ public class Immagine {
 
 	@Override
 	public String toString() {
-		return "Immagine [id=" + id + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + ", pagina="
-				+ pagina + ", manoscritto=" + manoscritto + ", tipo=" + tipo + ", tasks=" + tasks + "]";
+		return "Image [id=" + id + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + ", page="
+				+ page + ", manuscript=" + manuscript + ", type=" + type + ", tasks=" + tasks + "]";
 	}
 
 	@Override
@@ -138,10 +138,10 @@ public class Immagine {
 		int result = 1;
 		result = prime * result + height;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((manoscritto == null) ? 0 : manoscritto.hashCode());
-		result = prime * result + ((pagina == null) ? 0 : pagina.hashCode());
+		result = prime * result + ((manuscript == null) ? 0 : manuscript.hashCode());
+		result = prime * result + ((page == null) ? 0 : page.hashCode());
 		result = prime * result + ((tasks == null) ? 0 : tasks.hashCode());
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result + width;
 		result = prime * result + x;
 		result = prime * result + y;
@@ -156,7 +156,7 @@ public class Immagine {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Immagine other = (Immagine) obj;
+		Image other = (Image) obj;
 		if (height != other.height)
 			return false;
 		if (id == null) {
@@ -164,25 +164,25 @@ public class Immagine {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (manoscritto == null) {
-			if (other.manoscritto != null)
+		if (manuscript == null) {
+			if (other.manuscript != null)
 				return false;
-		} else if (!manoscritto.equals(other.manoscritto))
+		} else if (!manuscript.equals(other.manuscript))
 			return false;
-		if (pagina == null) {
-			if (other.pagina != null)
+		if (page == null) {
+			if (other.page != null)
 				return false;
-		} else if (!pagina.equals(other.pagina))
+		} else if (!page.equals(other.page))
 			return false;
 		if (tasks == null) {
 			if (other.tasks != null)
 				return false;
 		} else if (!tasks.equals(other.tasks))
 			return false;
-		if (tipo == null) {
-			if (other.tipo != null)
+		if (type == null) {
+			if (other.type != null)
 				return false;
-		} else if (!tipo.equals(other.tipo))
+		} else if (!type.equals(other.type))
 			return false;
 		if (width != other.width)
 			return false;
@@ -192,6 +192,8 @@ public class Immagine {
 			return false;
 		return true;
 	}
+
+	
 	
 	
 	

@@ -2,7 +2,7 @@ package it.uniroma3.icr.controller;
 
 import org.springframework.validation.*;
 
-import it.uniroma3.icr.model.Utente;
+import it.uniroma3.icr.model.User;
 
 public class UtenteValidator {
 

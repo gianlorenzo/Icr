@@ -9,20 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Utente {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long matricola;
+	private Long freshman;
 	
 	@Column(nullable = false)
-	private String nome;
+	private String name;
 	
 	@Column(nullable = false)
-	private String cognome;
+	private String surname;
 	
 	@Column(nullable=false)
-	private String scuola;
+	private String school;
 	
 	@Column(nullable = false)
 	private String username;
@@ -35,54 +35,54 @@ public class Utente {
 	
 	
 	
-	public Utente() {
+	public User() {
 		this.role = "ROLE_ADMIN";
 		
 	}
 
-	public Utente(Long matricola, String nome, String cognome,String scuola, String username, String password, String role) {
+	public User(Long freshman, String name, String surname,String school, String username, String password, String role) {
 		super();
-		this.matricola = matricola;
-		this.nome = nome;
-		this.cognome = cognome;
+		this.freshman = freshman;
+		this.name = name;
+		this.surname = surname;
 		this.username = username;
 		this.password = password;
 		this.role = role;
-		this.scuola = scuola;
+		this.school = school;
 	}
 	
 	
-	
-	public String getScuola() {
-		return scuola;
+
+	public Long getFreshman() {
+		return freshman;
 	}
 
-	public void setScuola(String scuola) {
-		this.scuola = scuola;
+	public void setFreshman(Long freshman) {
+		this.freshman = freshman;
 	}
 
-	public Long getMatricola() {
-		return matricola;
+	public String getName() {
+		return name;
 	}
 
-	public void setId(Long matricola) {
-		this.matricola = matricola;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
-	public String getCognome() {
-		return cognome;
+	public String getSchool() {
+		return school;
 	}
 
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
+	public void setSchool(String school) {
+		this.school = school;
 	}
 
 	public String getUsername() {
@@ -109,24 +109,22 @@ public class Utente {
 		this.role = role;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "Utente [matricola=" + matricola + ", nome=" + nome + ", cognome=" + cognome + ", scuola=" + scuola + ", username="
-				+ username + ", password=" + password + ", role=" + role +  "]";
+		return "User [freshman=" + freshman + ", name=" + name + ", surname=" + surname + ", school=" + school
+				+ ", username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
-		result = prime * result + ((matricola == null) ? 0 : matricola.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((freshman == null) ? 0 : freshman.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result + ((scuola == null) ? 0 : scuola.hashCode());
+		result = prime * result + ((school == null) ? 0 : school.hashCode());
+		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
@@ -139,21 +137,16 @@ public class Utente {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Utente other = (Utente) obj;
-		if (cognome == null) {
-			if (other.cognome != null)
+		User other = (User) obj;
+		if (freshman == null) {
+			if (other.freshman != null)
 				return false;
-		} else if (!cognome.equals(other.cognome))
+		} else if (!freshman.equals(other.freshman))
 			return false;
-		if (matricola == null) {
-			if (other.matricola != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!matricola.equals(other.matricola))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!name.equals(other.name))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -165,12 +158,16 @@ public class Utente {
 				return false;
 		} else if (!role.equals(other.role))
 			return false;
-		if (scuola == null) {
-			if (other.scuola != null)
+		if (school == null) {
+			if (other.school != null)
 				return false;
-		} else if (!scuola.equals(other.scuola))
+		} else if (!school.equals(other.school))
 			return false;
-		
+		if (surname == null) {
+			if (other.surname != null)
+				return false;
+		} else if (!surname.equals(other.surname))
+			return false;
 		if (username == null) {
 			if (other.username != null)
 				return false;
@@ -178,6 +175,7 @@ public class Utente {
 			return false;
 		return true;
 	}
+	
 	
 	
 	

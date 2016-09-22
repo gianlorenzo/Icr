@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Trascrizioni Medievali</title>
+<title>ICR</title>
 </head>
 <body>
 	<div align="center">
-		<strong>Benvenuto :</strong>&nbsp<td><font color="red">${pageContext.request.userPrincipal.name}</font></td><br><br>
+		<strong>Welcome :</strong>&nbsp<td><font color="red">${pageContext.request.userPrincipal.name}</font></td><br><br>
 		
-		<a href="nuovoLavoro">Vai alla tua pagina di lavoro</a><br><br>
+		<a href="newTask">Go to your Task's page</a><br><br>
 		<a href="logout">Logout</a>
 		
     </div>

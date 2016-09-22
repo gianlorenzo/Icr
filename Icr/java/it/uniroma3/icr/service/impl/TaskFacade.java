@@ -9,7 +9,7 @@ import it.uniroma3.icr.dao.impl.TaskDaoImpl;
 import it.uniroma3.icr.model.Task;
 
 @Service
-public class FacadeTask {
+public class TaskFacade {
 
 	@Autowired
 	private TaskDaoImpl taskDaoImpl;
@@ -18,8 +18,8 @@ public class FacadeTask {
 		taskDaoImpl.insertTask(t);
 	}
 	
-	public Task retriveTask(String titolo) {
-		return this.taskDaoImpl.findTask(titolo);
+	public Task retriveTask(String title) {
+		return this.taskDaoImpl.findTask(title);
 	}
 	
 	public List<Task> retriveAllTask() {

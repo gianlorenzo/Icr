@@ -8,6 +8,6 @@ public interface TaskDao {
 	
 	public void insertTask(Task task);
 	public List<Task> findAll();
-	public Task findTask(String titolo);
+	public Task findTask(String title);
 
 }

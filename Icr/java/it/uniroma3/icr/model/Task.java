@@ -19,56 +19,53 @@ public class Task {
 	private Long id;
 	
 	@ElementCollection
-	Map<Long,Long> risultati;
+	Map<Long,Long> results;
 	
 	@ManyToMany
-	private List<Simbolo> simboli;
+	private List<Symbol> symbols;
 	
 	
 	
 	@Column(nullable=false)
-	private String titolo;
+	private String title;
 	
 	public Task() {
 		
 	}
 
-	public Task(Long id, String titolo,List<Simbolo> simboli) {
+	public Task(Long id, String title,List<Symbol> symbols) {
 		super();
 		this.id = id;
-		this.titolo = titolo;
-		this.simboli = simboli;
+		this.title = title;
+		this.symbols = symbols;
 	}
 	
 	public Long getId() {
 		return id;
 	}
-	
-	
-	
 
-	public Map<Long, Long> getRisultati() {
-		return risultati;
+	public Map<Long, Long> getResults() {
+		return results;
 	}
 
-	public void setRisultati(Map<Long, Long> risultati) {
-		this.risultati = risultati;
+	public void setResults(Map<Long, Long> results) {
+		this.results = results;
 	}
 
-	public List<Simbolo> getSimboli() {
-		return simboli;
+	public List<Symbol> getSymbols() {
+		return symbols;
 	}
 
-	public void setSimboli(List<Simbolo> simboli) {
-		this.simboli = simboli;
+	public void setSymbols(List<Symbol> symbols) {
+		this.symbols = symbols;
 	}
 
-	public String getTitolo() {
-		return titolo;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTitolo(String titolo) {
-		this.titolo = titolo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public void setId(Long id) {
@@ -77,16 +74,17 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "Task [id=" + id + ", descrizione=" + titolo + "]";
+		return "Task [id=" + id + ", results=" + results + ", symbols=" + symbols + ", title=" + title + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((titolo == null) ? 0 : titolo.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		
+		result = prime * result + ((results == null) ? 0 : results.hashCode());
+		result = prime * result + ((symbols == null) ? 0 : symbols.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
 
@@ -99,19 +97,33 @@ public class Task {
 		if (getClass() != obj.getClass())
 			return false;
 		Task other = (Task) obj;
-		if (titolo == null) {
-			if (other.titolo != null)
-				return false;
-		} else if (!titolo.equals(other.titolo))
-			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
+		if (results == null) {
+			if (other.results != null)
+				return false;
+		} else if (!results.equals(other.results))
+			return false;
+		if (symbols == null) {
+			if (other.symbols != null)
+				return false;
+		} else if (!symbols.equals(other.symbols))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
 		return true;
 	}
+	
+	
+	
+
+	
 	
 
 

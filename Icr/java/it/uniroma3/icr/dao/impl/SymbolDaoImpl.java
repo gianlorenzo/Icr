@@ -8,34 +8,34 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import it.uniroma3.icr.dao.SimboloDao;
-import it.uniroma3.icr.model.Simbolo;
+import it.uniroma3.icr.dao.SymbolDao;
+import it.uniroma3.icr.model.Symbol;
 
 @Repository
-public class SimboloDaoImpl implements SimboloDao {
+public class SymbolDaoImpl implements SymbolDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public Simbolo findSimbolo(String trascrizione) {
+	public Symbol findSymbol(String transcription) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s ="FROM Simbolo s WHERE s.trascrizione = :trascrizione";
+		String s ="FROM Symbol s WHERE s.transcription = :transcription";
 		Query query = session.createQuery(s);
-		query.setParameter("trascrizione", trascrizione);
-		Simbolo j = (Simbolo)query.uniqueResult();
+		query.setParameter("transcription", transcription);
+		Symbol j = (Symbol)query.uniqueResult();
 		return j;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Simbolo> findAll() {
+	public List<Symbol> findAll() {
 		Session session = sessionFactory.openSession();
-		String hql = "FROM Simbolo";
+		String hql = "FROM Symbol";
 		Query query = session.createQuery(hql);
-		List<Simbolo> empList = query.list();
-		System.out.println("Simbolo List:" + empList);
+		List<Symbol> empList = query.list();
+		System.out.println("Symbols List:" + empList);
 		return empList;
 		
 	}

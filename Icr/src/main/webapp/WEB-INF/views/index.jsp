@@ -7,15 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Trascrizioni Medievali</title>
+    <title>ICR</title>
  
 </head>
 
 <body>
 
 	<div align="center">
-  <h1><strong>Accedi all'area di login</strong></h1>
-  	<a href="login">Vai al login</a>
+  <h1><strong>Go to login page</strong></h1>
+  	<a href="login">Go to login</a>
    </div>
 </body>
 

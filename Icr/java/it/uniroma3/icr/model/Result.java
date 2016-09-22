@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Risultato {
+public class Result {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,26 +18,26 @@ public class Risultato {
 	private Task task;
 	
 	@OneToOne
-	private Immagine immagine;
+	private Image image;
 	
 	@Column(nullable = false)
-	private String risultato;
+	private String result;
 	
-	public Risultato() {
+	public Result() {
 		
 	}
 
-	public Risultato(Long id, Task task, Immagine immagine, String risultato) {
+	public Result(Long id, Task task, Image image, String result) {
 		super();
 		this.id = id;
 		this.task = task;
-		this.immagine = immagine;
-		this.risultato = risultato;
+		this.image = image;
+		this.result = result;
 	}
 
 	@Override
 	public String toString() {
-		return "Risultato [id=" + id + ", task=" + task + ", immagine=" + immagine + ", risultato=" + risultato + "]";
+		return "Result [id=" + id + ", task=" + task + ", image=" + image + ", result=" + result + "]";
 	}
 
 	@Override
@@ -45,8 +45,8 @@ public class Risultato {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((immagine == null) ? 0 : immagine.hashCode());
-		result = prime * result + ((risultato == null) ? 0 : risultato.hashCode());
+		result = prime * result + ((image == null) ? 0 : image.hashCode());
+		result = prime * result + ((this.result == null) ? 0 : this.result.hashCode());
 		result = prime * result + ((task == null) ? 0 : task.hashCode());
 		return result;
 	}
@@ -59,21 +59,21 @@ public class Risultato {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Risultato other = (Risultato) obj;
+		Result other = (Result) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (immagine == null) {
-			if (other.immagine != null)
+		if (image == null) {
+			if (other.image != null)
 				return false;
-		} else if (!immagine.equals(other.immagine))
+		} else if (!image.equals(other.image))
 			return false;
-		if (risultato == null) {
-			if (other.risultato != null)
+		if (result == null) {
+			if (other.result != null)
 				return false;
-		} else if (!risultato.equals(other.risultato))
+		} else if (!result.equals(other.result))
 			return false;
 		if (task == null) {
 			if (other.task != null)
@@ -99,21 +99,23 @@ public class Risultato {
 		this.task = task;
 	}
 
-	public Immagine getImmagine() {
-		return immagine;
+	public Image getImage() {
+		return image;
 	}
 
-	public void setImmagine(Immagine immagine) {
-		this.immagine = immagine;
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
-	public String getRisultato() {
-		return risultato;
+	public String getResult() {
+		return result;
 	}
 
-	public void setRisultato(String risultato) {
-		this.risultato = risultato;
+	public void setResult(String result) {
+		this.result = result;
 	}
+
+	
 	
 	
 

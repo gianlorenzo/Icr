@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Trascrizioni Medievali</title>
+<title>ICE</title>
 </head>
 <body>
 <div align="center">
@@ -14,15 +14,15 @@
 
 <strong>
 
-	<strong>Titolo:</strong>${task.titolo}	
+	<strong>Title:</strong>${task.title}	
 	
-	<form:form method="post" action="inserisciInformazioni" modelAttribute="task" name="form">	
-	<form:select path="simboli">
-	<form:options items="${simboli}" itemLabel="trascrizione"
+	<form:form method="post" action="insertInformationTask" modelAttribute="task" name="form">	
+	<form:select path="symbols">
+	<form:options items="${symbols}" itemLabel="transcription"
 					itemValue="id" />
 			</form:select><br>
 			
-		<input type="submit" value="Invia" />
+		<input type="submit" value="Send" />
 		</form:form>
 	
 </strong>

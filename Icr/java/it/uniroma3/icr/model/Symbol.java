@@ -11,31 +11,31 @@ import javax.persistence.OneToMany;
 import javax.transaction.TransactionScoped;
 
 @Entity
-public class Simbolo {
+public class Symbol {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
 	
 	@Column(nullable = false)
-	private String trascrizione;
+	private String transcription;
 	
 	@Column(nullable=false)
-	private String tipo;
+	private String type;
 	
-	@ManyToMany(mappedBy="simboli")
+	@ManyToMany(mappedBy="symbols")
 	List<Task> tasks;
 	
 	
-	public Simbolo() {
+	public Symbol() {
 		
 	}
 
-	public Simbolo(Long id, String trascrizione,String tipo) {
+	public Symbol(Long id, String transcription,String type) {
 		super();
 		this.id = id;
-		this.trascrizione = trascrizione;
-		this.tipo = tipo;
+		this.transcription = transcription;
+		this.type = type;
 	}
 	
 	
@@ -48,14 +48,6 @@ public class Simbolo {
 		this.tasks = tasks;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -64,19 +56,25 @@ public class Simbolo {
 		this.id = id;
 	}
 
-	public String getTrascrizione() {
-		return trascrizione;
+	public String getTranscription() {
+		return transcription;
 	}
 
-	public void setTrascrizione(String trascrizione) {
-		this.trascrizione = trascrizione;
+	public void setTranscription(String transcription) {
+		this.transcription = transcription;
 	}
 
-	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	@Override
 	public String toString() {
-		return "Simbolo [id=" + id + ", trascrizione=" + trascrizione + ", tipo=" + tipo + "]";
+		return "Symbol [id=" + id + ", transcription=" + transcription + ", type=" + type + ", tasks=" + tasks + "]";
 	}
 
 	@Override
@@ -84,8 +82,9 @@ public class Simbolo {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
-		result = prime * result + ((trascrizione == null) ? 0 : trascrizione.hashCode());
+		result = prime * result + ((tasks == null) ? 0 : tasks.hashCode());
+		result = prime * result + ((transcription == null) ? 0 : transcription.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
 
@@ -97,25 +96,31 @@ public class Simbolo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Simbolo other = (Simbolo) obj;
+		Symbol other = (Symbol) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		
-		if (tipo == null) {
-			if (other.tipo != null)
+		if (tasks == null) {
+			if (other.tasks != null)
 				return false;
-		} else if (!tipo.equals(other.tipo))
+		} else if (!tasks.equals(other.tasks))
 			return false;
-		if (trascrizione == null) {
-			if (other.trascrizione != null)
+		if (transcription == null) {
+			if (other.transcription != null)
 				return false;
-		} else if (!trascrizione.equals(other.trascrizione))
+		} else if (!transcription.equals(other.transcription))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
 			return false;
 		return true;
 	}
+
+	
 
 	
 	

@@ -4,14 +4,14 @@
 
 <head> 
 <meta charset="utf-8">
-<title>Trascrizioni Medievali</title>
+<title></title>
 
-	  
+
 </head>
 
 <body>
 		<div align="center">
-		<strong>Accedi con i tuoi dati personali</strong><br>
+		<strong>Sign in with your credentials</strong><br>
 	
 	<form method="POST" name="f" action="<c:url value="/${pageContext.request.contextPath}/j_spring_security_check"/>">
             
@@ -21,12 +21,12 @@
             <label>Password</label>
             <input type='password' name='j_password'><br><br>
 
-            <input name="submit" type="submit" value="Invia">
+            <input name="submit" type="submit" value="Send">
             </div>
         </form>
       
 
-          <center><a style="color: red" href="registrazione"> Registrati</a></center>
-         <center> <h4><a href="index">Torna alla homepage</a></h4></center>
+          <center><a style="color: red" href="registration"> Create a new account</a></center>
+         <center> <h4><a href="index">Back to homepage</a></h4></center>
 </body>
 </html>
