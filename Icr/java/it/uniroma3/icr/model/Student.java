@@ -1,7 +1,5 @@
 package it.uniroma3.icr.model;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,11 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Student {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long freshman;
+	private Long id;
 	
 	@Column(nullable = false)
 	private String name;
@@ -35,14 +33,14 @@ public class User {
 	
 	
 	
-	public User() {
+	public Student() {
 		this.role = "ROLE_ADMIN";
 		
 	}
 
-	public User(Long freshman, String name, String surname,String school, String username, String password, String role) {
+	public Student(Long id, String name, String surname,String school, String username, String password, String role) {
 		super();
-		this.freshman = freshman;
+		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.username = username;
@@ -50,15 +48,13 @@ public class User {
 		this.role = role;
 		this.school = school;
 	}
-	
-	
 
-	public Long getFreshman() {
-		return freshman;
+	public Long getId() {
+		return id;
 	}
 
-	public void setFreshman(Long freshman) {
-		this.freshman = freshman;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -110,16 +106,10 @@ public class User {
 	}
 
 	@Override
-	public String toString() {
-		return "User [freshman=" + freshman + ", name=" + name + ", surname=" + surname + ", school=" + school
-				+ ", username=" + username + ", password=" + password + ", role=" + role + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((freshman == null) ? 0 : freshman.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
@@ -137,11 +127,11 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
-		if (freshman == null) {
-			if (other.freshman != null)
+		Student other = (Student) obj;
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!freshman.equals(other.freshman))
+		} else if (!id.equals(other.id))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -175,6 +165,16 @@ public class User {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname + ", school=" + school + ", username="
+				+ username + ", password=" + password + ", role=" + role + "]";
+	}
+	
+	
+
+	
 	
 	
 	

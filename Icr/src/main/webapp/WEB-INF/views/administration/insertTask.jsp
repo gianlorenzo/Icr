@@ -10,6 +10,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
+
+
+
+
 </head>
 <body>
 	
@@ -24,31 +28,26 @@
 		
 		<td>Title : </td>
 		<td> <form:textarea path="Title" rows="5" cols="30" /></td><br>
+		<form:input path="" type="text"/>
+		
+		
+		
+		
+		
 		
 		
 		<td><input type="submit" value="Send" /></td>
-		</form:form>
+		</form:form><br>
 		
-		<br>
-		
-		<c:if test="${not empty task.title }">
-		
-		
-		
-		
-		<form:input type="hidden" path="Title" placeholder="Title"/><br>
-		
-		
-		<td><input type="submit" value="Confirm" /></td>
-		
-		
-		
-		</c:if>
+	
 	
 		
 	
 	
 	</div>
+	
+	
+	
 
 </body>
 </html>

@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICE</title>
+
+
+
 </head>
 <body>
 <div align="center">
@@ -18,11 +21,13 @@
 	
 	<form:form method="post" action="insertInformationTask" modelAttribute="task" name="form">	
 	<form:select path="symbols">
-	<form:options items="${symbols}" itemLabel="transcription"
+	<form:options items="${symbols}" itemLabel="type"
 					itemValue="id" />
 			</form:select><br>
 			
-		<input type="submit" value="Send" />
+			<td><form:input type="text" path='' placeholder="transcription" /></td><br><br>
+			
+		<input type="submit" value="Insert SYmbol" />
 		</form:form>
 	
 </strong>

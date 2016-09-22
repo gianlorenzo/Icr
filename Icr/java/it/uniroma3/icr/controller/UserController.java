@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.icr.model.User;
+import it.uniroma3.icr.model.Student;
 import it.uniroma3.icr.service.impl.TaskFacade;
-import it.uniroma3.icr.service.impl.UserFacade;
+import it.uniroma3.icr.service.impl.StudentFacade;
 
 @Controller
 public class UserController {
 	
 	@Autowired
-	private UserFacade userFacade;
+	private StudentFacade userFacade;
 	
 	//	@Autowired
 //	@Qualifier("validatorUtente")
@@ -37,13 +37,13 @@ public class UserController {
 //	}
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
-	public String registrazione(@ModelAttribute User user) {
+	public String registrazione(@ModelAttribute Student utente) {
 		return "registration";
 	}
 	
 	
 	@RequestMapping(value="/addUser", method = RequestMethod.POST)
-	public String confirmUser(@ModelAttribute User user, Model model, @Validated User u, BindingResult bindingResult) {
+	public String confirmUser(@ModelAttribute Student user, Model model, @Validated Student u, BindingResult bindingResult) {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String passwordEncode = passwordEncoder.encode(user.getPassword());
 		user.setPassword(passwordEncode);
@@ -52,8 +52,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/confirmUser", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute User user, Model model, @Validated User u,BindingResult bindingResult) {
-		User p = userFacade.retrieveUser(user.getUsername());
+	public String addUser(@ModelAttribute Student user, Model model, @Validated Student u,BindingResult bindingResult) {
+		Student p = userFacade.retrieveUser(user.getUsername());
 		if(bindingResult.hasErrors()) {
 			return "registration";
 		}

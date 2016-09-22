@@ -13,8 +13,8 @@ import javax.transaction.TransactionScoped;
 @Entity
 public class Symbol {
 	
+	
 	@Id
-	@GeneratedValue
 	private Long id;
 	
 	@Column(nullable = false)
@@ -22,9 +22,6 @@ public class Symbol {
 	
 	@Column(nullable=false)
 	private String type;
-	
-	@ManyToMany(mappedBy="symbols")
-	List<Task> tasks;
 	
 	
 	public Symbol() {
@@ -40,13 +37,7 @@ public class Symbol {
 	
 	
 
-	public List<Task> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -74,51 +65,14 @@ public class Symbol {
 
 	@Override
 	public String toString() {
-		return "Symbol [id=" + id + ", transcription=" + transcription + ", type=" + type + ", tasks=" + tasks + "]";
+		return "Symbol [id=" + id + ", transcription=" + transcription + ", type=" + type +  "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((tasks == null) ? 0 : tasks.hashCode());
-		result = prime * result + ((transcription == null) ? 0 : transcription.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
-	}
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Symbol other = (Symbol) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (tasks == null) {
-			if (other.tasks != null)
-				return false;
-		} else if (!tasks.equals(other.tasks))
-			return false;
-		if (transcription == null) {
-			if (other.transcription != null)
-				return false;
-		} else if (!transcription.equals(other.transcription))
-			return false;
-		if (type == null) {
-			if (other.type != null)
-				return false;
-		} else if (!type.equals(other.type))
-			return false;
-		return true;
-	}
+	
+	
+	
 
 	
 

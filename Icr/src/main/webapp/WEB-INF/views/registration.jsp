@@ -17,40 +17,40 @@
 		<center>Create a new Account</center>
 	</h4>
 	<div align="center">
-<form:form method="post" action="confirmUser" modelAttribute="user" name="form">
+<form:form method="post" action="confirmUser" modelAttribute="student" name="form">
 					
 					<td>Name :</td>
-					<td><form:input type="text" path='Name' placeholder="Name" /></td><br><br>
+					<td><form:input type="text" path='name' placeholder="Name" /></td><br><br>
 					<td>Surname :</td>
-					<td><form:input type="text" path='Surname' placeholder="Surname" /></td><br><br>
+					<td><form:input type="text" path='surname' placeholder="Surname" /></td><br><br>
 					<td>School :</td>
-					<td><form:input type="text" path='School' placeholder="School" /></td><br><br>
+					<td><form:input type="text" path='school' placeholder="School" /></td><br><br>
 					<td>Username :</td>
-					<td><form:input type="text" path='Username' placeholder="Username" /></td><br><br>
+					<td><form:input type="text" path='username' placeholder="Username" /></td><br><br>
 					
 					<td>Password :</td>
-					<td><form:input type="Password" path='Password' placeholder="Password" /></td>
+					<td><form:input type="Password" path='password' placeholder="Password" /></td>
 
 							
 					<td><input type="submit" value="Send" /></td>
 					</form:form>
 					<br>
-					<c:if test="${not empty user.username}">
+					<c:if test="${not empty student.username}">
    <p><c:out value="Conferma le seguenti informazioni:"/><p><br>
-   <b><p><c:out value="Nome:"/></b> ${user.name}<br>
-       <b><p><c:out value="Cognome:"/></b> ${user.surname}<br>
-           <b><p><c:out value="Scuola:"/></b> ${user.school}<br>
-     <b><p><c:out value="Username:"/></b> ${user.username}<br>
-     <b><p><c:out value="Password:"/> </b>${user.password}<br>
+   <b><p><c:out value="Nome:"/></b> ${student.name}<br>
+       <b><p><c:out value="Cognome:"/></b> ${student.surname}<br>
+           <b><p><c:out value="Scuola:"/></b> ${student.school}<br>
+     <b><p><c:out value="Username:"/></b> ${student.username}<br>
+     <b><p><c:out value="Password:"/> </b>${student.password}<br>
      
-     <form:form method="post" action="addUser" modelAttribute="user" name="form2">
-     <form:input type="hidden" path='Name' placeholder="id" /><br/>
-     <form:input type="hidden" path='Surname' placeholder="id" /><br/>
+     <form:form method="post" action="addUser" modelAttribute="student" name="form2">
+     <form:input type="hidden" path='name' placeholder="id" /><br/>
+     <form:input type="hidden" path='surname' placeholder="id" /><br/>
      
-     <form:input type="hidden" path='School' placeholder="id" /><br/>
-   	 <form:input type="hidden" path='Username' placeholder="id" /><br/>
+     <form:input type="hidden" path='school' placeholder="id" /><br/>
+   	 <form:input type="hidden" path='username' placeholder="id" /><br/>
      
-     <form:input type="hidden" path='Password' placeholder="id" />
+     <form:input type="hidden" path='password' placeholder="id" />
      <td><input type="submit" value="Confirm Registration" /></td>
      </form:form>
    </c:if>
