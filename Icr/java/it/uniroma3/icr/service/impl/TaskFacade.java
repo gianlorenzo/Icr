@@ -27,6 +27,8 @@ public class TaskFacade {
 		return this.taskDaoImpl.findAll();
 	}
 	
-	
+	public void addSymbol(Task t, Symbol s) {
+		t.getSymbols().add(s);
+	}
 	
 }

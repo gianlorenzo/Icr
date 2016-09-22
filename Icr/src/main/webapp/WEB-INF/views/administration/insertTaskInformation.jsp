@@ -19,16 +19,17 @@
 
 	<strong>Title:</strong>${task.title}	
 	
-	<form:form method="post" action="insertInformationTask" modelAttribute="task" name="form">	
-	<form:select path="symbols">
-	<form:options items="${symbols}" itemLabel="type"
-					itemValue="id" />
-			</form:select><br>
-			
-			<td><form:input type="text" path='' placeholder="transcription" /></td><br><br>
-			
-		<input type="submit" value="Insert SYmbol" />
+	<form:form method="post" action="addSymbol" modelAttribute="symbol" name="form2"><br> <br>
+		
+		<td>Simboli :</td>
+		<td> <form:input type="text" path="transcription" />
+				<td><input type="submit" value="Add" /></td>
+		
+		
+		
 		</form:form>
+		
+		
 	
 </strong>
 

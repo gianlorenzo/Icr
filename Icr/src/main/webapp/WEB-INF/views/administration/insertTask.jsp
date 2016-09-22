@@ -28,10 +28,6 @@
 		
 		<td>Title : </td>
 		<td> <form:textarea path="Title" rows="5" cols="30" /></td><br>
-		<form:input path="" type="text"/>
-		
-		
-		
 		
 		
 		

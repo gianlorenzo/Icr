@@ -60,15 +60,39 @@ public class TaskController {
 //		return "administration/insertTaskInformation";
 //	}
 	
+	@RequestMapping(value="/addSymbol", method = RequestMethod.POST)
+	public String addSymbol(@ModelAttribute Symbol symbol, @ModelAttribute Task task, Model model, @Validated Symbol s1, BindingResult bindingResult) {
+		
+		model.addAttribute("symbols", facadeSimbolo.retriveAllSymbols());
+		List<Symbol> list = new ArrayList<>();
+
+		List<Symbol> l = facadeSimbolo.retriveAllSymbols();
+		for(Symbol s : l) {
+			s = facadeSimbolo.retriveSymbol(symbol.getTranscription());
+			list.add(s);
+			
+
+		}
+		//List<Symbol> list = new ArrayList<>();
+		task.setSymbols(list);
+		
+		
+		
+		
+		return "administration/insertTaskInformation";
+		
+		
+	}
+	
+	
 	@RequestMapping(value="/addTask", method = RequestMethod.POST)
 	public String confirmTask(@ModelAttribute Task task, Model model, @Validated Task t, BindingResult bindingResult) {
 		 
 		model.addAttribute("symbols", facadeSimbolo.retriveAllSymbols());
-		List<Symbol> list = facadeSimbolo.retriveAllSymbols();
-		task.setSymbols(list);
+		
 		facadeTask.addTask(task);
 		model.addAttribute("task", task);
-		return "administration/insertTask";
+		return "administration/insertTaskInformation";
 	}
 	
 //	@RequestMapping(value="/confirmTask", method = RequestMethod.POST)
