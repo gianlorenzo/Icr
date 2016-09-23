@@ -36,10 +36,10 @@
 					</form:form>
 					<br>
 					<c:if test="${not empty student.username}">
-   <p><c:out value="Conferma le seguenti informazioni:"/><p><br>
-   <b><p><c:out value="Nome:"/></b> ${student.name}<br>
-       <b><p><c:out value="Cognome:"/></b> ${student.surname}<br>
-           <b><p><c:out value="Scuola:"/></b> ${student.school}<br>
+   <p><c:out value="Confirm the following information:"/><p><br>
+   <b><p><c:out value="Name:"/></b> ${student.name}<br>
+       <b><p><c:out value="Surname:"/></b> ${student.surname}<br>
+           <b><p><c:out value="School:"/></b> ${student.school}<br>
      <b><p><c:out value="Username:"/></b> ${student.username}<br>
      <b><p><c:out value="Password:"/> </b>${student.password}<br>
      

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.transaction.TransactionScoped;
 
@@ -22,6 +23,9 @@ public class Symbol {
 	
 	@Column(nullable=false)
 	private String type;
+	
+	@OneToMany(mappedBy="symbol")
+	private List<Job> jobs;
 	
 	
 	public Symbol() {

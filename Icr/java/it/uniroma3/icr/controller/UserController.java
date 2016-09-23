@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.icr.model.Student;
-import it.uniroma3.icr.service.impl.TaskFacade;
+import it.uniroma3.icr.service.impl.JobFacade;
 import it.uniroma3.icr.service.impl.StudentFacade;
 
 @Controller

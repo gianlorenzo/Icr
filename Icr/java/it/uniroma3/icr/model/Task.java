@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,9 +24,7 @@ public class Task {
 	@ElementCollection
 	Map<Long,Long> results;
 	
-	@ManyToMany
-	private List<Symbol> symbols;
-	
+
 	
 	
 	@Column(nullable=false)
@@ -35,13 +34,7 @@ public class Task {
 		
 	}
 
-	public Task(Long id, String title,List<Symbol> symbols) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.symbols = symbols;
-	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -50,17 +43,14 @@ public class Task {
 		return results;
 	}
 
+	
+
+
+
 	public void setResults(Map<Long, Long> results) {
 		this.results = results;
 	}
 
-	public List<Symbol> getSymbols() {
-		return symbols;
-	}
-
-	public void setSymbols(List<Symbol> symbols) {
-		this.symbols = symbols;
-	}
 
 	public String getTitle() {
 		return title;
@@ -74,10 +64,6 @@ public class Task {
 		this.id = id;
 	}
 
-	@Override
-	public String toString() {
-		return "Task [id=" + id + ", results=" + results + ", symbols=" + symbols + ", title=" + title + "]";
-	}
 
 	
 	

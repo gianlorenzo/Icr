@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,29 +13,25 @@
 
 </head>
 <body>
-<div align="center">
+	<div align="center">
 
 
-<strong>
+		<strong> <strong>Title:</strong>${task.title} <form:form
+				action="addSymbol" method="post" name="catch">
 
-	<strong>Title:</strong>${task.title}	
-	
-	<form:form method="post" action="addSymbol" modelAttribute="symbol" name="form2"><br> <br>
-		
-		<td>Simboli :</td>
-		<td> <form:input type="text" path="transcription" />
-				<td><input type="submit" value="Add" /></td>
-		
-		
-		
-		</form:form>
-		
-		
-	
-</strong>
+				<c:forEach var="symbol" items="${symbols}">
+				<input type="checkbox" name="id" value="${symbol.type} }">${symbol.type}<BR>
+				</c:forEach>
+
+				<input type="submit" value="Submit">
+			</form:form>
 
 
-</div>
+
+		</strong>
+
+
+	</div>
 
 </body>
 </html>

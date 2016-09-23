@@ -12,7 +12,7 @@
 
 <br><br>
 
-<a href="insertTask">Insert a new Task</a><br><br>
+<a href="insertJob">Insert a new Job</a><br><br>
 <a href="logout">Logout</a>
 
 

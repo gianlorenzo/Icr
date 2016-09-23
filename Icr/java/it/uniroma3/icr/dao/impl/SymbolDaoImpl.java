@@ -18,14 +18,11 @@ public class SymbolDaoImpl implements SymbolDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public Symbol findSymbol(String transcription) {
+	public Symbol findSymbol(long id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s ="FROM Symbol s WHERE s.transcription = :transcription";
-		Query query = session.createQuery(s);
-		query.setParameter("transcription", transcription);
-		Symbol j = (Symbol)query.uniqueResult();
-		return j;
+		Symbol s = (Symbol) session.get(Symbol.class, id);
+		return s;
 	}
 
 	@SuppressWarnings("unchecked")

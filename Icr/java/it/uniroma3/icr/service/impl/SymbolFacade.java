@@ -14,8 +14,8 @@ public class SymbolFacade {
 	@Autowired
 	private SymbolDaoImpl symbolDaoImpl;
 	
-	public Symbol retriveSymbol(String transcription) {
-		return this.symbolDaoImpl.findSymbol(transcription);
+	public Symbol retriveSymbol(long id) {
+		return this.symbolDaoImpl.findSymbol(id);
 		
 	}
 	
