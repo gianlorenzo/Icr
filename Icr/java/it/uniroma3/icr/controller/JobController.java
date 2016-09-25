@@ -74,40 +74,6 @@ public class JobController {
 	
 
 	
-//	@RequestMapping(value="/confirmTask", method = RequestMethod.POST)
-//	public String addTask(@ModelAttribute Task task, Model model, @Validated Task t,BindingResult bindingResult) {
-//		Task p = facadeTask.retriveTask(task.getTitle());
-//		if(bindingResult.hasErrors()) {
-//			return "administration/insertTaskInformation";
-//		}
-//		if(p!=null) {
-//			model.addAttribute("nomeErrore", "Nome esistente");
-//			return "administration/insertTaskInformation";
-//		}
-//			model.addAttribute("task", task);
-//		return "administration/insertTaskInformation";
-//	}
-//	
-//	@RequestMapping(value="/newTask", method = RequestMethod.GET)
-//	public String task(@ModelAttribute Task task, Model model) {
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		List<Task> tasks = new ArrayList<>();
-//
-//		if(!(auth instanceof AnonymousAuthenticationToken)) {
-//			tasks = facadeTask.retriveAllTask();
-//			model.addAttribute("task", getMathRandomList(tasks));
-//		}
-//		
-//		
-//		return "users/newTask";
-//		
-//		
-//	}
-//	public Task getMathRandomList(List<Task> list) {
-//        int index = (int) (Math.random() * list.size());
-//        return  list.get(index);
-//    }
-	
 	
 	
 	

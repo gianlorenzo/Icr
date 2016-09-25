@@ -16,8 +16,7 @@ public class Job {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable=false)
-	private String title;
+	
 	
 	@Column(nullable = false)
 	private int images;
@@ -32,6 +31,9 @@ public class Job {
 	@Column(nullable=false)
 	private double percentageType3;
 	
+	@Column(nullable=false)
+	private int students;
+	
 	@ManyToOne
 	private Symbol symbol;
 
@@ -43,13 +45,7 @@ public class Job {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
+	
 
 	public int getImages() {
 		return images;
@@ -92,6 +88,17 @@ public class Job {
 	public void setPercentageType3(double percentageType3) {
 		this.percentageType3 = percentageType3;
 	}
+
+	public int getStudents() {
+		return students;
+	}
+
+	public void setStudents(int students) {
+		this.students = students;
+	}
+
+	
+	
 	
 	
 	

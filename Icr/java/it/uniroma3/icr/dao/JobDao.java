@@ -8,6 +8,6 @@ public interface JobDao {
 	
 	public void insertJob(Job job);
 	public List<Job> findAll();
-	public Job findJob(String title);
+	public Job findJob(long id);
 
 }

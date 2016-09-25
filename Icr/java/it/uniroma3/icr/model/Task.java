@@ -44,9 +44,6 @@ public class Task {
 	}
 
 	
-
-
-
 	public void setResults(Map<Long, Long> results) {
 		this.results = results;
 	}

@@ -18,8 +18,8 @@ public class JobFacade {
 		jobDaoImpl.insertJob(j);
 	}
 	
-	public Job retriveJob(String title) {
-		return this.jobDaoImpl.findJob(title);
+	public Job retriveJob(long id) {
+		return this.jobDaoImpl.findJob(id);
 	}
 	
 	public List<Job> retriveAlljobs() {

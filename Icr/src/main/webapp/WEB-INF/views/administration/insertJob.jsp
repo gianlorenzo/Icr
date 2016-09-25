@@ -31,8 +31,8 @@
 	<form:form method="post" action="addJob" modelAttribute="job" name="form">
 		
 		
-		<td>Title : </td>
-		<td> <form:textarea path="title" rows="5" cols="30" /></td><br>
+		<td>#Students</td>
+		<td><form:input type="text" path='students' placeholder="Students" /></td><br><br>
 		<td>#Images : </td>
 		<td><form:input type="text" path='images' placeholder="images" /></td><br><br>
 		<td>%Type1 : </td>

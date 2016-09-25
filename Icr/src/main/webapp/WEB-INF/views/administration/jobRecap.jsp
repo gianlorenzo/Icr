@@ -15,12 +15,12 @@
 
 <h1>
 <p><c:out value="Confirms the following information:" /> </p></h1>
-		<b><p><c:out value="Title:" /></b>${job.title}<br>
-		<b><p><c:out value="#Images:" /></b>${job.images}<br>
-		<b><p><c:out value="%Type1:" /></b>${job.percentageType1}<br>
-		<b><p><c:out value="%Type2:" /></b>${job.percentageType2}<br>
-		<b><p><c:out value="%Type3:" /></b>${job.percentageType3}<br>
-		<b><p><c:out value="Symbol:" /></b>${job.symbol.transcription}<br><br>
+		<b><p><c:out value="#Students" /></p></b>${job.students}<br>
+		<b><p><c:out value="#Images:" /></p></b>${job.images}<br>
+		<b><p><c:out value="%Type1:" /></p></b>${job.percentageType1}<br>
+		<b><p><c:out value="%Type2:" /></p></b>${job.percentageType2}<br>
+		<b><p><c:out value="%Type3:" /></p></b>${job.percentageType3}<br>
+		<b><p><c:out value="Symbol:" /></p></b>${job.symbol.transcription}<br><br>
 		
 		
 		

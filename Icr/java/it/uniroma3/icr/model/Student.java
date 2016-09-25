@@ -34,7 +34,7 @@ public class Student {
 	
 	
 	public Student() {
-		this.role = "ROLE_ADMIN";
+		this.role = "ROLE_USER";
 		
 	}
 

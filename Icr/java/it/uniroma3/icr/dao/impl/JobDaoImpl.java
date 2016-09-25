@@ -38,13 +38,11 @@ public class JobDaoImpl implements JobDao {
 	}
 
 	@Override
-	public Job findJob(String title) {
+	public Job findJob(long id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s ="FROM Job j WHERE j.title = :title";
-		Query query = session.createQuery(s);
-		query.setParameter("title", title);
-		Job j = (Job)query.uniqueResult();
+		Job j = (Job) session.get(Job.class, id);
+		
 		return j;
 	}
 
