@@ -6,6 +6,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
+
+<!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" href="<c:url value=" resources/css/bootstrap.responsive.css" />" type="text/css">
+ 	<link rel="stylesheet" href="<c:url value=" resources/css/bootstrap.css" />" type="text/css">
+ 	<link rel="stylesheet" href="<c:url value=" resources/css/fontello-ie7.css" />" type="text/css">
+ 	<link rel="stylesheet" href="<c:url value=" resources/css/fontello.css" />" type="text/css">
+ 	<link rel="stylesheet" href="<c:url value=" resources/css/prettyPhoto.css" />" type="text/css">
+ 	<link rel="stylesheet" href="<c:url value=" resources/css/style.css" />" type="text/css">
+
+	<!-- Favicon -->
+    <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+
 </head>
 <body>
 	<div align="center">

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import it.uniroma3.icr.dao.StudentDao;
 import it.uniroma3.icr.model.Student;
-import it.uniroma3.icr.service.impl.StudentFacade;
 
 @Repository
 public class StudentDaoImpl implements StudentDao {

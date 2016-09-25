@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.icr.dao.impl.StudentDaoImpl;
 import it.uniroma3.icr.model.Student;
-import it.uniroma3.icr.model.Student;
 
 @Service
 public class StudentFacade {

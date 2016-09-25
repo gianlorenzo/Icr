@@ -36,7 +36,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/role", method = RequestMethod.GET)
 	public String loginRole() {
-		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 	        String role = auth.getAuthorities().toString();
 
 	        String targetUrl = "";
