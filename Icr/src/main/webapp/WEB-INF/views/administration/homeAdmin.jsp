@@ -6,14 +6,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
 
+<!-- Bootstrap CSS -->
+    
+   <link type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap.css"  rel="stylesheet">
+   <link type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap-responsive.css"  rel="stylesheet">
+   <link type="text/css" href="${pageContext.request.contextPath}/resources/css/fontello.css"  rel="stylesheet">
+   <link type="text/css" href="${pageContext.request.contextPath}/resources/css/fontello-ie7.css"  rel="stylesheet">
+   <link type="text/css" href="${pageContext.request.contextPath}/resources/css/prettyPhoto.css"  rel="stylesheet">
+   <link type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css"  rel="stylesheet">
 	
     <link rel="shortcut icon" href="resources/img/favicon.ico"/>
  
  	
 </head>
 <body background="resources/img/background.jpg">
-<!--******************** NAVBAR ********************-->
-    <div class="navbar-wrapper">
+ <div class="navbar-wrapper">
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
@@ -22,8 +29,10 @@
             <h1 class="brand"><a href="#top">In Codice Ratio</a></h1>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <nav class="pull-right nav-collapse collapse">
-             <a title="Login" href="homeAdmin">Admin Page</a>
-              
+              <ul id="menu-main" class="nav">
+				<li><a title="Login" href="#">Admin Page:</a></li> 
+				 <li> <a style="color:white" ><strong>${pageContext.request.userPrincipal.name}</strong></a><li>           
+              </ul>
             </nav>
           </div>
           <!-- /.container -->
@@ -32,13 +41,15 @@
       </div>
       <!-- /.navbar -->
     </div>
+    
     <br><br>
- 
+    <br><br>
+ <div align="center">
 
 
-<a href="insertJob">Insert a new Job</a><br><br>
-<a href="logout">Logout</a>
-
+<a class="classname" href="insertJob">Insert a new Job</a><br><br>
+<a class="classname" href="logout">Logout</a>
+</div>
 
 
 	
