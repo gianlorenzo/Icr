@@ -56,7 +56,11 @@
 	${job.title}: &nbsp ${job.symbol.transcription}</strong> </font></h1>
 	</div>
 	
+		<c:forEach var="image" items="${job.image}">
+			<input type="checkbox" name="image" value="${image.id}"/>  ${image.id }<br><br>
+			
 		
+		</c:forEach>
 	
 	
 	
