@@ -8,11 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.icr.model.Student;
+
 import it.uniroma3.icr.service.impl.StudentFacade;
 
 @Controller
@@ -20,6 +23,8 @@ public class UserController {
 	
 	@Autowired
 	private StudentFacade userFacade;
+	
+	
 	
 	//	@Autowired
 //	@Qualifier("validatorUtente")
@@ -30,23 +35,24 @@ public class UserController {
 //	}
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
-	public String registrazione(@ModelAttribute Student utente) {
+	public String registrazione(@ModelAttribute Student student, Model model) {
+	
 		return "registration";
 	}
 	
 	
 	@RequestMapping(value="/addUser", method = RequestMethod.POST)
-	public String confirmUser(@ModelAttribute Student user, Model model, @Validated Student u, BindingResult bindingResult) {
+	public String confirmUser(@ModelAttribute Student student, Model model, @Validated Student u, BindingResult bindingResult) {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String passwordEncode = passwordEncoder.encode(user.getPassword());
-		user.setPassword(passwordEncode);
-		userFacade.addUser(user);
+		String passwordEncode = passwordEncoder.encode(student.getPassword());
+		student.setPassword(passwordEncode);
+		userFacade.addUser(student);
 		return "login";
 	}
 	
 	@RequestMapping(value="/confirmUser", method = RequestMethod.POST)
-	public String addUser(@ModelAttribute Student user, Model model, @Validated Student u,BindingResult bindingResult) {
-		Student p = userFacade.retrieveUser(user.getUsername());
+	public String addUser(@ModelAttribute Student student, Model model, @Validated Student u,BindingResult bindingResult) {
+		Student p = userFacade.retrieveUser(student.getUsername());
 		if(bindingResult.hasErrors()) {
 			return "registration";
 		}
@@ -54,7 +60,7 @@ public class UserController {
 			model.addAttribute("usernameErrore", "Username esistente");
 			return "registration";
 		}
-			model.addAttribute("utente", user);
+			model.addAttribute("utente", student);
 		return "registration";
 	}
 }

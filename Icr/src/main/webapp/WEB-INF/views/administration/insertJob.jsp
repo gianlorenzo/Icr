@@ -65,6 +65,8 @@
 	
 	<form:form method="post" action="addJob" modelAttribute="job" name="form">
 		
+		<h3>Title</h3>
+		<form:textarea path="title" rows="5" cols="30" />
 		
 		<h3>#Students</h3>
 		<form:input type="text" path='students' placeholder="Students" /><br>
@@ -76,6 +78,8 @@
 		<form:input type="text" path='PercentageType2' placeholder="Images" /><br>
 		<h3>%Type3 : </h3>
 		<form:input type="text" path='PercentageType3' placeholder="Images" /><br>
+		<h3>TaskSize : </h3>
+		<form:input type="text" path='taskSize' placeholder="TaskSize" /><br>
 		
 		<h3>Symbol:</h3>
 		<form:select path="symbol">

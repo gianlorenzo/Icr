@@ -52,12 +52,16 @@
 <font color="7a0000">
 <c:out value="Confirms the following information:" /></font></h2>
 		 <font color="7a0000">
+		<strong><c:out value="Title:" /></strong>${job.title}<br>
+		 
 		 
 		 <strong><c:out value="#Students:" /></strong>${job.students}<br>
 		 <strong><c:out value="#Images:" /></strong>${job.images}<br>
 		 <strong><c:out value="%Type1:" /></strong>${job.percentageType1}<br>
 		 <strong><c:out value="%Type2:" /></strong>${job.percentageType2}<br>
 		 <strong><c:out value="%Type3:" /></strong>${job.percentageType3}<br>
+		 <strong><c:out value="TaskSize:" /></strong>${job.taskSize}<br><br>
+		 
 		 <strong><c:out value="Symbol:" /></strong>${job.symbol.transcription}<br><br>
 		
 		</font>

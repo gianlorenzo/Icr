@@ -2,6 +2,8 @@ package it.uniroma3.icr.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.icr.model.Symbol;
+import it.uniroma3.icr.model.Image;
 import it.uniroma3.icr.model.Job;
 import it.uniroma3.icr.service.impl.SymbolFacade;
 import it.uniroma3.icr.service.editor.SymbolEditor;
+import it.uniroma3.icr.service.impl.ImageFacade;
 import it.uniroma3.icr.service.impl.JobFacade;
 
 @Controller
@@ -30,6 +34,9 @@ public class JobController {
 	@Autowired
 	private SymbolFacade facadeSimbolo;
 	
+	@Autowired
+	private ImageFacade imageFacade;
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Symbol.class, this.symbolEditor);
@@ -38,6 +45,7 @@ public class JobController {
 	@RequestMapping(value="/insertJob")
 	private String newJob(@ModelAttribute Job job, Model model) {
 		model.addAttribute("symbols", facadeSimbolo.retriveAllSymbols());
+		model.addAttribute("images", imageFacade.retriveAllImages());
 		return"administration/insertJob";
 	}
 	
@@ -51,6 +59,10 @@ public class JobController {
 	
 	@RequestMapping(value="/addJob", method = RequestMethod.POST)
 	public String confirmJob(@ModelAttribute Job job, Model model) {
+		
+		List<Image> imgs = imageFacade.retriveAllImages();
+		
+		job.setImage(imgs);
 		
 		facadeJob.addJob(job);
 		

@@ -66,11 +66,14 @@
 				
 					<h3>Password :</h3>
 					<form:input type="Password" path='password' placeholder="Password" /><br>
-
+					
+					<h3>Role:</h3>
+					<form:input type="text" path='role' placeholder="Role" /><br>
 							
 					<input type="submit" value="Send" />
 					</form:form>
 					<br>
+					
 					<c:if test="${not empty student.username}">
 	<h2>
 	<font color="7a0000">
@@ -81,6 +84,7 @@
      <strong><c:out value="School:"/></strong> ${student.school}<br>
      <strong><c:out value="Username:"/></strong> ${student.username}<br>
      <strong><c:out value="Password:"/></strong> ${student.password}<br>
+      <strong><c:out value="Role:"/></strong> ${student.role}<br>
      </font>
      
      <form:form method="post" action="addUser" modelAttribute="student" name="form2">
@@ -91,10 +95,12 @@
    	 <form:input type="hidden" path='username' placeholder="id" /><br/>
      
      <form:input type="hidden" path='password' placeholder="id" />
+     <form:input type="hidden" path='role' placeholder="id" />
+     
      <input type="submit" value="Confirm Registration" />
      </form:form>
    </c:if>
-		
+		 
           <a class="classname"href="index">Back to Homepage</a>
           
           </div>

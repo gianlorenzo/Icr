@@ -4,14 +4,16 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Symbol {
 	
-	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
 	@Column(nullable = false)
@@ -22,7 +24,6 @@ public class Symbol {
 	
 	@OneToMany(mappedBy="symbol")
 	private List<Job> jobs;
-	
 	
 	public Symbol() {
 		
@@ -35,10 +36,6 @@ public class Symbol {
 		this.type = type;
 	}
 	
-	
-
-	
-
 	public Long getId() {
 		return id;
 	}
