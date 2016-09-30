@@ -41,7 +41,7 @@ public class Image {
 	@ManyToMany(mappedBy="image")
 	private List<Job> jobs;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="images")
 	private List<Task> tasks;
 
 	
