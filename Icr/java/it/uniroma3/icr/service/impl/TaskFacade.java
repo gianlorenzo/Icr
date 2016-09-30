@@ -18,7 +18,7 @@ public class TaskFacade {
 		taskDaoImpl.insertTask(t);
 	}
 	
-	public Task retriveJob(long id) {
+	public Task retriveTask(long id) {
 		return this.taskDaoImpl.findTask(id);
 	}
 	

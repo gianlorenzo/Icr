@@ -56,9 +56,9 @@
 	${job.title}: &nbsp ${job.symbol.transcription}</strong> </font></h1>
 	</div>
 		<form:form method="post" action="taskRecap" modelAttribute="task" name="form">
+		<img src="<c:url value="/resources/sources/rv12/tipo1/74_295.png" />" /><br>
 	
-	
-			<form:checkboxes path="images" items="${images}"  value="yes" />
+			<form:checkboxes path="images" items="${images}"  />
 			
 		
 	

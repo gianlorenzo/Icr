@@ -24,6 +24,7 @@ import it.uniroma3.icr.model.Task;
 import it.uniroma3.icr.service.editor.ImageEditor;
 import it.uniroma3.icr.service.impl.ImageFacade;
 import it.uniroma3.icr.service.impl.JobFacade;
+import it.uniroma3.icr.service.impl.ResultFacade;
 import it.uniroma3.icr.service.impl.StudentFacade;
 import it.uniroma3.icr.service.impl.TaskFacade;
 
@@ -43,6 +44,8 @@ public class TaskController {
 	
 	@Autowired
 	public StudentFacade studentFacade;
+	
+	@Autowired ResultFacade resultFacade;
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -78,6 +81,19 @@ public class TaskController {
 	public String taskRecap(@ModelAttribute Task task, Model model,BindingResult result) {
 		model.addAttribute("task", task);
 		return "users/taskRecap";
+		
+	}
+	
+	@RequestMapping(value="/taskComplete")
+	public String taskComplete(@ModelAttribute Result result,@ModelAttribute Task task, Model model) {
+		
+		
+		
+		result.setAnswer('y');
+		
+		resultFacade.addResult(result);
+		model.addAttribute("result", result);
+		return "users/task";
 		
 	}
 	
