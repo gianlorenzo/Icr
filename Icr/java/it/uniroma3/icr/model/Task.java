@@ -22,6 +22,8 @@ public class Task {
 	private Student student;
 	@ManyToMany
 	List<Image> images;
+	@ManyToOne
+	private Result result;
 	
 	
 	public Student getStudent() {
@@ -43,13 +45,6 @@ public class Task {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	public Task(Long id, Student student, List<Image> images) {
-		super();
-		this.id = id;
-		this.student = student;
-		this.images = images;
-	}
 
 	public List<Image> getImages() {
 		return images;
@@ -59,6 +54,27 @@ public class Task {
 		this.images = images;
 	}
 
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
+	}
+
+	public Task(Long id, Student student, List<Image> images, Result result) {
+		super();
+		this.id = id;
+		this.student = student;
+		this.images = images;
+		this.result = result;
+	}
+	
+	
+
+	
+
+	
 	
 }
 

@@ -1,10 +1,14 @@
 package it.uniroma3.icr.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,11 +18,11 @@ public class Result {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne
-	private Task task;
+	@OneToMany(mappedBy="result")
+	private List<Task> tasks;
 	
-	@OneToOne
-	private Image image;
+	@OneToMany(mappedBy="result")
+	private List<Image> img;
 	
 	@Column(nullable = false)
 	private char answer;
@@ -26,18 +30,6 @@ public class Result {
 	public Result() {
 		
 	}
-
-	public Result(Long id, Task task, Image image, char answer) {
-		super();
-		this.id = id;
-		this.task = task;
-		this.image = image;
-		this.answer = answer;
-	}
-
-	
-
-	
 
 	public char getAnswer() {
 		return answer;
@@ -54,27 +46,33 @@ public class Result {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public Task getTask() {
-		return task;
+	
+	public Result(Long id, List<Task> tasks, List<Image> img, char answer) {
+		super();
+		this.id = id;
+		this.tasks = tasks;
+		this.img = img;
+		this.answer = answer;
 	}
 
-	public void setTask(Task task) {
-		this.task = task;
+	public List<Task> getTasks() {
+		return tasks;
 	}
 
-	public Image getImage() {
-		return image;
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
 	}
 
-	public void setImage(Image image) {
-		this.image = image;
+	public List<Image> getImg() {
+		return img;
+	}
+
+	public void setImg(List<Image> img) {
+		this.img = img;
 	}
 
 	
 
-	
-	
 	
 
 }

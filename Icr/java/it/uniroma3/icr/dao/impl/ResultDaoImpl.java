@@ -1,5 +1,6 @@
 package it.uniroma3.icr.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import it.uniroma3.icr.dao.ResultDao;
 import it.uniroma3.icr.model.Result;
+import it.uniroma3.icr.model.Task;
 
 @Repository
 public class ResultDaoImpl implements ResultDao {
@@ -43,5 +45,18 @@ public class ResultDaoImpl implements ResultDao {
 		List<Result> empList = query.list();
 		return empList;
 	}
+
+	@Override
+	public void insertTaskToResult(Result r, Task t) {
+		Session session = sessionFactory.openSession();
+		List<Task> tasks = new ArrayList<>();
+		tasks.add(t);
+		r.setTasks(tasks);
+		session.merge(r);
+		session.merge(t);
+		session.flush();
+	}
+
+	
 
 }

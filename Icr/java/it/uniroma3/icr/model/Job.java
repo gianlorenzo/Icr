@@ -42,7 +42,6 @@ public class Job {
 	@ManyToMany
 	List<Image> image;
 	
-	
 	@ManyToOne
 	private Symbol symbol;
 

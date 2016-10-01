@@ -44,8 +44,6 @@ public class Student {
 		
 	}
 	
-	
-
 	public List<Task> getTasks() {
 		return tasks;
 	}

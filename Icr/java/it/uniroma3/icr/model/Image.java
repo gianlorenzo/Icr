@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Image {
@@ -43,11 +44,16 @@ public class Image {
 	
 	@ManyToMany(mappedBy="images")
 	private List<Task> tasks;
+	
+	@ManyToOne
+	private Result result;
 
 	
+	
+
 
 	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type,
-			List<Job> jobs, List<Task> tasks) {
+			List<Job> jobs, List<Task> tasks, Result result) {
 		super();
 		this.id = id;
 		this.x = x;
@@ -59,6 +65,15 @@ public class Image {
 		this.type = type;
 		this.jobs = jobs;
 		this.tasks = tasks;
+		this.result = result;
+	}
+
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
 	}
 
 	public Long getId() {

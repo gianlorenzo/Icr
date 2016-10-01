@@ -54,7 +54,7 @@ public class TaskController {
 	
 	
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
-	public String task(@ModelAttribute Task task, Model model) {
+	public String task(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
@@ -66,6 +66,9 @@ public class TaskController {
 			List<Image> img = imageFacade.retriveAllImages();
 			task.setImages(img);
 			task.setStudent(student);
+			task.setResult(result);
+			result.setAnswer('y');
+			resultFacade.addResult(result);
 			taskFacade.addTask(task);
 			List<Long> images = new ArrayList<>();
 			for(Image i : img)
@@ -73,13 +76,17 @@ public class TaskController {
 			model.addAttribute("images", images);
 			
 			
+			
 		}
 		return "users/newTask";
 	}
 	
 	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
-	public String taskRecap(@ModelAttribute Task task, Model model,BindingResult result) {
+	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
 		model.addAttribute("task", task);
+		
+	
+		
 		return "users/taskRecap";
 		
 	}
@@ -89,9 +96,6 @@ public class TaskController {
 		
 		
 		
-		result.setAnswer('y');
-		
-		resultFacade.addResult(result);
 		model.addAttribute("result", result);
 		return "users/task";
 		

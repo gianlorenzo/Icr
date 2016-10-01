@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.icr.dao.impl.ResultDaoImpl;
 import it.uniroma3.icr.model.Result;
+import it.uniroma3.icr.model.Task;
 
 @Service
 public class ResultFacade {
@@ -25,4 +26,10 @@ public class ResultFacade {
 	public List<Result> retriveAllResult() {
 		return this.resultDaoImpl.findAll();
 	}
+	
+	public void insertTaskToResult(Result r, Task t) {
+		resultDaoImpl.insertTaskToResult(r, t);
+	}
+	
+	
 }
