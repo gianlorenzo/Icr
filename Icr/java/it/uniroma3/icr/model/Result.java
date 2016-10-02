@@ -5,10 +5,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -16,7 +19,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity 
 public class Result {
 	
 	@Id
@@ -29,10 +32,11 @@ public class Result {
 	@ManyToMany
 	private List<Image> images;
 	
-	@Column(nullable = false)
+	@Column(nullable=false)
 	private String answer;
 	
-	@ManyToOne
+	
+	@OneToOne
 	private Image image;
 	
 	public Result() {
