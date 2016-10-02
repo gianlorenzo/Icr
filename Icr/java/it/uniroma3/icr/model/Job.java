@@ -42,6 +42,9 @@ public class Job {
 	@ManyToMany
 	List<Image> image;
 	
+	@ManyToMany(mappedBy="jobs")
+	List<Task> tasks; 
+	
 	@ManyToOne
 	private Symbol symbol;
 
@@ -128,6 +131,38 @@ public class Job {
 	public void setImage(List<Image> image) {
 		this.image = image;
 	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	public Job(Long id, String title, int taskSize, int images, 
+			double percentageType1, double percentageType2,
+			double percentageType3, int students, List<Image> image, 
+			List<Task> tasks, Symbol symbol) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.taskSize = taskSize;
+		this.images = images;
+		this.percentageType1 = percentageType1;
+		this.percentageType2 = percentageType2;
+		this.percentageType3 = percentageType3;
+		this.students = students;
+		this.image = image;
+		this.tasks = tasks;
+		this.symbol = symbol;
+	}
+	
+	public Job() {
+		
+	}
+	
+	
 
 	
 	

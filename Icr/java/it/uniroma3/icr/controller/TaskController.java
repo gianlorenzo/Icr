@@ -20,6 +20,7 @@ import it.uniroma3.icr.model.Image;
 import it.uniroma3.icr.model.Job;
 import it.uniroma3.icr.model.Result;
 import it.uniroma3.icr.model.Student;
+import it.uniroma3.icr.model.Symbol;
 import it.uniroma3.icr.model.Task;
 import it.uniroma3.icr.service.editor.ImageEditor;
 import it.uniroma3.icr.service.impl.ImageFacade;
@@ -61,29 +62,54 @@ public class TaskController {
 		List<Job> jobs = new ArrayList<>();
 		if(!(auth instanceof AnonymousAuthenticationToken)) {
 			jobs = facadeJob.retriveAlljobs();
-			model.addAttribute("job", getMathRandomList(jobs));
+			Job job = getMathRandomList(jobs);
+			model.addAttribute("job", job);
 			model.addAttribute("image", imageFacade.retriveAllImages());
+			// Inizializzo le liste per riempire le tabelle di JOIN del Task
 			List<Image> img = imageFacade.retriveAllImages();
+			List<Job> taskJobs = new ArrayList<>();
+			List<Symbol> taskSymbols = new ArrayList<>();
+			
+			//Setto i i riferimenti del Task
+			taskSymbols.add(job.getSymbol());
+			task.setSymbols(taskSymbols);
+			taskJobs.add(job);
+			task.setJobs(taskJobs);
 			task.setImages(img);
 			task.setStudent(student);
 			task.setResult(result);
+			
+			//setto la risposta del risultato
 			result.setAnswer('y');
+			
+			//aggiungo risultato al db
 			resultFacade.addResult(result);
+			
+			//Aggiungo il task al db
+			
 			taskFacade.addTask(task);
+			
+
+			
 			List<Long> images = new ArrayList<>();
 			for(Image i : img)
 				images.add(i.getId());
 			model.addAttribute("images", images);
-			
-			
 			
 		}
 		return "users/newTask";
 	}
 	
 	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
-	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
+	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Image image,@ModelAttribute Result result, Model model) {
 		model.addAttribute("task", task);
+
+		model.addAttribute("result", result);
+		
+		//inserimento riferimento immagini al risultato
+		
+		
+		
 		
 	
 		
@@ -96,7 +122,6 @@ public class TaskController {
 		
 		
 		
-		model.addAttribute("result", result);
 		return "users/task";
 		
 	}

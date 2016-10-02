@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -46,11 +48,8 @@ public class Image {
 	private List<Task> tasks;
 	
 	@ManyToOne
+	@JoinTable(name="Result_Image")
 	private Result result;
-
-	
-	
-
 
 	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type,
 			List<Job> jobs, List<Task> tasks, Result result) {

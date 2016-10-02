@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -22,7 +23,12 @@ public class Task {
 	private Student student;
 	@ManyToMany
 	List<Image> images;
+	@ManyToMany
+	List<Job> jobs;
+	@ManyToMany
+	List<Symbol> symbols;
 	@ManyToOne
+	@JoinTable(name="Result_Task")
 	private Result result;
 	
 	
@@ -62,13 +68,35 @@ public class Task {
 		this.result = result;
 	}
 
-	public Task(Long id, Student student, List<Image> images, Result result) {
+	public List<Job> getJobs() {
+		return jobs;
+	}
+
+	public void setJobs(List<Job> jobs) {
+		this.jobs = jobs;
+	}
+
+	public Task(Long id, Student student, List<Image> images, List<Job> jobs, List<Symbol> symbols, Result result) {
 		super();
 		this.id = id;
 		this.student = student;
 		this.images = images;
+		this.jobs = jobs;
+		this.symbols = symbols;
 		this.result = result;
 	}
+
+	public List<Symbol> getSymbols() {
+		return symbols;
+	}
+
+	public void setSymbols(List<Symbol> symbols) {
+		this.symbols = symbols;
+	}
+
+	
+
+	
 	
 	
 
