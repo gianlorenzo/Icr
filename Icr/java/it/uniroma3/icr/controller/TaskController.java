@@ -55,7 +55,7 @@ public class TaskController {
 	
 	
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
-	public String task(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
+	public String task(@ModelAttribute Task task,@ModelAttribute Result result, @ModelAttribute Image image ,Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
@@ -65,31 +65,23 @@ public class TaskController {
 			Job job = getMathRandomList(jobs);
 			model.addAttribute("job", job);
 			model.addAttribute("image", imageFacade.retriveAllImages());
+			
 			// Inizializzo le liste per riempire le tabelle di JOIN del Task
 			List<Image> img = imageFacade.retriveAllImages();
 			List<Job> taskJobs = new ArrayList<>();
 			List<Symbol> taskSymbols = new ArrayList<>();
 			
-			//Setto i i riferimenti del Task
+			//Setto i  riferimenti del Task
 			taskSymbols.add(job.getSymbol());
 			task.setSymbols(taskSymbols);
 			taskJobs.add(job);
 			task.setJobs(taskJobs);
 			task.setImages(img);
 			task.setStudent(student);
-			task.setResult(result);
-			
-			//setto la risposta del risultato
-			result.setAnswer('y');
-			
-			//aggiungo risultato al db
-			resultFacade.addResult(result);
 			
 			//Aggiungo il task al db
 			
 			taskFacade.addTask(task);
-			
-
 			
 			List<Long> images = new ArrayList<>();
 			for(Image i : img)
@@ -101,24 +93,31 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
-	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Image image,@ModelAttribute Result result, Model model) {
+	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
 		model.addAttribute("task", task);
-
-		model.addAttribute("result", result);
 		
-		//inserimento riferimento immagini al risultato
+		List<Image> img = task.getImages();
 		
+		result.setImages(img);
 		
-		
-		
-	
+		for(Image i : img) {
+			Image j = i;
+			result.setImage(j);
+			result.setAnswer("yes");
+			resultFacade.addResult(result);
+			model.addAttribute("result", result);
+		}
 		
 		return "users/taskRecap";
 		
 	}
 	
 	@RequestMapping(value="/taskComplete")
-	public String taskComplete(@ModelAttribute Result result,@ModelAttribute Task task, Model model) {
+	public String taskComplete(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
+		
+		
+		
+		
 		
 		
 		

@@ -9,6 +9,6 @@ public interface TaskDao {
 	public void insertTask(Task task);
 	public Task findTask(long id);
 	
-public List<Task> findAll();
+	public List<Task> findAll();
 
 }

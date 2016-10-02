@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,23 +26,29 @@ public class Result {
 	@OneToMany(mappedBy="result")
 	private List<Task> tasks;
 	
-	@OneToMany(mappedBy="result")
-	private List<Image> img;
+	@ManyToMany
+	private List<Image> images;
 	
 	@Column(nullable = false)
-	private char answer;
+	private String answer;
+	
+	@ManyToOne
+	private Image image;
 	
 	public Result() {
 		
 	}
 
-	public char getAnswer() {
+	
+	public String getAnswer() {
 		return answer;
 	}
 
-	public void setAnswer(char answer) {
+
+	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+
 
 	public Long getId() {
 		return id;
@@ -50,14 +58,17 @@ public class Result {
 		this.id = id;
 	}
 	
-	public Result(Long id, List<Task> tasks, List<Image> img, char answer) {
-		super();
-		this.id = id;
-		this.tasks = tasks;
-		this.img = img;
-		this.answer = answer;
+	
+
+	public Image getImage() {
+		return image;
 	}
 
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+	
 	public List<Task> getTasks() {
 		return tasks;
 	}
@@ -66,16 +77,22 @@ public class Result {
 		this.tasks = tasks;
 	}
 
-	public List<Image> getImg() {
-		return img;
+	public List<Image> getImages() {
+		return images;
 	}
 
-	public void setImg(List<Image> img) {
-		this.img = img;
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
-	
 
-	
+	public Result(Long id, List<Task> tasks, List<Image> images, String answer, Image image) {
+		super();
+		this.id = id;
+		this.tasks = tasks;
+		this.images = images;
+		this.answer = answer;
+		this.image = image;
+	}
 
 }

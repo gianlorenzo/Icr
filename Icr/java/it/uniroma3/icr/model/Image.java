@@ -47,12 +47,13 @@ public class Image {
 	@ManyToMany(mappedBy="images")
 	private List<Task> tasks;
 	
-	@ManyToOne
-	@JoinTable(name="Result_Image")
-	private Result result;
+	@ManyToMany(mappedBy="images")
+	private List<Result> results;
+
+	
 
 	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type,
-			List<Job> jobs, List<Task> tasks, Result result) {
+			List<Job> jobs, List<Task> tasks, List<Result> results) {
 		super();
 		this.id = id;
 		this.x = x;
@@ -64,15 +65,15 @@ public class Image {
 		this.type = type;
 		this.jobs = jobs;
 		this.tasks = tasks;
-		this.result = result;
+		this.results = results;
 	}
 
-	public Result getResult() {
-		return result;
+	public List<Result> getResults() {
+		return results;
 	}
 
-	public void setResult(Result result) {
-		this.result = result;
+	public void setResults(List<Result> results) {
+		this.results = results;
 	}
 
 	public Long getId() {
@@ -166,6 +167,7 @@ public class Image {
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}
+	
 	
 	
 	
