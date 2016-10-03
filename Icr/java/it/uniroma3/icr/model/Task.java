@@ -3,6 +3,7 @@ package it.uniroma3.icr.model;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Task {
@@ -25,11 +27,13 @@ public class Task {
 	List<Image> images;
 	@ManyToMany
 	List<Job> jobs;
+	
 	@ManyToMany
-	List<Symbol> symbols;
-	@ManyToOne
-	@JoinTable(name="Result_Task")
-	private Result result;
+	private List<Symbol> symbols;
+	
+	@OneToMany(mappedBy="task")
+	private List<Result> results;
+	
 	
 	
 	public Student getStudent() {
@@ -60,13 +64,6 @@ public class Task {
 		this.images = images;
 	}
 
-	public Result getResult() {
-		return result;
-	}
-
-	public void setResult(Result result) {
-		this.result = result;
-	}
 
 	public List<Job> getJobs() {
 		return jobs;
@@ -76,14 +73,24 @@ public class Task {
 		this.jobs = jobs;
 	}
 
-	public Task(Long id, Student student, List<Image> images, List<Job> jobs, List<Symbol> symbols, Result result) {
+	
+	public Task(Long id, Student student, List<Image> images, List<Job> jobs, List<Symbol> symbols,
+			List<Result> results) {
 		super();
 		this.id = id;
 		this.student = student;
 		this.images = images;
 		this.jobs = jobs;
 		this.symbols = symbols;
-		this.result = result;
+		this.results = results;
+	}
+
+	public List<Result> getResults() {
+		return results;
+	}
+
+	public void setResult(List<Result> results) {
+		this.results = results;
 	}
 
 	public List<Symbol> getSymbols() {
@@ -94,15 +101,9 @@ public class Task {
 		this.symbols = symbols;
 	}
 
-	
+	public void setResults(List<Result> results) {
+		this.results = results;
+	}
 
-	
-	
-	
-
-	
-
-	
-	
 }
 

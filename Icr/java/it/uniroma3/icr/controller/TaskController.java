@@ -3,6 +3,8 @@ package it.uniroma3.icr.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.math.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -23,6 +25,7 @@ import it.uniroma3.icr.model.Student;
 import it.uniroma3.icr.model.Symbol;
 import it.uniroma3.icr.model.Task;
 import it.uniroma3.icr.service.editor.ImageEditor;
+import it.uniroma3.icr.service.editor.TaskEditor;
 import it.uniroma3.icr.service.impl.ImageFacade;
 import it.uniroma3.icr.service.impl.JobFacade;
 import it.uniroma3.icr.service.impl.ResultFacade;
@@ -33,6 +36,8 @@ import it.uniroma3.icr.service.impl.TaskFacade;
 public class TaskController {
 	
 	private @Autowired ImageEditor imageEditor;
+	
+	private @Autowired TaskEditor taskEditor;
 	
 	@Autowired
 	public JobFacade facadeJob;
@@ -51,6 +56,7 @@ public class TaskController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Image.class, this.imageEditor);
+		binder.registerCustomEditor(Task.class, this.taskEditor);
 	}
 	
 	
@@ -83,30 +89,45 @@ public class TaskController {
 			
 			taskFacade.addTask(task);
 			
+			
+			result.setTask(task);
+			result.setAnswer("Yes");
+			resultFacade.addResult(result);
 			List<Long> images = new ArrayList<>();
 			for(Image i : img)
 				images.add(i.getId());
 			model.addAttribute("images", images);
 			
 		}
+
 		return "users/newTask";
 	}
 	
 	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
 	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
 		model.addAttribute("task", task);
-		
+		model.addAttribute("result", result);
+
+				
 		List<Image> img = task.getImages();
 		
 		result.setImages(img);
+		//result.setTask(task);
+		List<Image> resultImg = new ArrayList<>();
 		
 		for(Image i : img) {
 			Image j = i;
-			result.setImage(j);
+			//result.setImage(j);
+			resultImg.add(j);
+			result.setImages(resultImg);
 			result.setAnswer("yes");
-			resultFacade.addResult(result);
-			model.addAttribute("result", result);
+			//result.setTask(t);
+			
 		}
+		resultFacade.addResult(result);
+
+		model.addAttribute("result", result);
+
 		
 		return "users/taskRecap";
 		

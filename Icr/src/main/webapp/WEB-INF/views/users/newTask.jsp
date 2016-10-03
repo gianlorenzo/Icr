@@ -55,6 +55,7 @@
 	<h1><font color="7A0000"><strong>
 	${job.title}: &nbsp ${job.symbol.transcription}</strong> </font></h1>
 	</div>
+	IDTASK: ${task.id}
 		<form:form method="post" action="taskRecap"  modelAttribute="task" name="form">
 			
 			
@@ -62,8 +63,6 @@
 			<form:checkboxes path="images" items="${images}"  />
    					 
 			
-		
-	
 	
 	
 	<td><input type="submit" value="Send" /></td>

@@ -27,9 +27,7 @@ public class ResultFacade {
 		return this.resultDaoImpl.findAll();
 	}
 	
-	public void insertTaskToResult(Result r, Task t) {
-		resultDaoImpl.insertTaskToResult(r, t);
-	}
+	
 	
 	
 }

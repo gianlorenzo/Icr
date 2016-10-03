@@ -12,7 +12,6 @@ public interface ResultDao {
 	
 	public List<Result> findAll();
 	
-	public void insertTaskToResult(Result r, Task t);
 	
 	
 

@@ -8,6 +8,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,18 +27,18 @@ public class Result {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany(mappedBy="result")
-	private List<Task> tasks;
+	@ManyToOne
+	private Task task;
 	
-	@ManyToMany
-	private List<Image> images;
+//	@ManyToOne
+//	private Image image;
 	
 	@Column(nullable=false)
 	private String answer;
+	@ManyToMany
+	private List<Image> images;
 	
 	
-	@OneToOne
-	private Image image;
 	
 	public Result() {
 		
@@ -64,39 +65,42 @@ public class Result {
 	
 	
 
-	public Image getImage() {
-		return image;
+	public Task getTask() {
+		return task;
 	}
 
-	public void setImage(Image image) {
-		this.image = image;
+
+	public void setTask(Task task) {
+		this.task = task;
 	}
 
-	
-	public List<Task> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
-	}
 
 	public List<Image> getImages() {
 		return images;
 	}
 
+
 	public void setImages(List<Image> images) {
 		this.images = images;
 	}
 
+//
+//	public Image getImage() {
+//		return image;
+//	}
+//
+//
+//	public void setImage(Image image) {
+//		this.image = image;
+//	}
 
-	public Result(Long id, List<Task> tasks, List<Image> images, String answer, Image image) {
+
+	public Result(Long id, Task task, String answer, List<Image> images) {
 		super();
 		this.id = id;
-		this.tasks = tasks;
-		this.images = images;
+		this.task = task;
 		this.answer = answer;
-		this.image = image;
+		this.images = images;
 	}
 
 }

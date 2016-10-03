@@ -46,17 +46,7 @@ public class ResultDaoImpl implements ResultDao {
 		return empList;
 	}
 
-	@Override
-	public void insertTaskToResult(Result r, Task t) {
-		Session session = sessionFactory.openSession();
-		List<Task> tasks = new ArrayList<>();
-		tasks.add(t);
-		r.setTasks(tasks);
-		session.merge(r);
-		session.merge(t);
-		session.flush();
-	}
-
+	
 	
 
 }
