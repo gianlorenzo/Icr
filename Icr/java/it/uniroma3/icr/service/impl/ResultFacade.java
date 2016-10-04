@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.icr.dao.impl.ResultDaoImpl;
 import it.uniroma3.icr.model.Result;
-import it.uniroma3.icr.model.Task;
 
 @Service
 public class ResultFacade {

@@ -2,23 +2,16 @@ package it.uniroma3.icr.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 @Entity 
 public class Result {
@@ -38,26 +31,6 @@ public class Result {
 	
 	@ManyToMany
 	private List<Image> images;
-//	
-//	@ManyToOne
-//	private Image image;
-	
-	
-	
-	public Result() {
-		
-	}
-
-	
-	public String getAnswer() {
-		return answer;
-	}
-
-
-	public void setAnswer(String answer) {
-		this.answer = answer;
-	}
-
 
 	public Long getId() {
 		return id;
@@ -66,28 +39,6 @@ public class Result {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
-
-	public Task getTask() {
-		return task;
-	}
-
-
-	public void setTask(Task task) {
-		this.task = task;
-	}
-
-
-	public List<Image> getImages() {
-		return images;
-	}
-
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
 
 	public Image getImage() {
 		return image;
@@ -97,17 +48,42 @@ public class Result {
 		this.image = image;
 	}
 
-
-	public Result(Long id, Task task, String answer,Image image,List<Image> images) {
-		super();
-		this.id = id;
-		//this.task = task;
-		this.answer = answer;
-		//this.image = image;
-		//this.images = images;
+	public Task getTask() {
+		return task;
 	}
 
+	public void setTask(Task task) {
+		this.task = task;
+	}
 
-//	ss
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+
+	public Result(Long id, Image image, Task task, String answer, List<Image> images) {
+		super();
+		this.id = id;
+		this.image = image;
+		this.task = task;
+		this.answer = answer;
+		this.images = images;
+	}
+	
+	public Result() {
+		
+	}
+	
 	
 }

@@ -20,6 +20,8 @@
  
  	<!-- Favicon -->
     <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+    
+    
  	
  
 </head>

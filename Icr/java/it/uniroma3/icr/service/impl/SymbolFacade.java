@@ -23,6 +23,10 @@ public class SymbolFacade {
 		return this.symbolDaoImpl.findAll();
 	}
 	
+	public void insertSymbol(Symbol symbol) {
+		symbolDaoImpl.insertSymbol(symbol);
+	}
+	
 	
 
 }

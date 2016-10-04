@@ -24,7 +24,7 @@ import it.uniroma3.icr.service.impl.ImageFacade;
 import it.uniroma3.icr.service.impl.JobFacade;
 
 @Controller
-public class JobController {
+public class AdminController {
 	
 	private @Autowired SymbolEditor symbolEditor;
 	
@@ -32,7 +32,7 @@ public class JobController {
 	private JobFacade facadeJob;
 	
 	@Autowired
-	private SymbolFacade facadeSimbolo;
+	private SymbolFacade symbolFacade;;
 	
 	@Autowired
 	private ImageFacade imageFacade;
@@ -44,7 +44,7 @@ public class JobController {
 	
 	@RequestMapping(value="/insertJob")
 	private String newJob(@ModelAttribute Job job, Model model) {
-		model.addAttribute("symbols", facadeSimbolo.retriveAllSymbols());
+		model.addAttribute("symbols", symbolFacade.retriveAllSymbols());
 		model.addAttribute("images", imageFacade.retriveAllImages());
 		return"administration/insertJob";
 	}
@@ -53,9 +53,6 @@ public class JobController {
 	public String toHomeAdmin() {
 		return"administration/homeAdmin";
 	}
-	
-
-	
 	
 	@RequestMapping(value="/addJob", method = RequestMethod.POST)
 	public String confirmJob(@ModelAttribute Job job, Model model) {
@@ -68,6 +65,24 @@ public class JobController {
 		
 		return "administration/jobRecap";
 	}
+	
+	@RequestMapping(value="/insertSymbol")
+	public String toAddSymbol(@ModelAttribute Symbol symbol) {
+		return "administration/insertSymbol";
+	}
+	
+	@RequestMapping(value="/addSymbol", method = RequestMethod.POST)
+	public String addSymbol(@ModelAttribute Symbol symbol, Model model) {
+		symbolFacade.insertSymbol(symbol);
+		
+		model.addAttribute("symbol", symbol);
+		
+		
+		return"administration/insertSymbol";
+		
+	}
+	
+	
 	
 	
 	

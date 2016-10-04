@@ -37,4 +37,12 @@ public class SymbolDaoImpl implements SymbolDao {
 		
 	}
 
+	@Override
+	public void insertSymbol(Symbol symbol) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(symbol);
+		session.getTransaction().commit();
+	}
+
 }

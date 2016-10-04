@@ -1,16 +1,11 @@
 package it.uniroma3.icr.model;
 
 import java.util.List;
-import java.util.Map;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -35,21 +30,6 @@ public class Task {
 	
 	@ManyToMany
 	List<Image> images;
-	
-	//@ElementCollection
-//	Map<Image,Result> result;
-	
-	public Student getStudent() {
-		return student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public Task() {
-		
-	}
 
 	public Long getId() {
 		return id;
@@ -59,7 +39,13 @@ public class Task {
 		this.id = id;
 	}
 
-	
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 
 	public List<Job> getJobs() {
 		return jobs;
@@ -67,28 +53,6 @@ public class Task {
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
-	}
-
-	
-	
-	public Task(Long id, Student student, List<Job> jobs, List<Symbol> symbols, List<Result> results,
-			List<Image> images, Map<Image, Result> result) {
-		super();
-		this.id = id;
-		this.student = student;
-		this.jobs = jobs;
-		this.symbols = symbols;
-		this.results = results;
-		this.images = images;
-		//this.result = result;
-	}
-
-	public List<Result> getResults() {
-		return results;
-		}
-	
-	public void setResult(List<Result> results) {
-		this.results = results;
 	}
 
 	public List<Symbol> getSymbols() {
@@ -99,17 +63,13 @@ public class Task {
 		this.symbols = symbols;
 	}
 
+	public List<Result> getResults() {
+		return results;
+	}
+
 	public void setResults(List<Result> results) {
 		this.results = results;
 	}
-
-//	public Map<Image, Result> getResult() {
-//		return result;
-//	}
-//
-//	public void setResult(Map<Image, Result> result) {
-//		this.result = result;
-//	}
 
 	public List<Image> getImages() {
 		return images;
@@ -117,6 +77,22 @@ public class Task {
 
 	public void setImages(List<Image> images) {
 		this.images = images;
+	}
+
+	public Task(Long id, Student student, List<Job> jobs, List<Symbol> symbols, List<Result> results,
+			List<Image> images) {
+		super();
+		this.id = id;
+		this.student = student;
+		this.jobs = jobs;
+		this.symbols = symbols;
+		this.results = results;
+		this.images = images;
+	}
+	
+	
+	public Task() {
+		
 	}
 	
 	

@@ -1,6 +1,5 @@
 package it.uniroma3.icr.dao.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import it.uniroma3.icr.dao.ResultDao;
 import it.uniroma3.icr.model.Result;
-import it.uniroma3.icr.model.Task;
 
 @Repository
 public class ResultDaoImpl implements ResultDao {
