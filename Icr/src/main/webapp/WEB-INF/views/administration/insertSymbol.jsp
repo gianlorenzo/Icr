@@ -69,7 +69,7 @@
 	
 	</form:form><br>
 	
-	<a class="classname" href="homeAdmin">Go back to home admin</a>
+	<a class="classname" href="homeAdmin">Finished entering symbols</a>
 	
 	</div>
 

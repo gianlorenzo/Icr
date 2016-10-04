@@ -26,7 +26,4 @@ public class ResultFacade {
 		return this.resultDaoImpl.findAll();
 	}
 	
-	
-	
-	
 }

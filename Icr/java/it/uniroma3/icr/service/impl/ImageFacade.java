@@ -22,9 +22,10 @@ public class ImageFacade {
 	public Image retriveImage(long id) {
 		return this.imageDaoImpl.findImage(id);
 	}
+	
 	public List<Image> retriveAllImages() {
 			return this.imageDaoImpl.findAll();
 		}
-	}
+}
 	
 

@@ -56,8 +56,6 @@ public class Job {
 		this.id = id;
 	}
 
-	
-
 	public int getImages() {
 		return images;
 	}
@@ -65,8 +63,6 @@ public class Job {
 	public void setImages(int images) {
 		this.images = images;
 	}
-
-	
 
 	public Symbol getSymbol() {
 		return symbol;
@@ -161,15 +157,5 @@ public class Job {
 	public Job() {
 		
 	}
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
 }

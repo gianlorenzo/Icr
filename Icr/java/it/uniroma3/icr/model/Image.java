@@ -47,141 +47,96 @@ public class Image {
 	@OneToMany(mappedBy="image")
 	private List<Result> results;
 
-
-
 	public Long getId() {
 		return id;
 	}
-
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
 	public int getX() {
 		return x;
 	}
-
-
 
 	public void setX(int x) {
 		this.x = x;
 	}
 
-
-
 	public int getY() {
 		return y;
 	}
-
-
 
 	public void setY(int y) {
 		this.y = y;
 	}
 
-
-
 	public int getWidth() {
 		return width;
 	}
-
-
 
 	public void setWidth(int width) {
 		this.width = width;
 	}
 
-
-
 	public int getHeight() {
 		return height;
 	}
-
-
 
 	public void setHeight(int height) {
 		this.height = height;
 	}
 
-
-
 	public String getPage() {
 		return page;
 	}
-
-
 
 	public void setPage(String page) {
 		this.page = page;
 	}
 
-
-
 	public String getManuscript() {
 		return manuscript;
 	}
-
-
 
 	public void setManuscript(String manuscript) {
 		this.manuscript = manuscript;
 	}
 
-
-
 	public String getType() {
 		return type;
 	}
-
-
 
 	public void setType(String type) {
 		this.type = type;
 	}
 
-
-
 	public List<Job> getJobs() {
 		return jobs;
 	}
-
-
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}
 
-
-
 	public List<Task> getTasks() {
 		return tasks;
 	}
-
-
 
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
 
-
-
 	public List<Result> getResults() {
 		return results;
 	}
-
-
 
 	public void setResults(List<Result> results) {
 		this.results = results;
 	}
 
-
-
-	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type,
+	public Image(Long id, int x, int y, int width, int height, 
+			String page, String manuscript, String type,
 			List<Job> jobs, List<Task> tasks, List<Result> results) {
 		super();
 		this.id = id;
@@ -197,16 +152,8 @@ public class Image {
 		this.results = results;
 	}
 
-	
-	
 	public Image () {
 		
 	}
-	
-	
-	
-	
-	
-	
 	
 }

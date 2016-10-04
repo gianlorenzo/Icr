@@ -33,8 +33,6 @@ public class Symbol {
 		
 	}
 
-	
-	
 	public Symbol(Long id, String transcription, String type, List<Job> jobs, List<Task> tasks) {
 		super();
 		this.id = id;
@@ -44,30 +42,21 @@ public class Symbol {
 		this.tasks = tasks;
 	}
 	
-
 	public List<Job> getJobs() {
 		return jobs;
 	}
-
-
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}
 
-
-
 	public List<Task> getTasks() {
 		return tasks;
 	}
 
-
-
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-
-
 
 	public Long getId() {
 		return id;
@@ -97,16 +86,5 @@ public class Symbol {
 	public String toString() {
 		return "Symbol [id=" + id + ", transcription=" + transcription + ", type=" + type +  "]";
 	}
-
-	
-
-	
-	
-	
-
-	
-
-	
-	
 
 }

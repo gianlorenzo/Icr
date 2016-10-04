@@ -88,8 +88,7 @@ public class TaskController {
 			
 			taskFacade.addTask(task);
 			
-			
-			
+			//creo la lista degli id delle immagini da inserire nelle checkboxes
 			List<Long> images = new ArrayList<>();
 			for(Image i : img)
 				images.add(i.getId());
