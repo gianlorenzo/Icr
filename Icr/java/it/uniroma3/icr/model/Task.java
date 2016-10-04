@@ -23,8 +23,7 @@ public class Task {
 	private Long id;
 	@ManyToOne
 	private Student student;
-	@ManyToMany
-	List<Image> images;
+	
 	@ManyToMany
 	List<Job> jobs;
 	
@@ -34,7 +33,11 @@ public class Task {
 	@OneToMany(mappedBy="task")
 	private List<Result> results;
 	
+	@ManyToMany
+	List<Image> images;
 	
+	//@ElementCollection
+//	Map<Image,Result> result;
 	
 	public Student getStudent() {
 		return student;
@@ -56,14 +59,7 @@ public class Task {
 		this.id = id;
 	}
 
-	public List<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
+	
 
 	public List<Job> getJobs() {
 		return jobs;
@@ -74,21 +70,23 @@ public class Task {
 	}
 
 	
-	public Task(Long id, Student student, List<Image> images, List<Job> jobs, List<Symbol> symbols,
-			List<Result> results) {
+	
+	public Task(Long id, Student student, List<Job> jobs, List<Symbol> symbols, List<Result> results,
+			List<Image> images, Map<Image, Result> result) {
 		super();
 		this.id = id;
 		this.student = student;
-		this.images = images;
 		this.jobs = jobs;
 		this.symbols = symbols;
 		this.results = results;
+		this.images = images;
+		//this.result = result;
 	}
 
 	public List<Result> getResults() {
 		return results;
-	}
-
+		}
+	
 	public void setResult(List<Result> results) {
 		this.results = results;
 	}
@@ -104,6 +102,26 @@ public class Task {
 	public void setResults(List<Result> results) {
 		this.results = results;
 	}
+
+//	public Map<Image, Result> getResult() {
+//		return result;
+//	}
+//
+//	public void setResult(Map<Image, Result> result) {
+//		this.result = result;
+//	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
+	}
+	
+	
+	
+	
 
 }
 

@@ -28,15 +28,19 @@ public class Result {
 	private Long id;
 	
 	@ManyToOne
-	private Task task;
+	private Image image;
 	
-//	@ManyToOne
-//	private Image image;
+	@ManyToOne
+	private Task task;
 	
 	@Column(nullable=false)
 	private String answer;
+	
 	@ManyToMany
 	private List<Image> images;
+//	
+//	@ManyToOne
+//	private Image image;
 	
 	
 	
@@ -84,23 +88,26 @@ public class Result {
 		this.images = images;
 	}
 
-//
-//	public Image getImage() {
-//		return image;
-//	}
-//
-//
-//	public void setImage(Image image) {
-//		this.image = image;
-//	}
 
-
-	public Result(Long id, Task task, String answer, List<Image> images) {
-		super();
-		this.id = id;
-		this.task = task;
-		this.answer = answer;
-		this.images = images;
+	public Image getImage() {
+		return image;
 	}
 
+	public void setImage(Image image) {
+		this.image = image;
+	}
+
+
+	public Result(Long id, Task task, String answer,Image image,List<Image> images) {
+		super();
+		this.id = id;
+		//this.task = task;
+		this.answer = answer;
+		//this.image = image;
+		//this.images = images;
+	}
+
+
+//	ss
+	
 }

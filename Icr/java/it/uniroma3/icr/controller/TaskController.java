@@ -1,7 +1,11 @@
 package it.uniroma3.icr.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import java.math.*;
 
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.icr.model.Image;
 import it.uniroma3.icr.model.Job;
@@ -90,9 +95,7 @@ public class TaskController {
 			taskFacade.addTask(task);
 			
 			
-			result.setTask(task);
-			result.setAnswer("Yes");
-			resultFacade.addResult(result);
+			
 			List<Long> images = new ArrayList<>();
 			for(Image i : img)
 				images.add(i.getId());
@@ -104,43 +107,30 @@ public class TaskController {
 	}
 	
 	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
-	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
+	public String taskRecap(@ModelAttribute Task task, Model model) {
 		model.addAttribute("task", task);
-		model.addAttribute("result", result);
-
-				
+		
 		List<Image> img = task.getImages();
+		List<Image> symbolImages = new ArrayList<>();
+		for (Image i : img) {
+				Result result = new Result();
+				symbolImages.add(i);
+				result.setImages(symbolImages);
 		
-		result.setImages(img);
-		//result.setTask(task);
-		List<Image> resultImg = new ArrayList<>();
-		
-		for(Image i : img) {
-			Image j = i;
-			//result.setImage(j);
-			resultImg.add(j);
-			result.setImages(resultImg);
-			result.setAnswer("yes");
-			//result.setTask(t);
-			
-		}
-		resultFacade.addResult(result);
-
-		model.addAttribute("result", result);
-
+				result.setAnswer("Yes");
+				result.setImage(i);
+				result.setTask(task);
+				
+				resultFacade.addResult(result);
+				
+				model.addAttribute("result", result);
+			}
 		
 		return "users/taskRecap";
-		
 	}
 	
 	@RequestMapping(value="/taskComplete")
 	public String taskComplete(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
-		
-		
-		
-		
-		
-		
 		
 		return "users/task";
 		

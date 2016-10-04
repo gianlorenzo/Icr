@@ -48,12 +48,28 @@ public class Image {
 	@ManyToMany(mappedBy="images")
 	private List<Task> tasks;
 	
+//	@ManyToMany(mappedBy="images")
+//	private List<Task> tasks;
 	
-	@ManyToMany(mappedBy="images")
+	@OneToMany(mappedBy="image")
 	private List<Result> results;
 
 	
+	
 
+	//public List<Result> getResults() {
+//		return results;
+//	}
+//
+//	public void setResults(List<Result> results) {
+//		this.results = results;
+//	}
+
+	public Long getId() {
+		return id;
+	}
+
+	
 	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type,
 			List<Job> jobs, List<Task> tasks, List<Result> results) {
 		super();
@@ -70,17 +86,6 @@ public class Image {
 		this.results = results;
 	}
 
-	public List<Result> getResults() {
-		return results;
-	}
-
-	public void setResults(List<Result> results) {
-		this.results = results;
-	}
-
-	public Long getId() {
-		return id;
-	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -142,22 +147,7 @@ public class Image {
 		this.type = type;
 	}
 
-	public List<Task> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
-	}
-
 	
-
-	@Override
-	public String toString() {
-		return "Image [id=" + id + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + ", page="
-				+ page + ", manuscript=" + manuscript + ", type=" + type + ", jobs=" + jobs + ", tasks=" + tasks + "]";
-	}
-
 	public Image() {
 		
 	}
@@ -168,6 +158,22 @@ public class Image {
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	public List<Result> getResults() {
+		return results;
+	}
+
+	public void setResults(List<Result> results) {
+		this.results = results;
 	}
 	
 	
