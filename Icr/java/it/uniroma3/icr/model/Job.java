@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Job {
@@ -25,7 +26,7 @@ public class Job {
 	private int taskSize;
 	
 	@Column(nullable = false)
-	private int images;
+	private int numberOfImages;
 	
 	@Column(nullable=false)
 	private double percentageType1;
@@ -37,12 +38,12 @@ public class Job {
 	private double percentageType3;
 	
 	@Column(nullable=false)
-	private int students;
+	private int numberOfStudents;
 	
 	@ManyToMany
 	List<Image> image;
 	
-	@ManyToMany(mappedBy="jobs")
+	@OneToMany(mappedBy="job")
 	List<Task> tasks; 
 	
 	@ManyToOne
@@ -57,11 +58,11 @@ public class Job {
 	}
 
 	public int getImages() {
-		return images;
+		return numberOfImages;
 	}
 
 	public void setImages(int images) {
-		this.images = images;
+		this.numberOfImages = images;
 	}
 
 	public Symbol getSymbol() {
@@ -97,11 +98,11 @@ public class Job {
 	}
 
 	public int getStudents() {
-		return students;
+		return numberOfStudents;
 	}
 
 	public void setStudents(int students) {
-		this.students = students;
+		this.numberOfStudents = students;
 	}
 
 	public String getTitle() {
@@ -144,11 +145,11 @@ public class Job {
 		this.id = id;
 		this.title = title;
 		this.taskSize = taskSize;
-		this.images = images;
+		this.numberOfImages = images;
 		this.percentageType1 = percentageType1;
 		this.percentageType2 = percentageType2;
 		this.percentageType3 = percentageType3;
-		this.students = students;
+		this.numberOfStudents = students;
 		this.image = image;
 		this.tasks = tasks;
 		this.symbol = symbol;

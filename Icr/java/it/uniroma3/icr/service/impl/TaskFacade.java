@@ -26,4 +26,8 @@ public class TaskFacade {
 		return this.taskDaoImpl.findAll();
 	}
 	
+	public void updateTask(Task t) {
+		taskDaoImpl.updateTask(t);
+	}
+	
 }

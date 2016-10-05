@@ -56,17 +56,6 @@
     </div>
     <br><br>
 	<div align="center">
-	<form:form method="post" action="taskComplete" modelAttribute="result" name="form">
-	<h2>Images</h2>
-	<c:forEach var="image" items="${result.images}"><br>
-		<c:out value="${image.id}" />
-		   	<form:input type="text" path='answer' /><br>
-		
-		</c:forEach>
-	
-		
-	<td><input type="submit" value="Send" /></td>
-	</form:form>
 	
 	</div>
 </body>

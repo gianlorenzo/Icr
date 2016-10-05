@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -19,18 +19,12 @@ public class Task {
 	@ManyToOne
 	private Student student;
 	
-	@ManyToMany
-	List<Job> jobs;
-	
-	@ManyToMany
-	private List<Symbol> symbols;
+	@ManyToOne
+	private Job job;
 	
 	@OneToMany(mappedBy="task")
 	private List<Result> results;
 	
-	@ManyToMany
-	List<Image> images;
-
 	public Long getId() {
 		return id;
 	}
@@ -47,20 +41,12 @@ public class Task {
 		this.student = student;
 	}
 
-	public List<Job> getJobs() {
-		return jobs;
+	public Job getJob() {
+		return job;
 	}
 
-	public void setJobs(List<Job> jobs) {
-		this.jobs = jobs;
-	}
-
-	public List<Symbol> getSymbols() {
-		return symbols;
-	}
-
-	public void setSymbols(List<Symbol> symbols) {
-		this.symbols = symbols;
+	public void setJob(Job job) {
+		this.job = job;
 	}
 
 	public List<Result> getResults() {
@@ -71,26 +57,14 @@ public class Task {
 		this.results = results;
 	}
 
-	public List<Image> getImages() {
-		return images;
-	}
-
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
-	public Task(Long id, Student student, List<Job> jobs, List<Symbol> symbols, List<Result> results,
-			List<Image> images) {
+	public Task(Long id, Student student, Job job, List<Result> results) {
 		super();
 		this.id = id;
 		this.student = student;
-		this.jobs = jobs;
-		this.symbols = symbols;
+		this.job = job;
 		this.results = results;
-		this.images = images;
 	}
-	
-	
+
 	public Task() {
 		
 	}

@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -26,11 +26,10 @@ public class Result {
 	@ManyToOne
 	private Task task;
 	
-	@Column(nullable=false)
+	@Column
 	private String answer;
 	
-	@ManyToMany
-	private List<Image> images;
+	
 
 	public Long getId() {
 		return id;
@@ -64,26 +63,27 @@ public class Result {
 		this.answer = answer;
 	}
 
-	public List<Image> getImages() {
-		return images;
-	}
+	
 
-	public void setImages(List<Image> images) {
-		this.images = images;
-	}
-
-	public Result(Long id, Image image, Task task, String answer, List<Image> images) {
+	public Result(Long id, Image image, Task task, String answer) {
 		super();
 		this.id = id;
 		this.image = image;
 		this.task = task;
 		this.answer = answer;
-		this.images = images;
+		
 	}
 	
 	public Result() {
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Result [id=" + id + ", image=" + image + ", task=" + task + ", answer=" + answer + "]";
+	}
+	
+	
 	
 	
 }

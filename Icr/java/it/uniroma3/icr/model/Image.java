@@ -41,9 +41,6 @@ public class Image {
 	@ManyToMany(mappedBy="image")
 	private List<Job> jobs;
 	
-	@ManyToMany(mappedBy="images")
-	private List<Task> tasks;
-	
 	@OneToMany(mappedBy="image")
 	private List<Result> results;
 
@@ -119,13 +116,7 @@ public class Image {
 		this.jobs = jobs;
 	}
 
-	public List<Task> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
-	}
+	
 
 	public List<Result> getResults() {
 		return results;
@@ -135,9 +126,10 @@ public class Image {
 		this.results = results;
 	}
 
-	public Image(Long id, int x, int y, int width, int height, 
-			String page, String manuscript, String type,
-			List<Job> jobs, List<Task> tasks, List<Result> results) {
+	
+
+	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type,
+			List<Job> jobs, List<Result> results) {
 		super();
 		this.id = id;
 		this.x = x;
@@ -148,7 +140,6 @@ public class Image {
 		this.manuscript = manuscript;
 		this.type = type;
 		this.jobs = jobs;
-		this.tasks = tasks;
 		this.results = results;
 	}
 

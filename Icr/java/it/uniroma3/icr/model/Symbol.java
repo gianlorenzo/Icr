@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -26,20 +25,18 @@ public class Symbol {
 	@OneToMany(mappedBy="symbol")
 	private List<Job> jobs;
 	
-	@ManyToMany(mappedBy="symbols")
-	private List<Task> tasks;
+	
 	
 	public Symbol() {
 		
 	}
 
-	public Symbol(Long id, String transcription, String type, List<Job> jobs, List<Task> tasks) {
+	public Symbol(Long id, String transcription, String type, List<Job> jobs) {
 		super();
 		this.id = id;
 		this.transcription = transcription;
 		this.type = type;
 		this.jobs = jobs;
-		this.tasks = tasks;
 	}
 	
 	public List<Job> getJobs() {
@@ -48,14 +45,6 @@ public class Symbol {
 
 	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
-	}
-
-	public List<Task> getTasks() {
-		return tasks;
-	}
-
-	public void setTasks(List<Task> tasks) {
-		this.tasks = tasks;
 	}
 
 	public Long getId() {

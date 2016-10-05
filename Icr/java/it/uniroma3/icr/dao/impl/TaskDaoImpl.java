@@ -15,8 +15,11 @@ import it.uniroma3.icr.model.Task;
 @Repository
 public class TaskDaoImpl implements TaskDao {
 
+	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	
 	
 	@Override
 	public void insertTask(Task task) {
@@ -44,5 +47,13 @@ public class TaskDaoImpl implements TaskDao {
 		Query query = session.createQuery(hql);
 		List<Task> empList = query.list();
 		return empList;
+	}
+
+	@Override
+	public void updateTask(Task task) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.merge(task);
+		session.getTransaction().commit();
 	}
 }

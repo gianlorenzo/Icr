@@ -16,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.icr.model.Symbol;
+import it.uniroma3.icr.model.Task;
 import it.uniroma3.icr.model.Image;
 import it.uniroma3.icr.model.Job;
+import it.uniroma3.icr.model.Result;
 import it.uniroma3.icr.service.impl.SymbolFacade;
+import it.uniroma3.icr.service.impl.TaskFacade;
 import it.uniroma3.icr.service.editor.SymbolEditor;
 import it.uniroma3.icr.service.impl.ImageFacade;
 import it.uniroma3.icr.service.impl.JobFacade;
+import it.uniroma3.icr.service.impl.ResultFacade;
 
 @Controller
 public class AdminController {
@@ -30,6 +34,12 @@ public class AdminController {
 	
 	@Autowired
 	private JobFacade facadeJob;
+	
+	@Autowired
+	private TaskFacade facadeTask;
+	
+	@Autowired
+	private ResultFacade facadeResult;
 	
 	@Autowired
 	private SymbolFacade symbolFacade;;
@@ -62,6 +72,28 @@ public class AdminController {
 		job.setImage(imgs);
 		
 		facadeJob.addJob(job);
+		
+		int numberTask = job.getImages()/job.getTaskSize();
+		
+		for(int i = 0; i<numberTask;i++) {
+			Task task = new Task();
+			
+			task.setJob(job);
+			facadeTask.addTask(task);
+			
+			
+			for(Image j : job.getImage()) {
+				
+			
+			Result result = new Result();
+			result.setImage(j);
+			result.setTask(task);
+			
+			facadeResult.addResult(result);
+			}
+			
+			
+		}
 		
 		return "administration/jobRecap";
 	}

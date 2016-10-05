@@ -1,11 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="it.uniroma3.icr.model.Job" %>
+<%@ page import="it.uniroma3.icr.model.Task" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"
  prefix="springForm"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -53,19 +56,30 @@
     </div>
     <br><br>
 	<div align="center">
-	<h1><font color="7A0000"><strong>
-	${job.title}: &nbsp ${job.symbol.transcription}</strong> </font></h1>
-	</div>
-		<form:form method="post" action="taskRecap"  modelAttribute="task" name="form">
-			
-			<form:checkboxes path="images" items="${images}"  />
-			
-			<form:input type="hidden" path='id'
+	
+	<form:form method="post" action="taskRecap" modelAttribute="task" name="form">
+	
+	<form:input type="hidden" path='id'
 							placeholder="id" />
 	
-	<td><input type="submit" value="Send" /></td>
-
-     </form:form>
+	<c:forEach var="result" items="${task.results}"><br>
+    		<c:out value="${result.id}"/> <br>
+	</c:forEach>						
+							
+	
+	
+	<td><input type="submit" value="Send"></td>
+	
+	</form:form>
+	
+	
+	
+		</div>
+	
+	
+	
+	
+	
 
 
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import it.uniroma3.icr.dao.ResultDao;
 import it.uniroma3.icr.model.Result;
+import it.uniroma3.icr.model.Task;
 
 @Repository
 public class ResultDaoImpl implements ResultDao {
@@ -42,6 +43,26 @@ public class ResultDaoImpl implements ResultDao {
 		Query query = session.createQuery(hql);
 		List<Result> empList = query.list();
 		return empList;
+	}
+
+	@Override
+	public void updateResult(Result result) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.merge(result);
+		session.getTransaction().commit();
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Result> findTaskResults(Task task) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		List<Result> list = (List<Result>) session.createQuery("select r from Result r where r.task.id="+task.getId()).list();
+		session.getTransaction().commit();
+		System.out.println(list);
+		return list;
 	}
 
 	

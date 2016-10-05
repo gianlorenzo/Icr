@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -57,68 +58,41 @@ public class TaskController {
 		binder.registerCustomEditor(Image.class, this.imageEditor);
 		binder.registerCustomEditor(Task.class, this.taskEditor);
 	}
+
 	
 	
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
-	public String task(@ModelAttribute Task task,@ModelAttribute Result result, @ModelAttribute Image image ,Model model) {
+	public String task(@ModelAttribute Task task,@ModelAttribute Result result,@ModelAttribute Job job,
+			@ModelAttribute Image image ,Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
-		List<Job> jobs = new ArrayList<>();
-		if(!(auth instanceof AnonymousAuthenticationToken)) {
-			jobs = facadeJob.retriveAlljobs();
-			Job job = getMathRandomList(jobs);
-			model.addAttribute("job", job);
-			model.addAttribute("image", imageFacade.retriveAllImages());
-			
-			// Inizializzo le liste per riempire le tabelle di JOIN del Task
-			List<Image> img = imageFacade.retriveAllImages();
-			List<Job> taskJobs = new ArrayList<>();
-			List<Symbol> taskSymbols = new ArrayList<>();
-			
-			//Setto i  riferimenti del Task
-			taskSymbols.add(job.getSymbol());
-			task.setSymbols(taskSymbols);
-			taskJobs.add(job);
-			task.setJobs(taskJobs);
-			task.setImages(img);
+		List<Task> tasks = taskFacade.retriveAllTask();
+		task = getMathRandomList(tasks);
+		
+		if(task.getStudent() == null){
 			task.setStudent(student);
-			
-			//Aggiungo il task al db
-			
-			taskFacade.addTask(task);
-			
-			//creo la lista degli id delle immagini da inserire nelle checkboxes
-			List<Long> images = new ArrayList<>();
-			for(Image i : img)
-				images.add(i.getId());
-			model.addAttribute("images", images);
-			
+			taskFacade.updateTask(task);
 		}
+		model.addAttribute("task", task);
 
 		return "users/newTask";
 	}
 	
 	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
 	public String taskRecap(@ModelAttribute Task task, Model model) {
-		model.addAttribute("task", task);
+		List<Result> results = resultFacade.findTaskResult(task);
+		for(Result r : results) {
+			r.setAnswer("yes");
+			resultFacade.updateResult(r);
+		}
 		
-		List<Image> img = task.getImages();
-		List<Image> symbolImages = new ArrayList<>();
-		for (Image i : img) {
-				Result result = new Result();
-				symbolImages.add(i);
-				result.setImages(symbolImages);
 		
-				result.setAnswer("Yes");
-				result.setImage(i);
-				result.setTask(task);
-				
-				resultFacade.addResult(result);
-				
-				model.addAttribute("result", result);
-			}
+		//		Result r = resultFacade.findTaskResult(task);
 		
+		
+		
+	
 		return "users/taskRecap";
 	}
 	
@@ -129,7 +103,7 @@ public class TaskController {
 		
 	}
 	
-	public Job getMathRandomList(List<Job> list) {
+	public Task getMathRandomList(List<Task> list) {
         int index = (int) (Math.random() * list.size());
        return  list.get(index);
    }
