@@ -27,68 +27,71 @@
 
 	<!-- Favicon -->
     <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+    
+    <style type="text/css">
+	 body { 
+    background-image: url('./resources/img/background.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    
+    background-size: 1500px 650px;
+
+    
+}
+	   </style>
 
 
 
 </head>
-<body background="<c:url value='/resources/img/background.jpg' />">
-	<!--******************** NAVBAR ********************-->
-    <div class="navbar-wrapper">
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
-            <h1 class="brand"><a href="#top">In Codice Ratio</a></h1>
-            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <nav class="pull-right nav-collapse collapse">
-              <ul id="menu-main" class="nav">
-				<li><a title="Login" href="#">Admin Page:</a></li> 
-				 <li> <a style="color:white" ><strong>${pageContext.request.userPrincipal.name}</strong></a><li>           
-              </ul>
-            </nav>
-          </div>
-          <!-- /.container -->
-        </div>
-        <!-- /.navbar-inner -->
-      </div>
-      <!-- /.navbar -->
-    </div>
+<body>
+<div style="position:absolute; top:15px; left:10px">
+
+<font size="6" color="white">Admin Page</font>
+</div>
+
+<div style="position:absolute; top:15px; right:40px">
+<font size="6" color="white">Welcome : &nbsp ${pageContext.request.userPrincipal.name}</font>
+</div>
+	
     <br><br>
    	<div align="center">
     
 	<h1>
-		<font color="7a0000">Insert a new Job</font>
+		<font color="white">Insert a new Job</font>
 	</h1>
 	
 	
 	
 	<form:form method="post" action="addJob" modelAttribute="job" name="form">
+	<div class="normal">
 		
-		<h3>Title</h3>
-		<form:textarea path="title" rows="5" cols="30" />
+		Title: <br>
+		<form:textarea path="title" rows="5" cols="5" /><br>
 		
-		<h3>#Students</h3>
-		<form:input type="text" path='students' placeholder="Students" /><br>
-		<h3>#Images : </h3>
+		#Students
+		<form:input type="text" path='students' placeholder="Students" />
+		#Images : 
 		<form:input type="text" path='images' placeholder="images" /><br>
-		<h3>%Type1 : </h3>
-		<form:input type="text" path='PercentageType1' placeholder="Images" /><br>
-		<h3>%Type2 : </h3>
+		%Type1 : 
+		<form:input type="text" path='PercentageType1' placeholder="Images" />
+		%Type2 : 
 		<form:input type="text" path='PercentageType2' placeholder="Images" /><br>
-		<h3>%Type3 : </h3>
-		<form:input type="text" path='PercentageType3' placeholder="Images" /><br>
-		<h3>TaskSize : </h3>
+		%Type3 : 
+		<form:input type="text" path='PercentageType3' placeholder="Images" />
+		TaskSize : 
 		<form:input type="text" path='taskSize' placeholder="TaskSize" /><br>
 		
-		<h3>Symbol:</h3>
+		Symbol:
 		<form:select path="symbol">
 			<font color="7a0000"><form:options items="${symbols}" itemLabel="transcription" itemValue="id"/>
 	</font>
+	
 		</form:select>
 		
 		<br>
 		<td><input type="submit" value="Send" /></td>
+		</div>
 		</form:form><br>
 		
 		

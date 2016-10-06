@@ -13,8 +13,7 @@ import javax.persistence.OneToMany;
 public class Student {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Long freshman;
 	
 	@Column(nullable = false)
 	private String name;
@@ -57,14 +56,6 @@ public class Student {
 		this.role = role;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -104,4 +95,14 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Long getFreshman() {
+		return freshman;
+	}
+
+	public void setFreshman(Long freshman) {
+		this.freshman = freshman;
+	}
+	
+	
 }

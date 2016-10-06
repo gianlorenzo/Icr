@@ -16,6 +16,8 @@ public interface ResultDao {
 	
 	public void updateResult(Result result);
 	
+	public void deleteResult(long id);
+	
 	
 
 }

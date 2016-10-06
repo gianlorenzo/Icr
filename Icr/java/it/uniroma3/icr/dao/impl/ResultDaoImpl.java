@@ -59,10 +59,19 @@ public class ResultDaoImpl implements ResultDao {
 	public List<Result> findTaskResults(Task task) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		List<Result> list = (List<Result>) session.createQuery("select r from Result r where r.task.id="+task.getId()).list();
+		List<Result> results =  (List<Result>) session.createQuery("select r from Result r where r.task.id="+task.getId()).list();
 		session.getTransaction().commit();
-		System.out.println(list);
-		return list;
+		System.out.println(results);
+		return results;
+	}
+
+	@Override
+	public void deleteResult(long id) {
+		Session session = sessionFactory.openSession();
+		String hql ="DELETE from Result r where r.id = :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		query.executeUpdate();
 	}
 
 	

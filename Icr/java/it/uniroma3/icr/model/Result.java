@@ -80,8 +80,13 @@ public class Result {
 
 	@Override
 	public String toString() {
-		return "Result [id=" + id + ", image=" + image + ", task=" + task + ", answer=" + answer + "]";
+		return "Result [id=" + id + ", "
+				+ "image=" + image + ", "
+				+ "task=" + task + ", "
+				+ "answer=" + answer + "]";
 	}
+
+	
 	
 	
 	

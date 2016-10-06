@@ -35,4 +35,8 @@ public class ResultFacade {
 		return this.resultDaoImpl.findTaskResults(task);
 	}
 	
+	public void deleteResult(long id) {
+		resultDaoImpl.deleteResult(id);
+	}
+	
 }

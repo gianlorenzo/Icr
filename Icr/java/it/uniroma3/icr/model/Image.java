@@ -146,5 +146,16 @@ public class Image {
 	public Image () {
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Image [id=" + id ;
+				
+	}
+	
+	
+
+	
+	
 	
 }
