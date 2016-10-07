@@ -74,6 +74,12 @@ public class AdminController {
 		facadeJob.addJob(job);
 		
 		int numberTask = job.getImages()/job.getTaskSize();
+//		
+//		int numPerc1 = (job.getImages()*job.getPercentageType1())/100;
+//		
+//		int numPerc2 = (job.getImages()*job.getPercentageType2())/100;
+//		
+//		int numPerc3 = (job.getImages()*job.getPercentageType3())/100;
 		
 		for(int i = 0; i<numberTask;i++) {
 			Task task = new Task();
@@ -83,17 +89,51 @@ public class AdminController {
 			
 			
 			for(Image j : job.getImage()) {
-				
 			
 			Result result = new Result();
+			
 			result.setImage(j);
+			
 			result.setTask(task);
 			
 			facadeResult.addResult(result);
 			}
+		
 			
 			
+		
+//			for(int j=0;j<job.getImages();j++) {
+//				
+//			
+//			
+//			
+//			for(int h=0; h<numPerc1;h++) {
+//				if(job.getImage().get(h).getType().equals("t1"))
+//					result.setImage(job.getImage().get(h));
+//				facadeResult.updateResult(result);
+//			}
+//			
+//			for(int m=0;m<numPerc2;m++) {
+//				if(job.getImage().get(m).getType().equals("t2"))
+//					result.setImage(job.getImage().get(m));
+//				facadeResult.updateResult(result);
+//
+//			}
+//			
+//			for(int n=0;n<numPerc3;n++) {
+//				if(job.getImage().get(n).getType().equals("t3"))
+//					result.setImage(job.getImage().get(n));
+//				facadeResult.updateResult(result);
+//
+//			}
+//			
+//			
+//			
+//			}
 		}
+			
+			
+		
 		
 		return "administration/jobRecap";
 	}

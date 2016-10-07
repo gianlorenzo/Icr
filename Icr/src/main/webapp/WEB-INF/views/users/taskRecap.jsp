@@ -59,6 +59,19 @@
           <br><br>
 	<div align="center">
 	
+	<c:forEach items="${taskResults.resultList}" var="result" varStatus="vs">
+	
+		<c:out value="${result.answer}"/>
+		<c:out value="${result.task.id}"/>
+	
+	
+	
+	
+	</c:forEach>
+	
+	
+	
+	
 	</div>
 </body>
 </html>

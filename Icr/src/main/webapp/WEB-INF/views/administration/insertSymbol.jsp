@@ -69,8 +69,9 @@
 	
 	</form:form><br>
 	
-	<a class="classname" href="homeAdmin">Finished entering symbols</a>
-	
+<div style="position:absolute; top:250px;right:578px">
+<a href="homeAdmin"><img width="200" height="150" src="resources/img/endSymbols.png"></a><br><br>
+</div>	
 	</div>
 
 </body>

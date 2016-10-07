@@ -3,7 +3,9 @@ package it.uniroma3.icr.dao.impl;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+import org.hibernate.service.ServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +18,9 @@ public class StudentDaoImpl implements StudentDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	
 	public void insertUser(Student user){
+		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user);

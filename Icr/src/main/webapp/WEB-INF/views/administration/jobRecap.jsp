@@ -70,7 +70,9 @@
 		
 		
 		
-	<a class="classname" href="homeAdmin">Return to home Admin</a>
+	<div style="position:absolute; top:230px;right:578px">
+<a href="homeAdmin"><img width="200" height="150" src="resources/img/toHomeAdmin.png"></a><br><br>
+</div>	
 </div>
 
 </body>

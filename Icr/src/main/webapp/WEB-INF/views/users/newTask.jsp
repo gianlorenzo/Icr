@@ -56,16 +56,23 @@
 	
     <br><br>
 	<div align="center">
-	<h1><font color="white">${task.job.title}: &nbsp ${task.job.symbol.transcription}</font></h1>
 	
-			<form:form method="post" action="taskRecap" modelAttribute="result" name="form">
+	<form:form method="post" action="taskRecap" modelAttribute="taskResults" name="form">
 	<font color="white">
-	<form:input type="hidden" path='id'
-							placeholder="id" />
 	
-	<c:forEach var="result" items="${task.results}"><br>
-    		<c:out value="${result.id}"/> 
-    		<form:input type="text" path="answer" />
+	
+	
+	<c:forEach varStatus="vs" var="result" items="${taskResults.resultList}"><br>
+	
+	
+	<form:input path="resultList[${vs.index}].answer" /> 
+	
+	<form:hidden path="resultList[${vs.index}].id"/>
+	
+	<form:hidden path="resultList[${vs.index}].image.id"/>
+	<form:hidden path="resultList[${vs.index}].task.id"/>
+	
+	   		
 	</c:forEach>						
 	<br>							
 	

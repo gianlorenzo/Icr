@@ -3,7 +3,7 @@ package it.uniroma3.icr.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -26,6 +26,7 @@ import it.uniroma3.icr.model.Result;
 import it.uniroma3.icr.model.Student;
 import it.uniroma3.icr.model.Symbol;
 import it.uniroma3.icr.model.Task;
+import it.uniroma3.icr.model.TaskWrapper;
 import it.uniroma3.icr.service.editor.ImageEditor;
 import it.uniroma3.icr.service.editor.TaskEditor;
 import it.uniroma3.icr.service.impl.ImageFacade;
@@ -61,35 +62,43 @@ public class TaskController {
 		binder.registerCustomEditor(Task.class, this.taskEditor);
 		
 	}
-
-	
+ 
+	public @ModelAttribute("taskResults")TaskWrapper setupWrapper() {
+		return new TaskWrapper();
+	}
 	
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
 	public String task(@ModelAttribute Task task,@ModelAttribute Job job,@ModelAttribute Result result,
-			@ModelAttribute Image image ,Model model) {
+			@ModelAttribute Image image,
+			@ModelAttribute("taskResults")TaskWrapper taskResults,Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
 		List<Task> tasks = taskFacade.retriveAllTask();
-		task = getMathRandomList(tasks);
+		task = getTaskList(tasks);
 		
-		if(task.getStudent() == null){
+		//if(task.getStudent() == null)
 			task.setStudent(student);
 			taskFacade.updateTask(task);
-		}
-		model.addAttribute("task", task);
+			
+			List<Result> list = resultFacade.findTaskResult(task);
+			taskResults.setResultList(list);	
+			
+		
+		
+		
+		model.addAttribute("taskResults", taskResults);
 
 		return "users/newTask";
 	}
 	
-	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
-	public String taskRecap(@ModelAttribute Task task,@ModelAttribute Result result,
+	 @RequestMapping(value="/taskRecap", method = RequestMethod.POST)
+	public String taskRecap(@ModelAttribute("taskResults")TaskWrapper taskResults,
 			Model model) {
-		List<Result> results = resultFacade.findTaskResult(task);
-		for(Result r : results) {
-			r.setAnswer("yes");
-			resultFacade.updateResult(r);
-		}
+		List<Result> results = taskResults.getResultList();
+				//r.setTask(task);
+			resultFacade.updateListResult(results);
+		
 		return "users/taskRecap";
 
 	}
@@ -99,14 +108,19 @@ public class TaskController {
 	
 	@RequestMapping(value="/taskComplete")
 	public String taskComplete(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
-		
+				
 		return "users/task";
 		
 	}
 	
-	public Task getMathRandomList(List<Task> list) {
-        int index = (int) (Math.random() * list.size());
-       return  list.get(index);
+	public Task getTaskList(List<Task> list) {
+		Task t = new Task();
+		for(int i = 0; i<list.size();i++) {
+			if(list.get(i).getStudent()==null)
+				t = list.get(i);
+		}
+		return t;
+
    }
 	
 	

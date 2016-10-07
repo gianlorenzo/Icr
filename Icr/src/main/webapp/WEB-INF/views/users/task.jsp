@@ -48,7 +48,7 @@
     <br><br>
 		
 		<div style="position:absolute; top:220px;right:578px">
-          <a  href="registration"><img width="200" height="150" src="resources/img/taskPage.png"></a><br><br>
+          <a  href="newTask"><img width="200" height="150" src="resources/img/taskPage.png"></a><br><br>
           </div>
          
          <div style="position:absolute; top:275px;right:630px">

@@ -29,13 +29,13 @@ public class Job {
 	private int numberOfImages;
 	
 	@Column(nullable=false)
-	private double percentageType1;
+	private int percentageType1;
 	
 	@Column(nullable=false)
-	private double percentageType2;
+	private int percentageType2;
 	
 	@Column(nullable=false)
-	private double percentageType3;
+	private int percentageType3;
 	
 	@Column(nullable=false)
 	private int numberOfStudents;
@@ -73,28 +73,46 @@ public class Job {
 		this.symbol = symbol;
 	}
 
-	public double getPercentageType1() {
+	
+
+	public int getNumberOfImages() {
+		return numberOfImages;
+	}
+
+	public void setNumberOfImages(int numberOfImages) {
+		this.numberOfImages = numberOfImages;
+	}
+
+	public int getPercentageType1() {
 		return percentageType1;
 	}
 
-	public void setPercentageType1(double percentageType1) {
+	public void setPercentageType1(int percentageType1) {
 		this.percentageType1 = percentageType1;
 	}
 
-	public double getPercentageType2() {
+	public int getPercentageType2() {
 		return percentageType2;
 	}
 
-	public void setPercentageType2(double percentageType2) {
+	public void setPercentageType2(int percentageType2) {
 		this.percentageType2 = percentageType2;
 	}
 
-	public double getPercentageType3() {
+	public int getPercentageType3() {
 		return percentageType3;
 	}
 
-	public void setPercentageType3(double percentageType3) {
+	public void setPercentageType3(int percentageType3) {
 		this.percentageType3 = percentageType3;
+	}
+
+	public int getNumberOfStudents() {
+		return numberOfStudents;
+	}
+
+	public void setNumberOfStudents(int numberOfStudents) {
+		this.numberOfStudents = numberOfStudents;
 	}
 
 	public int getStudents() {
@@ -137,24 +155,28 @@ public class Job {
 		this.tasks = tasks;
 	}
 
-	public Job(Long id, String title, int taskSize, int images, 
-			double percentageType1, double percentageType2,
-			double percentageType3, int students, List<Image> image, 
-			List<Task> tasks, Symbol symbol) {
+	
+	
+	
+	public Job(Long id, String title, int taskSize, 
+			int numberOfImages, int percentageType1, int percentageType2,
+			int percentageType3, int numberOfStudents, 
+			List<Image> image, List<Task> tasks, 
+			Symbol symbol) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.taskSize = taskSize;
-		this.numberOfImages = images;
+		this.numberOfImages = numberOfImages;
 		this.percentageType1 = percentageType1;
 		this.percentageType2 = percentageType2;
 		this.percentageType3 = percentageType3;
-		this.numberOfStudents = students;
+		this.numberOfStudents = numberOfStudents;
 		this.image = image;
 		this.tasks = tasks;
 		this.symbol = symbol;
 	}
-	
+
 	public Job() {
 		
 	}

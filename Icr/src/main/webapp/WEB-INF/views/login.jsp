@@ -55,7 +55,7 @@
         </form>
         </div>
      	
-     	<div style="position:absolute; top:350px;right:578px ">
+     	<div style="position:absolute; top:350px;right:580px ">
           <a  href="registration"><img width="200" height="150" src="<c:url value="/resources/img/newAccount.png"/>"></a><br><br>
           <a  href="index"><img width="200" height="150" src="<c:url value="/resources/img/toHomepage.png"/>"></a>
 		</div>

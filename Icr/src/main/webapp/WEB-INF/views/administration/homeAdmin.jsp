@@ -45,14 +45,17 @@
     
     <br><br>
     <br><br>
-
-<div align="center">
-<a class="classname" href="insertJob">Insert a new Job</a><br><br>
-
-<a class="classname" href="insertSymbol">Insert a new Symbol</a><br><br>
-<a class="classname" href="logout">Logout</a>
+<div style="position:absolute; top:200px;right:578px">
+<a href="insertJob"><img width="200" height="150" src="resources/img/newJob.png"></a><br><br>
 </div>
 
+<div style="position:absolute; top:260px;right:578px">
+<a href="insertSymbol"><img width="200" height="150" src="resources/img/newSymbol.png"></a><br><br>
+</div>
+
+<div style="position:absolute; top:320px;right:625px">
+<a href="logout"><img width="100" height="75" src="resources/img/logout.png"></a>
+</div>
 	
 
 

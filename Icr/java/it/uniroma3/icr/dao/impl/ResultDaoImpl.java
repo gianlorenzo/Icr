@@ -53,6 +53,14 @@ public class ResultDaoImpl implements ResultDao {
 		session.getTransaction().commit();
 		
 	}
+	
+	public void updateListResult(List<Result> results) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		for(Result r : results)
+			session.merge(r);
+		session.getTransaction().commit();
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
