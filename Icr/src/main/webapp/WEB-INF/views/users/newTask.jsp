@@ -71,7 +71,7 @@
 	
 	
 	<c:out value="${result.image.id}"/>
-	<form:input path="resultList[${vs.index}].answer" /> 
+	<form:input path="resultList[${vs.index}].answer" placeholder="Answer"/> 
 	
 	<form:hidden path="resultList[${vs.index}].id"/>
 	

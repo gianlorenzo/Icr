@@ -56,7 +56,7 @@
 					<form:input type="text" path='surname' placeholder="Surname" />
 					School :
 					<form:input type="text" path='school' placeholder="School" /><br>
-					Username :
+					Username :<font size="3" color="red">${usernameError}</font>
 					<form:input type="text" path='username' placeholder="Username" />
 				
 					Password :
@@ -65,9 +65,12 @@
 					<form:input type="text" path='role' placeholder="Role" /><br>
 					</div>
 					
-							
-					<input type="submit" value="Send" />
+					<font color="white"><springForm:errors path="username" /></font>
+					<font color="white"><springForm:errors path="password" /></font>
+					<td><input type="submit" value="Send" /><td>
 					</form:form>
+					
+				
 					
 					
 					<c:if test="${not empty student.username}">

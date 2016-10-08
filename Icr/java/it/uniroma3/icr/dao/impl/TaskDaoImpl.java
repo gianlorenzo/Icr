@@ -56,4 +56,14 @@ public class TaskDaoImpl implements TaskDao {
 		session.merge(task);
 		session.getTransaction().commit();
 	}
+	
+	@Override
+	public Task getTaskList(List<Task> list) {
+		Task t = new Task();
+		for(int i = 0; i<list.size();i++) {
+			if(list.get(i).getStudent()==null)
+				t = list.get(i);
+		}
+		return t;
+	}
 }

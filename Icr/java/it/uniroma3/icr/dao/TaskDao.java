@@ -10,5 +10,6 @@ public interface TaskDao {
 	public Task findTask(long id);
 	public void updateTask(Task task);
 	public List<Task> findAll();
+	public Task getTaskList(List<Task> list);
 
 }

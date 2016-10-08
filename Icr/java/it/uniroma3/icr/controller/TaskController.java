@@ -75,18 +75,14 @@ public class TaskController {
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
 		List<Task> tasks = taskFacade.retriveAllTask();
-		task = getTaskList(tasks);
-		
-		//if(task.getStudent() == null)
+		task = taskFacade.getTaskList(tasks);
 			task.setStudent(student);
 			taskFacade.updateTask(task);
 			
 			List<Result> list = resultFacade.findTaskResult(task);
 			taskResults.setResultList(list);	
 			
-		
 		model.addAttribute("task", task);
-		
 		model.addAttribute("taskResults", taskResults);
 
 		return "users/newTask";
@@ -96,33 +92,14 @@ public class TaskController {
 	public String taskRecap(@ModelAttribute("taskResults")TaskWrapper taskResults,
 			Model model) {
 		List<Result> results = taskResults.getResultList();
-				//r.setTask(task);
 			resultFacade.updateListResult(results);
 		
 		return "users/taskRecap";
 
 	}
 
-		
-		
 	
-	@RequestMapping(value="/taskComplete")
-	public String taskComplete(@ModelAttribute Task task,@ModelAttribute Result result, Model model) {
-				
-		return "users/task";
-		
-	}
-	
-	public Task getTaskList(List<Task> list) {
-		Task t = new Task();
-		for(int i = 0; i<list.size();i++) {
-			if(list.get(i).getStudent()==null)
-				t = list.get(i);
-		}
-		return t;
 
-   }
+}	
 	
 	
-	
-}

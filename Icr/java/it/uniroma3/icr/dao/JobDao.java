@@ -4,6 +4,7 @@ import java.util.List;
 
 import it.uniroma3.icr.model.Image;
 import it.uniroma3.icr.model.Job;
+import it.uniroma3.icr.model.Task;
 
 public interface JobDao {
 	

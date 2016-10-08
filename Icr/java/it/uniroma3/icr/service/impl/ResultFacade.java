@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.icr.dao.impl.ResultDaoImpl;
+import it.uniroma3.icr.model.Image;
+import it.uniroma3.icr.model.Job;
 import it.uniroma3.icr.model.Result;
 import it.uniroma3.icr.model.Task;
 
@@ -41,6 +43,10 @@ public class ResultFacade {
 	
 	public void updateListResult(List<Result> results) {
 		resultDaoImpl.updateListResult(results);
+	}
+	
+	public void addImageAndTaskToResult(Task t,Result r, Job j) {
+		resultDaoImpl.addImageAdnTaskToResult(t, r, j);
 	}
 	
 }

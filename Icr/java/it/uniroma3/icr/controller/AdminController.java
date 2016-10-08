@@ -54,9 +54,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/insertJob")
-	private String newJob(@ModelAttribute Job job, Model model) {
+	private String newJob(@ModelAttribute Job job,@ModelAttribute Task task, Model model) {
 		model.addAttribute("symbols", symbolFacade.retriveAllSymbols());
 		model.addAttribute("images", imageFacade.retriveAllImages());
+		model.addAttribute("job", job);
+		model.addAttribute("task", task);
 		return"administration/insertJob";
 	}
 	
@@ -66,19 +68,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/addJob", method = RequestMethod.POST)
-	public String confirmJob(@ModelAttribute Job job,@ModelAttribute Image image, Model model) {
+	public String confirmJob(@ModelAttribute Job job,@ModelAttribute Task task,@ModelAttribute Image image,@ModelAttribute Result result, Model model) {
 		
 		List<Image> jobImages = new ArrayList<>();
 		List<Image> imgs = imageFacade.retriveAllImages();
-//		
-//		int numPerc1 = (job.getPercentageType1()*job.getNumberOfImages())/100;
-//		int numPerc2 = (job.getPercentageType2()*job.getPercentageType2())/100;
-//		int numPerc3 = (job.getPercentageType3()*job.getPercentageType3())/100;
-		
+
 		for(int k=0;k<job.getNumberOfImages();k++) {
 			image = imgs.get(k);
 			jobImages.add(image);
-			
 		}
 		job.setImages(jobImages);
 		facadeJob.addJob(job);
@@ -86,26 +83,19 @@ public class AdminController {
 		int numberTask = job.getNumberOfImages()/job.getTaskSize();
 	
 		for(int i = 0; i<numberTask;i++) {
-			Task task = new Task();
+			 task = new Task();
 			
 			task.setJob(job);
 			facadeTask.addTask(task);
 			
 			for(Image j : job.getImages()) {
 			
-				Result result = new Result();
-			
+				result = new Result();
 				result.setImage(j);
-			
 				result.setTask(task);
-			
 				facadeResult.addResult(result);
 			}
-		
-	}
-			
-			
-		
+		}
 		
 		return "administration/jobRecap";
 	}

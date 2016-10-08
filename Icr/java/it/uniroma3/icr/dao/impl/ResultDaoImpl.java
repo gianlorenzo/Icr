@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import it.uniroma3.icr.dao.ResultDao;
+import it.uniroma3.icr.model.Image;
+import it.uniroma3.icr.model.Job;
 import it.uniroma3.icr.model.Result;
 import it.uniroma3.icr.model.Task;
 
@@ -80,6 +82,15 @@ public class ResultDaoImpl implements ResultDao {
 		Query query = session.createQuery(hql);
 		query.setParameter("id", id);
 		query.executeUpdate();
+	}
+
+	@Override
+	public void addImageAdnTaskToResult(Task t, Result r, Job j) {
+		for(Image i : j.getImages()) {
+			r = new Result();
+			r.setImage(i);
+			r.setTask(t);
+		}
 	}
 
 	

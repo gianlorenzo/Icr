@@ -89,6 +89,8 @@
 	
 		</form:select>
 		
+		<form:hidden path="id"/>
+		
 		
 		
 		

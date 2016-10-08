@@ -1,13 +1,16 @@
 package it.uniroma3.icr.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,15 +25,13 @@ public class UserController {
 	@Autowired
 	private StudentFacade userFacade;
 	
+	@Qualifier("userValidator")
+	private Validator validator;
 	
-	
-	//	@Autowired
-//	@Qualifier("validatorUtente")
-//	private Validator validator;
-//	@InitBinder
-//	private void initBinder(WebDataBinder binder) {
-//		binder.setValidator(validator);
-//	}
+	@InitBinder
+	private void initBinder(WebDataBinder binder) {
+		binder.setValidator(validator);
+	}
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public String registrazione(@ModelAttribute Student student, Model model) {
@@ -55,7 +56,7 @@ public class UserController {
 			return "registration";
 		}
 		if(p != null) {
-			model.addAttribute("usernameErrore", "Username esistente");
+			model.addAttribute("usernameError", "Username Already Exists");
 			return "registration";
 		}
 			model.addAttribute("utente", student);

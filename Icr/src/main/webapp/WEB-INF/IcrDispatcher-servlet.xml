@@ -28,6 +28,7 @@
 	<beans:bean id="validatorUtente" class="trascrizione.controller.UtenteValidator" />
 	<beans:bean id="validatorTask" class="trascrizione.controller.TaskValidator" />
 	 -->
+	 <beans:bean id="userValidator" class="it.uniroma3.icr.controller.UtenteValidator" />
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
