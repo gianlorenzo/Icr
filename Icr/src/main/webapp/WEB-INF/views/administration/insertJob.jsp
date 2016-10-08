@@ -72,13 +72,13 @@
 		#Students
 		<form:input type="text" path='students' placeholder="Students" />
 		#Images : 
-		<form:input type="text" path='images' placeholder="images" /><br>
+		<form:input type="text" path='numberOfImages' placeholder="images" /><br>
 		%Type1 : 
-		<form:input type="text" path='PercentageType1' placeholder="Images" />
+		<form:input type="text" path='percentageType1' placeholder="Images" />
 		%Type2 : 
-		<form:input type="text" path='PercentageType2' placeholder="Images" /><br>
+		<form:input type="text" path='percentageType2' placeholder="Images" /><br>
 		%Type3 : 
-		<form:input type="text" path='PercentageType3' placeholder="Images" />
+		<form:input type="text" path='percentageType3' placeholder="Images" />
 		TaskSize : 
 		<form:input type="text" path='taskSize' placeholder="TaskSize" /><br>
 		
@@ -88,6 +88,9 @@
 	</font>
 	
 		</form:select>
+		
+		
+		
 		
 		<br>
 		<td><input type="submit" value="Send" /></td>

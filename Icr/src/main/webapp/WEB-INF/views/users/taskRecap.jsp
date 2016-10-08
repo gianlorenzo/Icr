@@ -55,19 +55,33 @@
 <div style="position:absolute; top:15px; right:40px">
 <font size="6" color="white">Welcome : &nbsp ${pageContext.request.userPrincipal.name}</font>
 </div>
-
+	
+	
           <br><br>
-	<div align="center">
+          	<div align="center">
+          	<h1><font color="white">These are your answers:</font></h1>
+          
+    <div class="normal">
+	<table>
+		<tr>
+		<th>Id Image:</th>
+		<th>Answer</th>
+		</tr>
 	
 	<c:forEach items="${taskResults.resultList}" var="result" varStatus="vs">
-	
-		<c:out value="${result.answer}"/>
-		<c:out value="${result.task.id}"/>
+		
+	<tr>
+		<th><c:out value="${result.image.id}"/></th>
+		<th><c:out value="${result.answer}"/></th>
+	</tr>
+		
 	
 	
 	
 	
 	</c:forEach>
+	</table>
+	</div>
 	
 	
 	

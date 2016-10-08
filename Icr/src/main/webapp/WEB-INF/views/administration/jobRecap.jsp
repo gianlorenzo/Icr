@@ -58,7 +58,7 @@
 		 
 		 
 		 <strong><c:out value="#Students:" /></strong>${job.students}<br>
-		 <strong><c:out value="#Images:" /></strong>${job.images}<br>
+		 <strong><c:out value="#Images:" /></strong>${job.numberOfImages}<br>
 		 <strong><c:out value="%Type1:" /></strong>${job.percentageType1}<br>
 		 <strong><c:out value="%Type2:" /></strong>${job.percentageType2}<br>
 		 <strong><c:out value="%Type3:" /></strong>${job.percentageType3}<br>
@@ -67,9 +67,7 @@
 		 <strong><c:out value="Symbol:" /></strong>${job.symbol.transcription}<br><br>
 		
 		</font>
-		
-		
-		
+			
 	<div style="position:absolute; top:230px;right:578px">
 <a href="homeAdmin"><img width="200" height="150" src="resources/img/toHomeAdmin.png"></a><br><br>
 </div>	

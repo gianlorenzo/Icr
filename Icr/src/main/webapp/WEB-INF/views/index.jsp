@@ -30,7 +30,7 @@
 
 <img src="<c:url value="/resources/img/homePage.png"/>">
  
- <div style="position:absolute; top:15px;right:50px ">
+<div style="position:absolute; top:15px;right:50px ">
 <a href="login"> <img width="150" height="100" src="<c:url value="/resources/img/login.png"/>"></a>
  
 </div>

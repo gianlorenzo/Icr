@@ -53,9 +53,13 @@
 <div style="position:absolute; top:15px; right:40px">
 <font size="6" color="white">Welcome : &nbsp ${pageContext.request.userPrincipal.name}</font>
 </div>
+
 	
     <br><br>
 	<div align="center">
+	<h1> <font color="white">${task.job.title}: &nbsp ${task.job.symbol.transcription} </font></h1>
+	
+	
 	
 	<form:form method="post" action="taskRecap" modelAttribute="taskResults" name="form">
 	<font color="white">
@@ -65,6 +69,8 @@
 	<c:forEach varStatus="vs" var="result" items="${taskResults.resultList}"><br>
 	
 	
+	
+	<c:out value="${result.image.id}"/>
 	<form:input path="resultList[${vs.index}].answer" /> 
 	
 	<form:hidden path="resultList[${vs.index}].id"/>

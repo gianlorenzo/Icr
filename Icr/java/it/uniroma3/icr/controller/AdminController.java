@@ -2,6 +2,7 @@ package it.uniroma3.icr.controller;
 
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,72 +66,43 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/addJob", method = RequestMethod.POST)
-	public String confirmJob(@ModelAttribute Job job, Model model) {
+	public String confirmJob(@ModelAttribute Job job,@ModelAttribute Image image, Model model) {
 		
+		List<Image> jobImages = new ArrayList<>();
 		List<Image> imgs = imageFacade.retriveAllImages();
+//		
+//		int numPerc1 = (job.getPercentageType1()*job.getNumberOfImages())/100;
+//		int numPerc2 = (job.getPercentageType2()*job.getPercentageType2())/100;
+//		int numPerc3 = (job.getPercentageType3()*job.getPercentageType3())/100;
 		
-		job.setImage(imgs);
-		
+		for(int k=0;k<job.getNumberOfImages();k++) {
+			image = imgs.get(k);
+			jobImages.add(image);
+			
+		}
+		job.setImages(jobImages);
 		facadeJob.addJob(job);
 		
-		int numberTask = job.getImages()/job.getTaskSize();
-//		
-//		int numPerc1 = (job.getImages()*job.getPercentageType1())/100;
-//		
-//		int numPerc2 = (job.getImages()*job.getPercentageType2())/100;
-//		
-//		int numPerc3 = (job.getImages()*job.getPercentageType3())/100;
-		
+		int numberTask = job.getNumberOfImages()/job.getTaskSize();
+	
 		for(int i = 0; i<numberTask;i++) {
 			Task task = new Task();
 			
 			task.setJob(job);
 			facadeTask.addTask(task);
 			
+			for(Image j : job.getImages()) {
 			
-			for(Image j : job.getImage()) {
+				Result result = new Result();
 			
-			Result result = new Result();
+				result.setImage(j);
 			
-			result.setImage(j);
+				result.setTask(task);
 			
-			result.setTask(task);
-			
-			facadeResult.addResult(result);
+				facadeResult.addResult(result);
 			}
 		
-			
-			
-		
-//			for(int j=0;j<job.getImages();j++) {
-//				
-//			
-//			
-//			
-//			for(int h=0; h<numPerc1;h++) {
-//				if(job.getImage().get(h).getType().equals("t1"))
-//					result.setImage(job.getImage().get(h));
-//				facadeResult.updateResult(result);
-//			}
-//			
-//			for(int m=0;m<numPerc2;m++) {
-//				if(job.getImage().get(m).getType().equals("t2"))
-//					result.setImage(job.getImage().get(m));
-//				facadeResult.updateResult(result);
-//
-//			}
-//			
-//			for(int n=0;n<numPerc3;n++) {
-//				if(job.getImage().get(n).getType().equals("t3"))
-//					result.setImage(job.getImage().get(n));
-//				facadeResult.updateResult(result);
-//
-//			}
-//			
-//			
-//			
-//			}
-		}
+	}
 			
 			
 		
@@ -154,6 +126,7 @@ public class AdminController {
 		
 	}
 	
+}
 	
 	
 	
@@ -163,4 +136,4 @@ public class AdminController {
 	
 	
 	
-}
+

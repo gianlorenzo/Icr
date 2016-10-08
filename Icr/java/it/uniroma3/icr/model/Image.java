@@ -38,7 +38,7 @@ public class Image {
 	@Column(nullable=false)
 	private String type;
 	
-	@ManyToMany(mappedBy="image")
+	@ManyToMany(mappedBy="images")
 	private List<Job> jobs;
 	
 	@OneToMany(mappedBy="image")

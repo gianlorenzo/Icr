@@ -26,4 +26,5 @@ public class JobFacade {
 		return this.jobDaoImpl.findAll();
 	}
 	
+	
 }

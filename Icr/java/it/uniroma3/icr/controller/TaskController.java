@@ -85,7 +85,7 @@ public class TaskController {
 			taskResults.setResultList(list);	
 			
 		
-		
+		model.addAttribute("task", task);
 		
 		model.addAttribute("taskResults", taskResults);
 
