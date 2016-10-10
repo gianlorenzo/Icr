@@ -27,6 +27,12 @@
      users-by-username-query="select username,password,TRUE from Student where username = ?" 
      authorities-by-username-query="select username,role from Student where username = ?"  />
      </authentication-provider>
+     	  <authentication-provider>
+	  <password-encoder hash="bcrypt" />
+	      <jdbc-user-service data-source-ref="dataSource"
+     users-by-username-query="select username,password,TRUE from Administrator where username = ?" 
+     authorities-by-username-query="select username,role from Administrator where username = ?"  />
+     </authentication-provider>
 </authentication-manager>
 
 

@@ -35,7 +35,6 @@ public class UserController {
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public String registrazione(@ModelAttribute Student student, Model model) {
-	
 		return "registration";
 	}
 	

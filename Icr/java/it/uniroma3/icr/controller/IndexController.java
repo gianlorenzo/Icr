@@ -20,7 +20,7 @@ public class IndexController {
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String goToIndex() throws FileNotFoundException, IOException {
-		imageFacade.getListImageProperties();
+		//imageFacade.getListImageProperties();
 		return "index";
 	}
 }

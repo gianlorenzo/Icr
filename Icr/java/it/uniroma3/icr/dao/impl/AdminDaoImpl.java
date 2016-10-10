@@ -3,43 +3,36 @@ package it.uniroma3.icr.dao.impl;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import it.uniroma3.icr.dao.StudentDao;
-import it.uniroma3.icr.model.Student;
+import it.uniroma3.icr.dao.AdminDao;
+import it.uniroma3.icr.model.Administrator;
 
 @Repository
-public class StudentDaoImpl implements StudentDao {
-	
+public class AdminDaoImpl implements AdminDao {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
-	
-	public void insertUser(Student user){
-		
+
+	@Override
+	public void insertAdmin(Administrator administrator) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		session.save(user);
+		session.save(administrator);
 		session.getTransaction().commit();
-		
 	}
-	
-	public Student findUser(String username) {
+
+	@Override
+	public Administrator findAdmin(String username) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "FROM Student u WHERE u.username = :username";
+		String s = "FROM Administrator a WHERE a.username = :username";
 		Query query = session.createQuery(s);
 		query.setParameter("username", username);
-		Student u = (Student)query.uniqueResult();
-		return u;
-		
-		
+		Administrator a = (Administrator)query.uniqueResult();
+		return a;
 	}
-	
+
 }

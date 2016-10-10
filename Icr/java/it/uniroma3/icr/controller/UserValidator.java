@@ -4,7 +4,7 @@ import org.springframework.validation.*;
 
 import it.uniroma3.icr.model.Student;
 
-public class UtenteValidator implements Validator {
+public class UserValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {

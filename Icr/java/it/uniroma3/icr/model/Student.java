@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 public class Student {
 	
 	@Id
-	private Long freshman;
+	private Long code;
 	
 	@Column(nullable = false)
 	private String name;
@@ -37,6 +37,7 @@ public class Student {
 	private List<Task> tasks;
 	
 	public Student() {
+		this.role = "ROLE_USER";
 		
 	}
 	
@@ -96,12 +97,12 @@ public class Student {
 		this.password = password;
 	}
 
-	public Long getFreshman() {
-		return freshman;
+	public Long getCode() {
+		return code;
 	}
 
-	public void setFreshman(Long freshman) {
-		this.freshman = freshman;
+	public void setCode(Long code) {
+		this.code = code;
 	}
 	
 	

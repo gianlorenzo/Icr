@@ -48,7 +48,7 @@
 <form:form method="post" action="confirmUser" modelAttribute="student" name="form">
 					<div class="normal">
 					Freshman :
-					<form:input type="text" path="freshman" placeholder="Freshman"/>
+					<form:input type="text" path="code" placeholder="Code"/>
 					
 					Name :
 					<form:input type="text" path='name' placeholder="Name" /><br>
@@ -61,13 +61,14 @@
 				
 					Password :
 					<form:input type="Password" path='password' placeholder="Password" /><br>
-					Role :
-					<form:input type="text" path='role' placeholder="Role" /><br>
+					
+					
 					</div>
 					
 					<font color="white"><springForm:errors path="username" /></font>
 					<font color="white"><springForm:errors path="password" /></font>
 					<td><input type="submit" value="Send" /><td>
+					 
 					</form:form>
 					
 				
@@ -78,14 +79,13 @@
 	<font color="ffffff">
    <c:out value="Confirm the following information:"/></font></h2><br>
    <font color="ffffff">
-   <strong><c:out value="Freshman:"/></strong> ${student.freshman}<br>
+   <strong><c:out value="Code:"/></strong> ${student.code}<br>
    
    <strong><c:out value="Name:"/></strong> ${student.name}<br>
      <strong><c:out value="Surname:"/></strong> ${student.surname}<br>
      <strong><c:out value="School:"/></strong> ${student.school}<br>
      <strong><c:out value="Username:"/></strong> ${student.username}<br>
      <strong><c:out value="Password:"/></strong> ${student.password}<br>
-      <strong><c:out value="Role:"/></strong> ${student.role}<br><br>
      </font>
      <form:form method="post" action="addUser" modelAttribute="student" name="form2">
      <input type="submit" value="Confirm Registration" /><br><br>
@@ -93,7 +93,7 @@
      <div style="position:absolute; top:475px;right:610px ">
      <a href="index"><img width="125" height="100" src="<c:url value="/resources/img/toHomepage.png"/>"></a>
      </div>
-     <form:input type="hidden" path='freshman' placeholder="id" /><br/>
+     <form:input type="hidden" path='code' placeholder="id" /><br/>
      
      <form:input type="hidden" path='name' placeholder="id" /><br/>
      <form:input type="hidden" path='surname' placeholder="id" /><br/>
