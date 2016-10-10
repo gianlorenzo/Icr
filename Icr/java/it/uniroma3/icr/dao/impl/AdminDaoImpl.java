@@ -22,6 +22,7 @@ public class AdminDaoImpl implements AdminDao {
 		session.beginTransaction();
 		session.save(administrator);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override

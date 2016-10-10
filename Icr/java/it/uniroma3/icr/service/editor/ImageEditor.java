@@ -14,7 +14,7 @@ public class ImageEditor extends PropertyEditorSupport {
 	
 	@Override
 	public void setAsText(String text) {
-		Image i = this.imageFacade.retriveImage(Long.valueOf(text));
+		Image i = this.imageFacade.retrieveImage(Long.valueOf(text));
 		this.setValue(i);
 	}
 	

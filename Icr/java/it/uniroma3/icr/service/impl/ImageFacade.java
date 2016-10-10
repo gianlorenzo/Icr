@@ -25,11 +25,11 @@ public class ImageFacade {
 		imageDaoImpl.insertImage(i);
 	}
 	
-	public Image retriveImage(long id) {
+	public Image retrieveImage(long id) {
 		return this.imageDaoImpl.findImage(id);
 	}
 	
-	public List<Image> retriveAllImages() {
+	public List<Image> retrieveAllImages() {
 			return this.imageDaoImpl.findAll();
 		}
 	

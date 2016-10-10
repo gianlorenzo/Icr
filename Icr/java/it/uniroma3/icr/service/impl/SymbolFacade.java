@@ -14,12 +14,12 @@ public class SymbolFacade {
 	@Autowired
 	private SymbolDaoImpl symbolDaoImpl;
 	
-	public Symbol retriveSymbol(long id) {
+	public Symbol retrieveSymbol(long id) {
 		return this.symbolDaoImpl.findSymbol(id);
 		
 	}
 	
-	public List<Symbol> retriveAllSymbols() {
+	public List<Symbol> retrieveAllSymbols() {
 		return this.symbolDaoImpl.findAll();
 	}
 	

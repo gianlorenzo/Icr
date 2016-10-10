@@ -27,6 +27,7 @@ public class TaskDaoImpl implements TaskDao {
 		session.beginTransaction();
 		session.save(task);
 		session.getTransaction().commit();
+		session.close();
 
 		
 	}
@@ -55,6 +56,7 @@ public class TaskDaoImpl implements TaskDao {
 		session.beginTransaction();
 		session.merge(task);
 		session.getTransaction().commit();
+		session.close();
 	}
 	
 	@Override

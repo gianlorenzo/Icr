@@ -24,10 +24,7 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-	<!-- 
-	<beans:bean id="validatorUtente" class="trascrizione.controller.UtenteValidator" />
-	<beans:bean id="validatorTask" class="trascrizione.controller.TaskValidator" />
-	 -->
+	
 	 <beans:bean id="userValidator" class="it.uniroma3.icr.controller.UserValidator" />
 	 <beans:bean id="adminValidator" class="it.uniroma3.icr.controller.AdminValidator"></beans:bean>
 	<bean id="sessionFactory"
@@ -42,6 +39,7 @@
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 			</props>
 		</property>
+		 
 	</bean>
 <beans:bean id="messageSource" 	class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<beans:property name="basename" value="classpath:message" />

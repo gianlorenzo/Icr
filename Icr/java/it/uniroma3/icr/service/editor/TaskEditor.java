@@ -15,7 +15,7 @@ public class TaskEditor extends PropertyEditorSupport{
 	
 	@Override
 	public void setAsText(String text) {
-		Task t = this.taskFacade.retriveTask(Long.valueOf(text));
+		Task t = this.taskFacade.retrieveTask(Long.valueOf(text));
 		this.setValue(t);
 	}
 

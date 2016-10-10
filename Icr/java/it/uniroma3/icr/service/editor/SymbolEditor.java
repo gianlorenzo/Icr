@@ -15,7 +15,7 @@ public class SymbolEditor extends PropertyEditorSupport {
 	
 	@Override
 	public void setAsText(String text) {
-		Symbol s = this.symbolFacade.retriveSymbol(Long.valueOf(text));
+		Symbol s = this.symbolFacade.retrieveSymbol(Long.valueOf(text));
 		this.setValue(s);
 	}
 

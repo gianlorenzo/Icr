@@ -18,11 +18,11 @@ public class TaskFacade {
 		taskDaoImpl.insertTask(t);
 	}
 	
-	public Task retriveTask(long id) {
+	public Task retrieveTask(long id) {
 		return this.taskDaoImpl.findTask(id);
 	}
 	
-	public List<Task> retriveAllTask() {
+	public List<Task> retrieveAllTask() {
 		return this.taskDaoImpl.findAll();
 	}
 	

@@ -68,8 +68,8 @@ public class AdminController {
 	
 	@RequestMapping(value="/insertJob")
 	private String newJob(@ModelAttribute Job job,@ModelAttribute Task task, Model model) {
-		model.addAttribute("symbols", symbolFacade.retriveAllSymbols());
-		model.addAttribute("images", imageFacade.retriveAllImages());
+		model.addAttribute("symbols", symbolFacade.retrieveAllSymbols());
+		model.addAttribute("images", imageFacade.retrieveAllImages());
 		model.addAttribute("job", job);
 		model.addAttribute("task", task);
 		return"administration/insertJob";
@@ -84,7 +84,7 @@ public class AdminController {
 	public String confirmJob(@ModelAttribute Job job,@ModelAttribute Task task,@ModelAttribute Image image,@ModelAttribute Result result, Model model) {
 		
 		List<Image> jobImages = new ArrayList<>();
-		List<Image> imgs = imageFacade.retriveAllImages();
+		List<Image> imgs = imageFacade.retrieveAllImages();
 
 		for(int k=0;k<job.getNumberOfImages();k++) {
 			image = imgs.get(k);

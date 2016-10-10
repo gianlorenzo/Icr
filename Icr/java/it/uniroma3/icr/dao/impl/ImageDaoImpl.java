@@ -37,6 +37,7 @@ public class ImageDaoImpl implements ImageDao {
 		session.beginTransaction();
 		session.save(image);
 		session.getTransaction().commit();
+		session.close();
 		
 	}
 

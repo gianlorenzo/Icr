@@ -25,6 +25,7 @@ public class JobDaoImpl implements JobDao {
 		session.beginTransaction();
 		session.save(job);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@SuppressWarnings("unchecked")

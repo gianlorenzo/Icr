@@ -21,11 +21,11 @@ public class ResultFacade {
 		resultDaoImpl.insertResult(r);
 	}
 	
-	public Result retriveResult(long id) {
+	public Result retrieveResult(long id) {
 		return this.resultDaoImpl.findResult(id);
 	}
 	
-	public List<Result> retriveAllResult() {
+	public List<Result> retrieveAllResult() {
 		return this.resultDaoImpl.findAll();
 	}
 	

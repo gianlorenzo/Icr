@@ -26,6 +26,7 @@ public class ResultDaoImpl implements ResultDao {
 		session.beginTransaction();
 		session.save(result);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@Override
@@ -53,6 +54,7 @@ public class ResultDaoImpl implements ResultDao {
 		session.beginTransaction();
 		session.merge(result);
 		session.getTransaction().commit();
+		session.close();
 		
 	}
 	
@@ -62,6 +64,7 @@ public class ResultDaoImpl implements ResultDao {
 		for(Result r : results)
 			session.merge(r);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 	@SuppressWarnings("unchecked")

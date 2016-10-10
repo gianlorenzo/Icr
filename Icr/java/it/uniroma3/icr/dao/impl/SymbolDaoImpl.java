@@ -43,6 +43,7 @@ public class SymbolDaoImpl implements SymbolDao {
 		session.beginTransaction();
 		session.save(symbol);
 		session.getTransaction().commit();
+		session.close();
 	}
 
 }

@@ -28,6 +28,7 @@ public class InsertImageInDb {
 		session.beginTransaction();
 		session.save(image);
 		session.getTransaction().commit();
+		session.close();
 		
 	}
 	
