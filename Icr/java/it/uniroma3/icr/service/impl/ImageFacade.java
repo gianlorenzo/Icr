@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.icr.dao.impl.ImageDaoImpl;
+import it.uniroma3.icr.insertImageInDb.InsertImageInDb;
 import it.uniroma3.icr.model.Image;
 
 
@@ -16,6 +17,9 @@ public class ImageFacade {
 
 	@Autowired
 	private ImageDaoImpl imageDaoImpl;
+	
+	@Autowired
+	private InsertImageInDb insertImageInDb;
 	
 	public void addImage(Image i) {
 		imageDaoImpl.insertImage(i);
@@ -31,7 +35,7 @@ public class ImageFacade {
 	
 	
 	public void getListImageProperties() throws FileNotFoundException, IOException {
-		imageDaoImpl.getListJpegProperties();
+		insertImageInDb.getListJpegProperties();
 	}
 }
 	
