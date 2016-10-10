@@ -1,14 +1,19 @@
 package it.uniroma3.icr.controller;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 @Controller
 public class IndexController {
-
+	
+	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
-	public String goToIndex() {
+	public String goToIndex() throws FileNotFoundException, IOException {
 		return "index";
 	}
 }

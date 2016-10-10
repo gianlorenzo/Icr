@@ -17,26 +17,29 @@ public class Image {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable = false)
+	@Column
 	private int x;
 	
-	@Column(nullable = false)
+	@Column
 	private int y;
 	
-	@Column(nullable=false)
+	@Column
 	private int width;
 	
-	@Column(nullable = false)
+	@Column
 	private int height;
 	
-	@Column(nullable = false)
+	@Column
 	private String page;
 	
-	@Column(nullable = false)
+	@Column
 	private String manuscript;
 	
-	@Column(nullable=false)
+	@Column
 	private String type;
+	
+	@Column
+	private byte[] data;
 	
 	@ManyToMany(mappedBy="images")
 	private List<Job> jobs;
@@ -143,15 +146,36 @@ public class Image {
 		this.results = results;
 	}
 
-	public Image () {
+	public Image (int width, int height, String type,String page, String manuscript, int x,int y) {
+		this.width = width;
+		this.height = height;
+		this.type = type;
+		this.page = page;
+		this.manuscript = manuscript;
+		this.x = x;
+		this.y = y;
 		
 	}
 
+	public Image() {
+		
+	}
+	
 	@Override
 	public String toString() {
 		return "Image [id=" + id ;
 				
 	}
+
+	public byte[] getData() {
+		return data;
+	}
+
+	public void setData(byte[] data) {
+		this.data = data;
+	}
+	
+	
 	
 	
 

@@ -1,5 +1,7 @@
 package it.uniroma3.icr.service.impl;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,11 @@ public class ImageFacade {
 	public List<Image> retriveAllImages() {
 			return this.imageDaoImpl.findAll();
 		}
+	
+	
+	public void getListImageProperties() throws FileNotFoundException, IOException {
+		imageDaoImpl.getListJpegProperties();
+	}
 }
 	
 
