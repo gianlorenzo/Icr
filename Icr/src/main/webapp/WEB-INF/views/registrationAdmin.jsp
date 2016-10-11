@@ -53,7 +53,7 @@
 					Username :<font size="3" color="red">${usernameError}</font>
 					<form:input type="text" path="username" placeholder="Username"/>
 					Password :
-					<form:input type="password" path="password" placeholder="Code"/>
+					<form:input type="password" path="password" placeholder="Password"/>
 					
 					<font color="white"><springForm:errors path="username" /></font>
 					<font color="white"><springForm:errors path="password" /></font>

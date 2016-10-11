@@ -38,9 +38,6 @@ public class Image {
 	@Column
 	private String type;
 	
-	@Column
-	private byte[] data;
-	
 	@ManyToMany(mappedBy="images")
 	private List<Job> jobs;
 	
@@ -129,8 +126,6 @@ public class Image {
 		this.results = results;
 	}
 
-	
-
 	public Image(Long id, int x, int y, int width, int height, String page, String manuscript, String type,
 			List<Job> jobs, List<Result> results) {
 		super();
@@ -166,20 +161,5 @@ public class Image {
 		return "Image [id=" + id ;
 				
 	}
-
-	public byte[] getData() {
-		return data;
-	}
-
-	public void setData(byte[] data) {
-		this.data = data;
-	}
-	
-	
-	
-	
-
-	
-	
-	
+			
 }

@@ -93,15 +93,21 @@ public class AdminController {
 		List<Image> imgsType2 = imageFacade.getImagesForType("t2");
 		List<Image> imgsType3 = imageFacade.getImagesForType("t3");
 		
+		//Inserisco le Immagini secondo le percentuali di tipo 1
+		
 		for(int k=0;k<job.getNumberOfImages() && k<perc1;k++) {
 			image = imgsType1.get(k);
 			jobImages.add(image);
 		}
 		
+		//Inserisco le Immagini secondo le percentuali di tipo 2
+		
 		for(int h=0;h<job.getNumberOfImages() && h<perc2;h++) {
 			image = imgsType2.get(h);
 			jobImages.add(image);
 		}
+		
+		//Inserisco le Immagini secondo le percentuali di tipo 3
 		
 		for(int n=0; n<job.getNumberOfImages() && n<perc3;n++) {
 			image = imgsType3.get(n);
@@ -118,7 +124,7 @@ public class AdminController {
 			
 			task.setJob(job);
 			facadeTask.addTask(task);
-			
+		
 			for(Image j : job.getImages()) {
 			
 				result = new Result();
