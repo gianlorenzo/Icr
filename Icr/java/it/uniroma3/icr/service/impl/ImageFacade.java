@@ -37,6 +37,10 @@ public class ImageFacade {
 	public void getListImageProperties() throws FileNotFoundException, IOException {
 		insertImageInDb.getListJpegProperties();
 	}
+	
+	public List<Image> getImagesForType(String type) {
+		return this.imageDaoImpl.findImageForType(type);
+	}
 }
 	
 

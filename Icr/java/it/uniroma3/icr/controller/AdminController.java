@@ -84,12 +84,30 @@ public class AdminController {
 	public String confirmJob(@ModelAttribute Job job,@ModelAttribute Task task,@ModelAttribute Image image,@ModelAttribute Result result, Model model) {
 		
 		List<Image> jobImages = new ArrayList<>();
-		List<Image> imgs = imageFacade.retrieveAllImages();
-
-		for(int k=0;k<job.getNumberOfImages();k++) {
-			image = imgs.get(k);
+		
+		int perc1 = (job.getNumberOfImages()*job.getPercentageType1())/100;
+		int perc2 = (job.getNumberOfImages()*job.getPercentageType2())/100;
+		int perc3 = (job.getNumberOfImages()*job.getPercentageType3())/100;
+		
+		List<Image> imgsType1 = imageFacade.getImagesForType("t1");
+		List<Image> imgsType2 = imageFacade.getImagesForType("t2");
+		List<Image> imgsType3 = imageFacade.getImagesForType("t3");
+		
+		for(int k=0;k<job.getNumberOfImages() && k<perc1;k++) {
+			image = imgsType1.get(k);
 			jobImages.add(image);
 		}
+		
+		for(int h=0;h<job.getNumberOfImages() && h<perc2;h++) {
+			image = imgsType2.get(h);
+			jobImages.add(image);
+		}
+		
+		for(int n=0; n<job.getNumberOfImages() && n<perc3;n++) {
+			image = imgsType3.get(n);
+			jobImages.add(image);
+		}
+		
 		job.setImages(jobImages);
 		facadeJob.addJob(job);
 		

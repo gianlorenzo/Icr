@@ -58,7 +58,21 @@ public class ImageDaoImpl implements ImageDao {
 		Query query = session.createQuery(hql);
 		List<Image> empList = query.list();
 		System.out.println("Image List:"+empList);
+		session.close();
 		return empList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Image> findImageForType(String type) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		String s ="FROM Image i WHERE i.type = :type";
+		Query query = session.createQuery(s);
+		query.setParameter("type", type);
+		List<Image> images = query.list();
+		session.close();
+		return images;
 	}
 	
 	

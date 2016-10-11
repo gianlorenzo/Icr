@@ -37,6 +37,7 @@ public class StudentDaoImpl implements StudentDao {
 		Query query = session.createQuery(s);
 		query.setParameter("username", username);
 		Student u = (Student)query.uniqueResult();
+		session.close();
 		return u;
 		
 		
