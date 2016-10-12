@@ -38,6 +38,9 @@ public class Image {
 	@Column
 	private String type;
 	
+	@Column
+	private String path;
+	
 	@ManyToMany(mappedBy="images")
 	private List<Job> jobs;
 	
@@ -141,7 +144,7 @@ public class Image {
 		this.results = results;
 	}
 
-	public Image (int width, int height, String type,String page, String manuscript, int x,int y) {
+	public Image (int width, int height, String type,String page, String manuscript, int x,int y,String path) {
 		this.width = width;
 		this.height = height;
 		this.type = type;
@@ -149,6 +152,7 @@ public class Image {
 		this.manuscript = manuscript;
 		this.x = x;
 		this.y = y;
+		this.path = path;
 		
 	}
 
@@ -156,6 +160,16 @@ public class Image {
 		
 	}
 	
+	
+	
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 	@Override
 	public String toString() {
 		return "Image [id=" + id ;

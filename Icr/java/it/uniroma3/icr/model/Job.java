@@ -40,6 +40,9 @@ public class Job {
 	@Column(nullable=false)
 	private int numberOfStudents;
 	
+	@Column(nullable=false)
+	private String imageManuscript;
+	
 	@ManyToMany
 	List<Image> images;
 	
@@ -165,6 +168,16 @@ public class Job {
 		this.images = images;
 		this.tasks = tasks;
 		this.symbol = symbol;
+	}
+	
+	
+
+	public String getImageManuscript() {
+		return imageManuscript;
+	}
+
+	public void setImageManuscript(String imageManuscript) {
+		this.imageManuscript = imageManuscript;
 	}
 
 	public Job() {

@@ -67,7 +67,7 @@ public class ImageDaoImpl implements ImageDao {
 	public List<Image> findImageForType(String type) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s ="FROM Image i WHERE i.type = :type";
+		String s ="FROM Image i WHERE i.type = :type ORDER BY RANDOM()";
 		Query query = session.createQuery(s);
 		query.setParameter("type", type);
 		List<Image> images = query.list();

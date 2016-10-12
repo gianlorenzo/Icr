@@ -63,6 +63,7 @@
 		 <strong><c:out value="%Type2:" /></strong>${job.percentageType2}<br>
 		 <strong><c:out value="%Type3:" /></strong>${job.percentageType3}<br>
 		 <strong><c:out value="TaskSize:" /></strong>${job.taskSize}<br><br>
+		 <strong><c:out value="ImageManuscript:" /></strong>${job.imageManuscript}<br><br>
 		 
 		 <strong><c:out value="Symbol:" /></strong>${job.symbol.transcription}<br><br>
 		

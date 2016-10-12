@@ -13,7 +13,8 @@ import javax.persistence.OneToMany;
 public class Student {
 	
 	@Id
-	private Long code;
+	@Column(nullable = false)
+	private String username;
 	
 	@Column(nullable = false)
 	private String name;
@@ -24,14 +25,18 @@ public class Student {
 	@Column(nullable=false)
 	private String school;
 	
-	@Column(nullable = false)
-	private String username;
 	
 	@Column(nullable = false)
 	private String password;
 	
 	@Column(nullable=false)
 	private String role;
+	
+	@Column(nullable = false)
+	private String schoolGroup;
+	
+	@Column(nullable = false)
+	private String section;
 	
 	@OneToMany(mappedBy="student")
 	private List<Task> tasks;
@@ -96,14 +101,26 @@ public class Student {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
 
-	public Long getCode() {
-		return code;
+	public String getSchoolGroup() {
+		return schoolGroup;
 	}
 
-	public void setCode(Long code) {
-		this.code = code;
+	public void setSchoolGroup(String schoolGroup) {
+		this.schoolGroup = schoolGroup;
 	}
+
+	public String getSection() {
+		return section;
+	}
+
+	public void setSection(String section) {
+		this.section = section;
+	}
+	
+	
+
 	
 	
 }

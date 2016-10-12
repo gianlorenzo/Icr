@@ -82,6 +82,9 @@
 		TaskSize : 
 		<form:input type="text" path='taskSize' placeholder="TaskSize" /><br>
 		
+		ImageManuscript:
+		<form:input type="text" path='imageManuscript' placeholder="ImageManuscript" /> <br>
+		
 		Symbol:
 		<form:select path="symbol">
 			<font color="7a0000"><form:options items="${symbols}" itemLabel="transcription" itemValue="id"/>

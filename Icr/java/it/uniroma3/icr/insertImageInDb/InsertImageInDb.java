@@ -40,11 +40,12 @@ public void getListJpegProperties() throws FileNotFoundException, IOException {
 	}
 	
 	public void getListJpegPropertiesType3() throws FileNotFoundException, IOException {
-		File[] files3 = new File("C:\\Users\\NandG\\Documents\\sources\\rv12\\1\\t3\\").listFiles();
+		File[] files3 = new File("C:\\Users\\NandG\\Documents\\training\\rv12\\1\\t3\\").listFiles();
 		
 		for(int i=0;i<files3.length;i++) {
 			//Prendo i campi dal percorso
 			String nameComplete = files3[i].getName();
+			String imagePath = files3[i].getAbsolutePath();
 			
 			String name = FilenameUtils.getBaseName(nameComplete);
 			File typeImage = files3[i].getParentFile();
@@ -57,6 +58,7 @@ public void getListJpegProperties() throws FileNotFoundException, IOException {
 			
 			int x = Integer.valueOf(parts[0]);
 			int y = Integer.valueOf(parts[1]);
+			
 			BufferedInputStream in = null;
 	        
 	        try {
@@ -69,8 +71,9 @@ public void getListJpegProperties() throws FileNotFoundException, IOException {
 	             String type = imageType;
 	             String page = imagePage;
 	             String manuscript = imageManuscript;
+	             String path = imagePath;
 	             
-	             Image img = new Image(width, height,type,page,manuscript,xImg,yImg);
+	             Image img = new Image(width, height,type,page,manuscript,xImg,yImg,path);
 	             this.insertImage(img);
 			
 		}
@@ -90,12 +93,13 @@ public void getListJpegProperties() throws FileNotFoundException, IOException {
 }
 
 public void getListJpegPropertiesType2() throws FileNotFoundException, IOException {
-File[] files2 = new File("C:\\Users\\NandG\\Documents\\sources\\rv12\\1\\t2\\").listFiles();
+File[] files2 = new File("C:\\Users\\NandG\\Documents\\training\\rv12\\1\\t2\\").listFiles();
 
 for(int i=0;i<files2.length;i++) {
 	String nameComplete = files2[i].getName();
 	
 	String name = FilenameUtils.getBaseName(nameComplete);
+	String imagePath = files2[i].getAbsolutePath();
 	File typeImage = files2[i].getParentFile();
 	String imageType = typeImage.getName();
 	File pageImage = typeImage.getParentFile();
@@ -119,10 +123,11 @@ for(int i=0;i<files2.length;i++) {
          String type = imageType;
          String page = imagePage;
          String manuscript = imageManuscript;
+         String path = imagePath;
          
         
          
-         Image img = new Image(width, height,type,page,manuscript,xImg,yImg);
+         Image img = new Image(width, height,type,page,manuscript,xImg,yImg,path);
          this.insertImage(img);
 }
 
@@ -141,13 +146,14 @@ for(int i=0;i<files2.length;i++) {
 }
 
 public void getListJpegPropertiesType1() throws FileNotFoundException, IOException {
-File[] files1 = new File("C:\\Users\\NandG\\Documents\\sources\\rv12\\1\\t1\\").listFiles();
+File[] files1 = new File("C:\\Users\\NandG\\Documents\\training\\rv12\\1\\t1\\").listFiles();
 
 for(int i=0;i<files1.length;i++) {
 	String nameComplete = files1[i].getName();
 	
 	String name = FilenameUtils.getBaseName(nameComplete);
 	File typeImage = files1[i].getParentFile();
+	String imagePath = files1[i].getAbsolutePath();
 	String imageType = typeImage.getName();
 	File pageImage = typeImage.getParentFile();
 	String imagePage = pageImage.getName();
@@ -170,9 +176,10 @@ for(int i=0;i<files1.length;i++) {
          String type = imageType;
          String page = imagePage;
          String manuscript = imageManuscript;
+         String path = imagePath;
          
          
-         Image img = new Image(width, height,type,page,manuscript,xImg,yImg);
+         Image img = new Image(width, height,type,page,manuscript,xImg,yImg,path);
          this.insertImage(img);
    }
 

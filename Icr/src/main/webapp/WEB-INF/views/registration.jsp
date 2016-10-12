@@ -47,20 +47,25 @@
 	</h2>
 <form:form method="post" action="confirmUser" modelAttribute="student" name="form">
 					<div class="normal">
-					Freshman :
-					<form:input type="text" path="code" placeholder="Code"/>
+					
 					
 					Name :
-					<form:input type="text" path='name' placeholder="Name" /><br>
+					<form:input type="text" path='name' placeholder="Name" />
 					Surname :
-					<form:input type="text" path='surname' placeholder="Surname" />
+					<form:input type="text" path='surname' placeholder="Surname" /><br>
 					School :
-					<form:input type="text" path='school' placeholder="School" /><br>
+					<form:input type="text" path='school' placeholder="School" />
+					SchoolGroup:
+					<form:input type="text" path='schoolGroup' placeholder="SchoolGroup" />
+					Section:
+					<form:input type="text" path='section' placeholder="Section" />
 					Username :<font size="3" color="red">${usernameError}</font>
 					<form:input type="text" path='username' placeholder="Username" />
 				
 					Password :
 					<form:input type="Password" path='password' placeholder="Password" /><br>
+					
+					
 					
 					
 					</div>
@@ -79,11 +84,14 @@
 	<font color="ffffff">
    <c:out value="Confirm the following information:"/></font></h2><br>
    <font color="ffffff">
-   <strong><c:out value="Code:"/></strong> ${student.code}<br>
    
    <strong><c:out value="Name:"/></strong> ${student.name}<br>
      <strong><c:out value="Surname:"/></strong> ${student.surname}<br>
      <strong><c:out value="School:"/></strong> ${student.school}<br>
+          <strong><c:out value="Username:"/></strong> ${student.schoolGroup}<br>
+     
+          <strong><c:out value="Username:"/></strong> ${student.section}<br>
+     
      <strong><c:out value="Username:"/></strong> ${student.username}<br>
      <strong><c:out value="Password:"/></strong> ${student.password}<br>
      </font>
@@ -93,12 +101,15 @@
      <div style="position:absolute; top:475px;right:610px ">
      <a href="index"><img width="125" height="100" src="<c:url value="/resources/img/toHomepage.png"/>"></a>
      </div>
-     <form:input type="hidden" path='code' placeholder="id" /><br/>
      
      <form:input type="hidden" path='name' placeholder="id" /><br/>
      <form:input type="hidden" path='surname' placeholder="id" /><br/>
      
      <form:input type="hidden" path='school' placeholder="id" /><br/>
+          <form:input type="hidden" path='schoolGroup' placeholder="id" /><br/>
+     
+         <form:input type="hidden" path='section' placeholder="id" /><br/>
+    
    	 <form:input type="hidden" path='username' placeholder="id" /><br/>
      
      <form:input type="hidden" path='password' placeholder="id" />

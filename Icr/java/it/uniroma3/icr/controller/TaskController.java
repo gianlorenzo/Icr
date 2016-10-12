@@ -74,10 +74,7 @@ public class TaskController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
-		List<Task> tasks = taskFacade.retrieveAllTask();
-		task = taskFacade.getTaskList(tasks);
-			task.setStudent(student);
-			taskFacade.updateTask(task);
+		
 			
 			List<Result> list = resultFacade.findTaskResult(task);
 			taskResults.setResultList(list);	
