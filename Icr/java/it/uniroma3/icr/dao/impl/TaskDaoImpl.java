@@ -1,5 +1,6 @@
 package it.uniroma3.icr.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import it.uniroma3.icr.dao.TaskDao;
 import it.uniroma3.icr.model.Job;
+import it.uniroma3.icr.model.Student;
 import it.uniroma3.icr.model.Task;
 
 @Repository
@@ -68,6 +70,4 @@ public class TaskDaoImpl implements TaskDao {
 		}
 		return t;
 	}
-	
-	
 }

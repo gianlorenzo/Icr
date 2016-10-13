@@ -31,6 +31,8 @@ public class TaskFacade {
 		taskDaoImpl.updateTask(t);
 	}
 	
-	
+	public Task getTaskList(List<Task> list) {
+		return this.taskDaoImpl.getTaskList(list);
+	}
 	
 }

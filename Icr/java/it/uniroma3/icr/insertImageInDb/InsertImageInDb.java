@@ -53,6 +53,7 @@ public void getListJpegProperties() throws FileNotFoundException, IOException {
 			File pageImage = typeImage.getParentFile();
 			String imagePage = pageImage.getName();
 			File manuscriptImage = pageImage.getParentFile();
+			
 			String imageManuscript = manuscriptImage.getName();
 			String [] parts = name.split("_");
 			

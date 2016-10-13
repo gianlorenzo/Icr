@@ -2,6 +2,7 @@ package it.uniroma3.icr.dao;
 
 import java.util.List;
 
+import it.uniroma3.icr.model.Student;
 import it.uniroma3.icr.model.Task;
 
 public interface TaskDao {
@@ -11,5 +12,5 @@ public interface TaskDao {
 	public void updateTask(Task task);
 	public List<Task> findAll();
 	public Task getTaskList(List<Task> list);
-
+	
 }

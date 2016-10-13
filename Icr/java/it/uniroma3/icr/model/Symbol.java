@@ -23,6 +23,9 @@ public class Symbol {
 	private String type;
 	
 	@OneToMany(mappedBy="symbol")
+	private List<Sample> samples;
+	
+	@OneToMany(mappedBy="symbol")
 	private List<Job> jobs;
 	
 	
@@ -75,5 +78,15 @@ public class Symbol {
 	public String toString() {
 		return "Symbol [id=" + id + ", transcription=" + transcription + ", type=" + type +  "]";
 	}
+
+	public List<Sample> getSamples() {
+		return samples;
+	}
+
+	public void setSamples(List<Sample> samples) {
+		this.samples = samples;
+	}
+	
+	
 
 }
