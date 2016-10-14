@@ -69,11 +69,6 @@
 		<th><c:out value="${result.image.id}"/></th>
 		<th><c:out value="${result.answer}"/></th>
 	</tr>
-		
-	
-	
-	
-	
 	</c:forEach>
 	</table>
 	</div>

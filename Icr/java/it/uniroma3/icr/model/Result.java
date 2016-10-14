@@ -15,21 +15,21 @@ import javax.persistence.ManyToOne;
 
 @Entity 
 public class Result {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@ManyToOne
 	private Image image;
-	
+
 	@ManyToOne
 	private Task task;
-	
+
 	@Column
 	private String answer;
-	
-	
+
+
 
 	public Long getId() {
 		return id;
@@ -63,7 +63,7 @@ public class Result {
 		this.answer = answer;
 	}
 
-	
+
 
 	public Result(Long id, Image image, Task task, String answer) {
 		super();
@@ -71,11 +71,11 @@ public class Result {
 		this.image = image;
 		this.task = task;
 		this.answer = answer;
-		
+
 	}
-	
+
 	public Result() {
-		
+
 	}
 
 	@Override
@@ -86,9 +86,9 @@ public class Result {
 				+ "answer=" + answer + "]";
 	}
 
-	
-	
-	
-	
-	
+
+
+
+
+
 }

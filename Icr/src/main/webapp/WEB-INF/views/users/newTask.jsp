@@ -10,6 +10,7 @@
 <%@taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
 
 
+
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,6 +42,8 @@
     
 }
 	   </style>
+	   
+	
 
 </head>
 
@@ -60,29 +63,17 @@
 	<h1> <font color="white">${task.job.title}: &nbsp ${task.job.symbol.transcription} </font></h1>
 	
 	
-	
 	<form:form method="post" action="taskRecap" modelAttribute="taskResults" name="form">
 	<font color="white">
+		<c:forEach varStatus="vs" var="result" items="${taskResults.resultList}"><br>
+			<c:out value="${result.image.id}"/>
+			<form:checkbox path="resultList[${vs.index}].answer" value="Yes"/> 
 	
-	
-	
-	<c:forEach varStatus="vs" var="result" items="${taskResults.resultList}"><br>
-	
-	
-	
-	<c:out value="${result.image.id}"/>
-	<form:input path="resultList[${vs.index}].answer" placeholder="Answer"/> 
-	
-	<form:hidden path="resultList[${vs.index}].id"/>
-	
-	<form:hidden path="resultList[${vs.index}].image.id"/>
-	<form:hidden path="resultList[${vs.index}].task.id"/>
-	
-	   		
-	</c:forEach>						
+			<form:hidden path="resultList[${vs.index}].id"/>
+			<form:hidden path="resultList[${vs.index}].image.id"/>
+			<form:hidden path="resultList[${vs.index}].task.id"/>
+		</c:forEach>						
 	<br>							
-	
-	
 	<td><input type="submit" value="Send"></td>
 	</font>
 	</form:form>

@@ -24,8 +24,8 @@ public class IndexController {
 	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String goToIndex() throws FileNotFoundException, IOException {
-	//imageFacade.getListImageProperties();
-	symbolFacade.getSampleImage();
+		//imageFacade.getListImageProperties();
+		//symbolFacade.getSampleImage();
 		return "index";
 	}
 }

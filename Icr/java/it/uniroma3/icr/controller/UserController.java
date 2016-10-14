@@ -1,5 +1,8 @@
 package it.uniroma3.icr.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,6 +38,13 @@ public class UserController {
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public String registrazione(@ModelAttribute Student student, Model model) {
+		
+		Map<String,String> schoolGroups = new HashMap<String,String>();
+		schoolGroups.put("3", "3");
+		schoolGroups.put("4", "4");
+		schoolGroups.put("5", "5");
+		model.addAttribute("schoolGroups", schoolGroups);
+		
 		return "registration";
 	}
 	

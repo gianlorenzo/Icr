@@ -144,7 +144,8 @@ public class Image {
 		this.results = results;
 	}
 
-	public Image (int width, int height, String type,String page, String manuscript, int x,int y,String path) {
+	public Image (int width, int height, String type,String page,
+			String manuscript, int x,int y,String path) {
 		this.width = width;
 		this.height = height;
 		this.type = type;

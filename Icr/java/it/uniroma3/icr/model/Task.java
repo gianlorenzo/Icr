@@ -2,6 +2,7 @@ package it.uniroma3.icr.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,10 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@Column(nullable = false)
+	private int batch;
+	
 	@ManyToOne
 	private Student student;
 	
@@ -68,6 +73,16 @@ public class Task {
 
 	public Task() {
 		
+	}
+	
+	
+
+	public int getBatch() {
+		return batch;
+	}
+
+	public void setBatch(int batch) {
+		this.batch = batch;
 	}
 
 	@Override

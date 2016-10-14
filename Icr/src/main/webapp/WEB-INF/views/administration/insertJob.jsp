@@ -16,6 +16,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
 
+<script language="Javascript">
+function isnum(obj) {
+
+if (isNaN(obj.value) || parseInt(obj.value)<0 || parseInt(obj.value) > 9999)
+
+{
+
+alert('Nel campo è possibile immettere solo numeri!');
+obj.value="";
+obj.focus();
+}
+
+}
+
+</script>
+
 <!-- Bootstrap CSS -->
     
     <link rel="stylesheet" href="<c:url value=" resources/css/bootstrap.responsive.css" />" type="text/css">
@@ -70,20 +86,25 @@
 		<form:textarea path="title" rows="5" cols="5" /><br>
 		
 		#Students
-		<form:input type="text" path='students' placeholder="Students" />
+		<form:input type="text" path='students' placeholder="Students" onBlur="isnum(this)" />
 		#Images : 
-		<form:input type="text" path='numberOfImages' placeholder="images" /><br>
+		<form:input type="text" path='numberOfImages' placeholder="images" onBlur="isnum(this)" /><br>
 		%Type1 : 
-		<form:input type="text" path='percentageType1' placeholder="Images" />
+		<form:input type="text" path='percentageType1' placeholder="Images" onBlur="isnum(this)" />
 		%Type2 : 
-		<form:input type="text" path='percentageType2' placeholder="Images" /><br>
+		<form:input type="text" path='percentageType2' placeholder="Images" onBlur="isnum(this)" /><br>
 		%Type3 : 
-		<form:input type="text" path='percentageType3' placeholder="Images" />
+		<form:input type="text" path='percentageType3' placeholder="Images" onBlur="isnum(this)" />
 		TaskSize : 
-		<form:input type="text" path='taskSize' placeholder="TaskSize" /><br>
+		<form:input type="text" path='taskSize' placeholder="TaskSize" onBlur="isnum(this)" /><br>
 		
 		ImageManuscript:
-		<form:input type="text" path='imageManuscript' placeholder="ImageManuscript" /> <br>
+		<form:select path="imageManuscript">
+		
+			<form:options items="${manuscripts}" />
+		
+		</form:select>
+		
 		
 		Symbol:
 		<form:select path="symbol">

@@ -9,7 +9,7 @@ public interface TaskDao {
 	
 	public void insertTask(Task task);
 	public Task findTask(long id);
-	public void updateTask(Task task);
+	public void updateTask(Task task,Student s);
 	public List<Task> findAll();
 	public Task getTaskList(List<Task> list);
 	

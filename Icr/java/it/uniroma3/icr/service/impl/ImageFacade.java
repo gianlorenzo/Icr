@@ -41,6 +41,11 @@ public class ImageFacade {
 	public List<Image> getImagesForType(String type) {
 		return this.imageDaoImpl.findImageForType(type);
 	}
+	
+	public List<String> findAllManuscript() {
+		return this.imageDaoImpl.findAllManuscript();
+	}
+
 }
 	
 

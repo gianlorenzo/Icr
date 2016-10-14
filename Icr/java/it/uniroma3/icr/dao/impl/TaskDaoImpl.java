@@ -2,6 +2,7 @@ package it.uniroma3.icr.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -53,9 +54,15 @@ public class TaskDaoImpl implements TaskDao {
 	}
 
 	@Override
-	public void updateTask(Task task) {
+	public void updateTask(Task task,Student s) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
+		List<Task> tasks = this.findAll();
+		for(int i=0;i<tasks.size();i++) {
+			if(tasks.get(i).getStudent()==null)
+				task = tasks.get(i);
+			task.setStudent(s);
+		}
 		session.merge(task);
 		session.getTransaction().commit();
 		session.close();
@@ -63,6 +70,8 @@ public class TaskDaoImpl implements TaskDao {
 	
 	@Override
 	public Task getTaskList(List<Task> list) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
 		Task t = new Task();
 		for(int i = 0; i<list.size();i++) {
 			if(list.get(i).getStudent()==null)

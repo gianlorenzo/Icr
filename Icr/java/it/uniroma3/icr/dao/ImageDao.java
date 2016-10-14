@@ -14,6 +14,8 @@ public interface ImageDao {
 	public List<Image> findAll();
 	
 	public List<Image> findImageForType(String type);
+	
+	public List<String> findAllManuscript();
 		 
 
 }

@@ -19,6 +19,7 @@ import it.uniroma3.icr.model.Image;
 @Repository
 public class InsertImageInDb {
 	
+	private static final String path ="C:\\Users\\NandG\\Documents\\images\\training\\";
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -34,168 +35,78 @@ public class InsertImageInDb {
 	
 public void getListJpegProperties() throws FileNotFoundException, IOException {
 		
-		getListJpegPropertiesType1();
-		getListJpegPropertiesType2();
-		getListJpegPropertiesType3();
+		getListImageProperties();
 	}
 	
-	public void getListJpegPropertiesType3() throws FileNotFoundException, IOException {
-		File[] files3 = new File("C:\\Users\\NandG\\Documents\\training\\rv12\\1\\t3\\").listFiles();
+	public void getListImageProperties() throws FileNotFoundException, IOException {
+		File[] files = new File(path).listFiles();
 		
-		for(int i=0;i<files3.length;i++) {
-			//Prendo i campi dal percorso
-			String nameComplete = files3[i].getName();
-			String imagePath = files3[i].getAbsolutePath();
+		for(int i=0;i<files.length;i++) {
 			
-			String name = FilenameUtils.getBaseName(nameComplete);
-			File typeImage = files3[i].getParentFile();
-			String imageType = typeImage.getName();
-			File pageImage = typeImage.getParentFile();
-			String imagePage = pageImage.getName();
-			File manuscriptImage = pageImage.getParentFile();
+			String manuscriptName = files[i].getName();
 			
-			String imageManuscript = manuscriptImage.getName();
-			String [] parts = name.split("_");
+			//prendo la pahe
 			
-			int x = Integer.valueOf(parts[0]);
-			int y = Integer.valueOf(parts[1]);
-			
-			BufferedInputStream in = null;
-	        
-	        try {
-	        	BufferedImage j = ImageIO.read(files3[i]);
-	        	
-	             int width = j.getWidth();
-	             int height = j.getHeight();
-	             int xImg = x;
-	             int yImg = y;
-	             String type = imageType;
-	             String page = imagePage;
-	             String manuscript = imageManuscript;
-	             String path = imagePath;
-	             
-	             Image img = new Image(width, height,type,page,manuscript,xImg,yImg,path);
-	             this.insertImage(img);
+			File[] pages = files[i].listFiles();
+			for(int j = 0;j<pages.length;j++) {
+				String pageName = pages[j].getName();
+				
+				File[] types = pages[j].listFiles();
+				for(int m=0;m<types.length;m++) {
+					String typeName = types[m].getName();
+					
+					File[] images = types[m].listFiles();
+					
+					for(int g=0;g<images.length;g++) {
+						String nameComplete = images[g].getName();
+						String pathFile = images[g].getPath();
+						
+						String newPath = pathFile.replace(images[g].separator, "/");
+						
+						String name = FilenameUtils.getBaseName(nameComplete);
+						String[] parts = name.split("_");
+						
+						int x = Integer.valueOf(parts[0]);
+						int y = Integer.valueOf(parts[1]);
+						
+						BufferedInputStream in = null;
+						
+						try {
+							BufferedImage b = ImageIO.read(images[g]);
+							
+							int width = b.getWidth();
+							int height = b.getHeight();
+							int xImg = x;
+							int yImg = y;
+							String page = pageName;
+							String manuscript = manuscriptName;
+							String type = typeName;
+							String path = newPath.substring(24, newPath.length());
+							
+							Image img = new Image(width,height,type,page,
+									manuscript,xImg,yImg,path);;
+									
+							this.insertImage(img);
+						}
+						finally {
+				            if (in != null) {
+				                try {
+				                	
+				                    in.close();
+				                }
+				                catch (IOException e) {
+				                	e.printStackTrace();
+				                }
+				           }
+				        }
+					}
+				}
+				
+			}
 			
 		}
-		
-		finally {
-	            if (in != null) {
-	                try {
-	                	
-	                    in.close();
-	                }
-	                catch (IOException e) {
-	                	e.printStackTrace();
-	                }
-	           }
-	        }
-		}
+			
 }
 
-public void getListJpegPropertiesType2() throws FileNotFoundException, IOException {
-File[] files2 = new File("C:\\Users\\NandG\\Documents\\training\\rv12\\1\\t2\\").listFiles();
-
-for(int i=0;i<files2.length;i++) {
-	String nameComplete = files2[i].getName();
-	
-	String name = FilenameUtils.getBaseName(nameComplete);
-	String imagePath = files2[i].getAbsolutePath();
-	File typeImage = files2[i].getParentFile();
-	String imageType = typeImage.getName();
-	File pageImage = typeImage.getParentFile();
-	String imagePage = pageImage.getName();
-	File manuscriptImage = pageImage.getParentFile();
-	String imageManuscript = manuscriptImage.getName();
-	String [] parts = name.split("_");
-	
-	int x = Integer.valueOf(parts[0]);
-	int y = Integer.valueOf(parts[1]);
-	BufferedInputStream in = null;
-    
-    try {
-    	BufferedImage j = ImageIO.read(files2[i]);
-    	
-    	 
-         int width = j.getWidth();
-         int height = j.getHeight();
-         int xImg = x;
-         int yImg = y;
-         String type = imageType;
-         String page = imagePage;
-         String manuscript = imageManuscript;
-         String path = imagePath;
-         
-        
-         
-         Image img = new Image(width, height,type,page,manuscript,xImg,yImg,path);
-         this.insertImage(img);
-}
-
- finally {
-        if (in != null) {
-            try {
-            	
-                in.close();
-            }
-            catch (IOException e) {
-            	e.printStackTrace();
-            }
-       }
-    }
-}
-}
-
-public void getListJpegPropertiesType1() throws FileNotFoundException, IOException {
-File[] files1 = new File("C:\\Users\\NandG\\Documents\\training\\rv12\\1\\t1\\").listFiles();
-
-for(int i=0;i<files1.length;i++) {
-	String nameComplete = files1[i].getName();
-	
-	String name = FilenameUtils.getBaseName(nameComplete);
-	File typeImage = files1[i].getParentFile();
-	String imagePath = files1[i].getAbsolutePath();
-	String imageType = typeImage.getName();
-	File pageImage = typeImage.getParentFile();
-	String imagePage = pageImage.getName();
-	File manuscriptImage = pageImage.getParentFile();
-	String imageManuscript = manuscriptImage.getName();
-	String [] parts = name.split("_");
-	
-	int x = Integer.valueOf(parts[0]);
-	int y = Integer.valueOf(parts[1]);
-	BufferedInputStream in = null;
-    
-    try {
-    	 BufferedImage j = ImageIO.read(files1[i]);
-
-    	
-         int width = j.getWidth();
-         int height = j.getHeight();
-         int xImg = x;
-         int yImg = y;
-         String type = imageType;
-         String page = imagePage;
-         String manuscript = imageManuscript;
-         String path = imagePath;
-         
-         
-         Image img = new Image(width, height,type,page,manuscript,xImg,yImg,path);
-         this.insertImage(img);
-   }
-
-finally {
-        if (in != null) {
-            try {
-            	
-                in.close();
-            }
-            catch (IOException e) {
-            	e.printStackTrace();
-            }
-       }
-    }
-}
-}
 
 }

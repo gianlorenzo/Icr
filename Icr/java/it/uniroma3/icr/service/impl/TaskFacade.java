@@ -27,8 +27,8 @@ public class TaskFacade {
 		return this.taskDaoImpl.findAll();
 	}
 	
-	public void updateTask(Task t) {
-		taskDaoImpl.updateTask(t);
+	public void updateTask(Task t,Student s) {
+		taskDaoImpl.updateTask(t,s);
 	}
 	
 	public Task getTaskList(List<Task> list) {

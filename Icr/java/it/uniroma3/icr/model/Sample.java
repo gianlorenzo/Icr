@@ -128,16 +128,16 @@ public class Sample {
 	}
 	
 	public Sample(int width,int height,int xImg, int yImg,
-			String path,
-			String manuscript, String page,String type) {
+			
+			String manuscript, String page,String type,String path) {
 		this.width = width;
 		this.height = height;
 		this.x = xImg;
 		this.y = yImg;
 	this.manuscript = manuscript;
-		this.path = path;
 		this.page = page;
 		this.type = type;
+		this.path = path;
 		
 	}
 	

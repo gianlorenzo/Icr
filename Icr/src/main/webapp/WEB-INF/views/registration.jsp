@@ -56,7 +56,10 @@
 					School :
 					<form:input type="text" path='school' placeholder="School" />
 					SchoolGroup:
-					<form:input type="text" path='schoolGroup' placeholder="SchoolGroup" />
+					<form:select path="schoolGroup">
+						<form:options items="${schoolGroups}" />
+					
+					</form:select>
 					Section:
 					<form:input type="text" path='section' placeholder="Section" />
 					Username :<font size="3" color="red">${usernameError}</font>
@@ -88,7 +91,7 @@
    <strong><c:out value="Name:"/></strong> ${student.name}<br>
      <strong><c:out value="Surname:"/></strong> ${student.surname}<br>
      <strong><c:out value="School:"/></strong> ${student.school}<br>
-          <strong><c:out value="Username:"/></strong> ${student.schoolGroup}<br>
+          <strong><c:out value="SchoolGroup:"/></strong> ${student.schoolGroup}<br>
      
           <strong><c:out value="Username:"/></strong> ${student.section}<br>
      

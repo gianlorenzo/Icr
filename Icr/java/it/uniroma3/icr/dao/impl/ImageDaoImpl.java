@@ -74,6 +74,18 @@ public class ImageDaoImpl implements ImageDao {
 		session.close();
 		return images;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> findAllManuscript() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		String s = "SELECT distinct manuscript FROM Image";
+		Query query = session.createQuery(s);
+		List<String> manuscripts = query.list();
+		session.close();
+		return manuscripts;
+	}
 	
 	
 	

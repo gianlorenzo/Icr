@@ -39,36 +39,36 @@ import it.uniroma3.icr.service.impl.TaskFacade;
 
 @Controller
 public class TaskController {
-	
+
 	private @Autowired ImageEditor imageEditor;
-	
+
 	private @Autowired TaskEditor taskEditor;
-	
+
 	@Autowired
 	public JobFacade facadeJob;
-	
+
 	@Autowired
 	public ImageFacade imageFacade;
 
 	@Autowired
 	public TaskFacade taskFacade;
-	
+
 	@Autowired
 	public StudentFacade studentFacade;
-	
+
 	@Autowired ResultFacade resultFacade;
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Image.class, this.imageEditor);
 		binder.registerCustomEditor(Task.class, this.taskEditor);
-		
+
 	}
- 
+
 	public @ModelAttribute("taskResults")TaskWrapper setupWrapper() {
 		return new TaskWrapper();
 	}
-	
+
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
 	public String task(@ModelAttribute Task task,@ModelAttribute Job job,@ModelAttribute Result result,
 			@ModelAttribute Image image,
@@ -78,30 +78,33 @@ public class TaskController {
 		Student student = studentFacade.retrieveUser(s);
 		List<Task> tasks = taskFacade.retrieveAllTask();
 		task = taskFacade.getTaskList(tasks);
-			task.setStudent(student);
-			taskFacade.updateTask(task);
-			
-			List<Result> list = resultFacade.findTaskResult(task);
-			taskResults.setResultList(list);	
-			
+		taskFacade.updateTask(task,student);
+
+		List<Result> list = resultFacade.findTaskResult(task);
+		taskResults.setResultList(list);	
+
 		model.addAttribute("task", task);
 		model.addAttribute("taskResults", taskResults);
 
 		return "users/newTask";
 	}
-	
-	 @RequestMapping(value="/taskRecap", method = RequestMethod.POST)
+
+	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
 	public String taskRecap(@ModelAttribute("taskResults")TaskWrapper taskResults,
 			Model model) {
 		List<Result> results = taskResults.getResultList();
-			resultFacade.updateListResult(results);
-		
+		for(Result result : results) {
+			if(result.getAnswer() == null)
+				result.setAnswer("No");
+		}
+		resultFacade.updateListResult(results);
+
 		return "users/taskRecap";
 
 	}
 
-	
+
 
 }		
-	
-	
+
+
