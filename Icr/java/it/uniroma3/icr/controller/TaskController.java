@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.icr.model.Image;
 import it.uniroma3.icr.model.Job;
 import it.uniroma3.icr.model.Result;
+import it.uniroma3.icr.model.Sample;
 import it.uniroma3.icr.model.Student;
 import it.uniroma3.icr.model.Symbol;
 import it.uniroma3.icr.model.Task;
@@ -71,7 +72,7 @@ public class TaskController {
 
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
 	public String task(@ModelAttribute Task task,@ModelAttribute Job job,@ModelAttribute Result result,
-			@ModelAttribute Image image,
+			@ModelAttribute Image image, @ModelAttribute Sample sample,
 			@ModelAttribute("taskResults")TaskWrapper taskResults,Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
@@ -82,7 +83,9 @@ public class TaskController {
 
 		List<Result> list = resultFacade.findTaskResult(task);
 		taskResults.setResultList(list);	
-
+		
+		model.addAttribute("sample", sample);
+		
 		model.addAttribute("task", task);
 		model.addAttribute("taskResults", taskResults);
 

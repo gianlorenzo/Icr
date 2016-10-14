@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="it.uniroma3.icr.model.Job" %>
 <%@ page import="it.uniroma3.icr.model.Task" %>
+<%@ page import="it.uniroma3.icr.model.Sample" %>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags/form"
@@ -58,7 +60,9 @@
 	
     <br><br>
 	<div align="center">
-	<h1> <font color="white">${task.job.title}: &nbsp ${task.job.symbol.transcription} </font></h1>
+	<h1> <font color="white">${task.job.title}: &nbsp ${task.job.symbol.transcription} </font></h1><br><br>
+	
+	 <font color="white">Ad Esempio:<img src="resources${sample.path}"  alt="${sample.id}" /> </font>
 	
 	
 	<form:form method="post" action="taskRecap" modelAttribute="taskResults" name="form">
