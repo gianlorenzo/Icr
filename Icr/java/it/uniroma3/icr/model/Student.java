@@ -2,6 +2,7 @@ package it.uniroma3.icr.model;
 
 import java.util.List;
 
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Student {
 	
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	
 	@Column(nullable = false)
 	private String name;
@@ -24,7 +27,6 @@ public class Student {
 	@Column(nullable=false)
 	private String school;
 	
-	@Id
 	@Column(nullable = false)
 	private String username;
 	
@@ -119,6 +121,20 @@ public class Student {
 	public void setSection(String section) {
 		this.section = section;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public void addTask(Task t) {
+		this.tasks.add(t);
+	}
+	
+	
 
 	
 	

@@ -34,6 +34,7 @@ import it.uniroma3.icr.service.impl.ImageFacade;
 import it.uniroma3.icr.service.impl.JobFacade;
 import it.uniroma3.icr.service.impl.ResultFacade;
 import it.uniroma3.icr.service.impl.StudentFacade;
+import it.uniroma3.icr.service.impl.SymbolFacade;
 import it.uniroma3.icr.service.impl.TaskFacade;
 
 
@@ -44,6 +45,9 @@ public class TaskController {
 	private @Autowired ImageEditor imageEditor;
 
 	private @Autowired TaskEditor taskEditor;
+
+	@Autowired
+	public SymbolFacade symbolFacade;
 
 	@Autowired
 	public JobFacade facadeJob;
@@ -72,27 +76,35 @@ public class TaskController {
 
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
 	public String task(@ModelAttribute Task task,@ModelAttribute Job job,@ModelAttribute Result result,
-			@ModelAttribute Image image, @ModelAttribute Sample sample,
+			@ModelAttribute Image image,
 			@ModelAttribute("taskResults")TaskWrapper taskResults,Model model) {
+
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
-		List<Task> tasks = taskFacade.retrieveAllTask();
-		task = taskFacade.getTaskList(tasks);
-		taskFacade.updateTask(task,student);
 
-		List<Result> list = resultFacade.findTaskResult(task);
-		taskResults.setResultList(list);	
-		
-		model.addAttribute("sample", sample);
-		
-		model.addAttribute("task", task);
-		model.addAttribute("taskResults", taskResults);
+		task = taskFacade.assignTask(student);
 
-		return "users/newTask";
+		if(task!=null) {
+
+			List<Sample> samples = symbolFacade.findAllSamplesBySymbolId(task.getJob().getSymbol().getId());
+
+			List<Result> list = resultFacade.findTaskResult(task);
+			taskResults.setResultList(list);	
+
+			model.addAttribute("samples", samples);
+
+			model.addAttribute("task", task);
+			model.addAttribute("taskResults", taskResults);
+
+			return "users/newTask";
+		}
+		return "users/goodBye";
+
 	}
 
-	@RequestMapping(value="/taskRecap", method = RequestMethod.POST)
+	@RequestMapping(value="/secondConsole", method = RequestMethod.POST)
 	public String taskRecap(@ModelAttribute("taskResults")TaskWrapper taskResults,
 			Model model) {
 		List<Result> results = taskResults.getResultList();
@@ -102,11 +114,19 @@ public class TaskController {
 		}
 		resultFacade.updateListResult(results);
 
-		return "users/taskRecap";
+		return "users/secondConsole";
 
 	}
-
-
+	
+	@RequestMapping(value="/studentTasks")
+	public String studentTasks(Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Student s = studentFacade.retrieveUser(auth.getName());
+    	List<Task> studentTasks = taskFacade.findTaskByStudent(s.getId());
+    	
+    	model.addAttribute("studentTasks", studentTasks);
+		return "users/studentTasks";
+		}
 
 }		
 

@@ -140,6 +140,15 @@ public class Sample {
 		this.path = path;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Sample [id=" + id + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + ", page="
+				+ page + ", manuscript=" + manuscript + ", type=" + type + ", path=" + path + ", symbol=" + symbol
+				+ "]";
+	}
+	
+	
 	
 	
 	

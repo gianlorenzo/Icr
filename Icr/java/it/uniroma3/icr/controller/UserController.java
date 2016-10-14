@@ -21,9 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.icr.model.Student;
 
 import it.uniroma3.icr.service.impl.StudentFacade;
+import it.uniroma3.icr.service.impl.TaskFacade;
 
 @Controller
 public class UserController {
+	
+
 	
 	@Autowired
 	private StudentFacade userFacade;
@@ -71,4 +74,7 @@ public class UserController {
 			model.addAttribute("utente", student);
 		return "registration";
 	}
+	
+	
+	
 }

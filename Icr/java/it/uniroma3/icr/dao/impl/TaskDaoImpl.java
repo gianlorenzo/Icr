@@ -18,12 +18,12 @@ import it.uniroma3.icr.model.Task;
 @Repository
 public class TaskDaoImpl implements TaskDao {
 
-	
+
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	
-	
+
+
+
 	@Override
 	public void insertTask(Task task) {
 		Session session = sessionFactory.openSession();
@@ -48,34 +48,63 @@ public class TaskDaoImpl implements TaskDao {
 		Session session = sessionFactory.openSession();
 		String hql ="FROM Task";
 		Query query = session.createQuery(hql);
-		List<Task> empList = query.list();
-		return empList;
+		List<Task> taskList = query.list();
+		return taskList;
 	}
 
+	private boolean newTaskForStudent(List<Task> tasks, Task task) {
+		boolean isNew = true;
+		for(Task t : tasks) {
+			if(t.getJob().getId().equals(task.getJob().getId()) && 
+					t.getBatch() == task.getBatch())
+				return false;
+		}
+		return isNew;
+	}
+
+
+	@SuppressWarnings("unchecked")
 	@Override
-	public void updateTask(Task task,Student s) {
+	public List<Task> findTaskByStudent(Long id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		List<Task> tasks = this.findAll();
-		for(int i=0;i<tasks.size();i++) {
-			if(tasks.get(i).getStudent()==null)
-				task = tasks.get(i);
-			task.setStudent(s);
+		String sql ="FROM Task t where t.student.id = :id";
+		Query query = session.createQuery(sql);
+		query.setParameter("id", id);
+		List<Task> studentTasks = query.list();
+		session.close();
+		System.out.println("Tasks"+studentTasks);
+		return studentTasks;
+	}
+
+
+	@SuppressWarnings("unchecked")
+	public Task assignTask(Student s) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Student s1 =  (Student) session.get(Student.class, s.getId());
+		Task task = null;
+		String hql ="FROM Task WHERE student.id is null ";
+		Query query = session.createQuery(hql);
+		List<Task> taskList =  query.list();
+
+		List<Task> taskByStudent = this.findTaskByStudent(s.getId());
+		for(int i=0;i<taskList.size();i++) {
+			if(newTaskForStudent(taskByStudent, taskList.get(i))) {
+				task = taskList.get(i);
+				task.setStudent(s1);
+				break;
+			}
 		}
-		session.merge(task);
+		if(task!=null) {
+			s1.addTask(task);
+			session.merge(task);
+		}
 		session.getTransaction().commit();
 		session.close();
+
+		return task;
 	}
-	
-	@Override
-	public Task getTaskList(List<Task> list) {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Task t = new Task();
-		for(int i = 0; i<list.size();i++) {
-			if(list.get(i).getStudent()==null)
-				t = list.get(i);
-		}
-		return t;
-	}
+
+
 }

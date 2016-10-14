@@ -22,15 +22,28 @@
     <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
     
     
+     <style type="text/css">
+	 body { 
+    background-image: url('./resources/img/homePage.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    
+    background-size: 1420px 650px;
+
+    
+}
+	   </style>
+    
+    
  	
  
 </head>
 
 <body>
 
-<img src="<c:url value="/resources/img/homePage.png"/>">
  
-<div style="position:absolute; top:15px;right:50px ">
+<div style="position:absolute; top:4px;right:50px ">
 <a href="login"> <img width="150" height="100" src="<c:url value="/resources/img/login.png"/>"></a>
  
 </div>

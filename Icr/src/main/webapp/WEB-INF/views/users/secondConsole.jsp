@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,6 +32,7 @@
 	   </style>
 
 </head>
+</head>
 <body>
 <div style="position:absolute; top:15px; left:10px">
 
@@ -42,20 +42,8 @@
 <div style="position:absolute; top:15px; right:40px">
 <font size="6" color="white">Welcome : &nbsp ${pageContext.request.userPrincipal.name}</font>
 </div>
-	
-    
-    <br><br>
-    <br><br>
-		
-		<div style="position:absolute; top:220px;right:578px">
-          <a  href="newTask"><img width="200" height="150" src="resources/img/taskPage.png"></a><br><br>
-          </div>
-         
-         <div style="position:absolute; top:275px;right:630px">
-           <a  href="login"><img width="100" height="75" src="resources/img/logout.png"></a><br><br>
-          </div>
-		
-		
- 
+
+<a  href="studentTasks"> Task Effettuati</a><br><br>
+
 </body>
 </html>

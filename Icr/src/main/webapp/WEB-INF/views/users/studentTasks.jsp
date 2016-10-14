@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="it.uniroma3.icr.model.Job" %>
 <%@ page import="it.uniroma3.icr.model.Task" %>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -9,9 +8,6 @@
  prefix="springForm"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@taglib  uri="http://www.springframework.org/tags" prefix="spring"%>
-
-
-
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,7 +29,7 @@
     
      <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/whiteBackground.png');
+    background-image: url('./resources/img/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -43,61 +39,23 @@
     
 }
 	   </style>
-	   
+
 </head>
-
 <body>
-<div style="position:absolute; top:15px; left:10px">
-
-<font size="6" color="white">Student Page</font>
-</div>
 
 <div style="position:absolute; top:15px; right:40px">
 <font size="6" color="white">Welcome : &nbsp ${pageContext.request.userPrincipal.name}</font>
 </div>
+<br><br>
+<div align="center">
+<h1><font color="white">These are your tasks performed</font></h1>
 
-	
-    <br><br>
-	<div align="center">
-	<h1> <font color="black">${task.job.title}: &nbsp ${task.job.symbol.transcription} </font></h1><br><br>
-	<h1>
-	 <font color="black">Ad Esempio:</font></h1><br>
-	 
-	 
-	 <c:forEach var="sample" items="${samples}">
-	 	<img src="resources${sample.path}"  alt="${sample.id}" />
-	 </c:forEach>
-	 
-	 <br><br>
-	 
-	<form:form method="post" action="secondConsole" modelAttribute="taskResults" name="form">
-	<font color="white">
-		<c:forEach varStatus="vs" var="result" items="${taskResults.resultList}">
-			<form:checkbox style="display:inline" path="resultList[${vs.index}].answer" value="Yes"/> 
-			
-			<img style="display:inline" src="resources${result.image.path}"  alt="${result.image.id}" />
-			
-	
-			<form:hidden path="resultList[${vs.index}].id"/>
-			<form:hidden path="resultList[${vs.index}].image.id"/>
-			<form:hidden path="resultList[${vs.index}].task.id"/>
-		</c:forEach>						
-	<br><br><br>							
-	<td><input type="submit" value="Send"></td>
-	</font>
-	</form:form>
-								
-	
-	
-
-		</div>
-	
-	
-	
-	
-	
-
-
+<div class="normal">
+<c:forEach var="task" items="${studentTasks}">
+	<c:out value="${task.id}"></c:out><br>
+</c:forEach>
+</div>
+</div>
 
 
 

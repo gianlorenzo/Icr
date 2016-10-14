@@ -27,12 +27,13 @@ public class TaskFacade {
 		return this.taskDaoImpl.findAll();
 	}
 	
-	public void updateTask(Task t,Student s) {
-		taskDaoImpl.updateTask(t,s);
+	public List<Task> findTaskByStudent(Long id) {
+		return this.taskDaoImpl.findTaskByStudent(id);
 	}
 	
-	public Task getTaskList(List<Task> list) {
-		return this.taskDaoImpl.getTaskList(list);
+	public Task assignTask(Student s) {
+		return this.taskDaoImpl.assignTask(s);
 	}
+	
 	
 }

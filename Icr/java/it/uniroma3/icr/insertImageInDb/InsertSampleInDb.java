@@ -5,6 +5,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -43,6 +44,19 @@ public class InsertSampleInDb {
 		Symbol symbol = (Symbol) query.uniqueResult();
 		session.close();
 		return symbol;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Sample> findAllSamplesBySymbolId(long id) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		String s = "FROM Sample s Where s.symbol.id = :id";
+		Query query = session.createQuery(s);
+		query.setParameter("id", id);
+		List<Sample> samples = query.list();
+		System.out.println("List Samples"+samples);
+		return samples;
+		
 	}
 	
 	public void getSampleImage() throws FileNotFoundException, IOException {
