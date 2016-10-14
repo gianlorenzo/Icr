@@ -6,7 +6,7 @@ public class Main {
 	
 	
 	public static void main(String[] args) {
-		File[] files = new File("C:\\Users\\NandG\\Documents\\images\\training").listFiles();
+		File[] files = new File("C:\\Users\\NandG\\Documents\\img\\sources\\samples").listFiles();
 		
 		for(File f : files){
 			String path = f.getPath();

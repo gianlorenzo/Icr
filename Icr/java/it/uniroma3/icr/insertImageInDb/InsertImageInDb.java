@@ -19,7 +19,7 @@ import it.uniroma3.icr.model.Image;
 @Repository
 public class InsertImageInDb {
 	
-	private static final String path ="C:\\Users\\NandG\\Documents\\images\\training\\";
+	private static final String path ="C:\\Users\\NandG\\Documents\\img\\sources\\training\\";
 	
 	@Autowired
 	private SessionFactory sessionFactory;

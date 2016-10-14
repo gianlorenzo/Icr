@@ -32,7 +32,6 @@ public class TaskDaoImpl implements TaskDao {
 		session.getTransaction().commit();
 		session.close();
 
-		
 	}
 
 	@Override

@@ -43,8 +43,6 @@
 }
 	   </style>
 	   
-	
-
 </head>
 
 <body>
@@ -66,7 +64,9 @@
 	<form:form method="post" action="taskRecap" modelAttribute="taskResults" name="form">
 	<font color="white">
 		<c:forEach varStatus="vs" var="result" items="${taskResults.resultList}"><br>
-			<c:out value="${result.image.id}"/>
+			
+			<img src="resources${result.image.path}"  alt="${result.image.id}" />
+			
 			<form:checkbox path="resultList[${vs.index}].answer" value="Yes"/> 
 	
 			<form:hidden path="resultList[${vs.index}].id"/>

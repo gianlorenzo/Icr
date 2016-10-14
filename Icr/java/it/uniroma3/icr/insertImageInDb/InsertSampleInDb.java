@@ -21,7 +21,7 @@ import it.uniroma3.icr.model.Symbol;
 @Repository
 public class InsertSampleInDb {
 	
-	private static final String path ="C:\\Users\\NandG\\Documents\\images\\samples\\";
+	private static final String path ="C:\\Users\\NandG\\Documents\\img\\sources\\samples\\";
 	
 	@Autowired
 	private SessionFactory sessionFactory;
