@@ -16,11 +16,11 @@
  	<link rel="stylesheet" href="<c:url value=" resources/css/style.css" />" type="text/css">
  
 	<!-- Favicon -->
-    <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+    <link rel="shortcut icon" href="<c:url value="resources/img/siteImages/favicon.ico"/>">
     
      <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/background.png');
+    background-image: url('./resources/img/siteImages/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -56,9 +56,9 @@
         </div>
      	
      	<div style="position:absolute; top:350px;right:580px ">
-     	<a href="registrationAdmin"><img width="200" height="150" src="<c:url value="/resources/img/newAdmin.png"/>"></a><br><br>
-          <a  href="registration"><img width="200" height="150" src="<c:url value="/resources/img/newAccount.png"/>"></a><br><br>
-          <a  href="index"><img width="200" height="150" src="<c:url value="/resources/img/toHomepage.png"/>"></a>
+     	<a href="registrationAdmin"><img width="200" height="150" src="<c:url value="/resources/img/siteImages/newAdmin.png"/>"></a><br><br>
+          <a  href="registration"><img width="200" height="150" src="<c:url value="/resources/img/siteImages/newAccount.png"/>"></a><br><br>
+          <a  href="index"><img width="200" height="150" src="<c:url value="/resources/img/siteImages/toHomepage.png"/>"></a>
 		</div>
 </body>
 </html>

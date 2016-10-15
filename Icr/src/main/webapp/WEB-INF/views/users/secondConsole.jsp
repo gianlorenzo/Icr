@@ -16,11 +16,11 @@
    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css"  rel="stylesheet">
 
 	<!-- Favicon -->
-    <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+    <link rel="shortcut icon" href="<c:url value="resources/img/siteImages/favicon.ico"/>">
     
     <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/homeAdmin.png');
+    background-image: url('./resources/img/siteImages/homeAdmin.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -42,6 +42,10 @@
 <div style="position:absolute; top:15px; right:40px">
 <font size="6" color="white">Welcome : &nbsp ${pageContext.request.userPrincipal.name}</font>
 </div>
+
+  <br><br>
+    <br><br>
+		
 
 <a  href="studentTasks"> Task Effettuati</a><br><br>
 

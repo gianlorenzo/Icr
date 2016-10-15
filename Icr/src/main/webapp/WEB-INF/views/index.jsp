@@ -19,12 +19,12 @@
  	<link rel="stylesheet" href="<c:url value=" resources/css/style.css" />" type="text/css">
  
  	<!-- Favicon -->
-    <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+    <link rel="shortcut icon" href="<c:url value="resources/img/siteImages/favicon.ico"/>">
     
     
      <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/homePage.png');
+    background-image: url('./resources/img/siteImages/homePage.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -44,7 +44,7 @@
 
  
 <div style="position:absolute; top:4px;right:50px ">
-<a href="login"> <img width="150" height="100" src="<c:url value="/resources/img/login.png"/>"></a>
+<a href="login"> <img width="150" height="100" src="<c:url value="/resources/img/siteImages/login.png"/>"></a>
  
 </div>
  

@@ -15,11 +15,11 @@
    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/prettyPhoto.css"  rel="stylesheet">
    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css"  rel="stylesheet">
 	
-    <link rel="shortcut icon" href="resources/img/favicon.ico"/>
+    <link rel="shortcut icon" href="resources/img/siteImages/favicon.ico"/>
     
     <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/homeAdmin.png');
+    background-image: url('./resources/img/siteImages/homeAdmin.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -46,15 +46,15 @@
     <br><br>
     <br><br>
 <div style="position:absolute; top:200px;right:578px">
-<a href="insertJob"><img width="200" height="150" src="resources/img/newJob.png"></a><br><br>
+<a href="insertJob"><img width="200" height="150" src="resources/img/siteImages/newJob.png"></a><br><br>
 </div>
 
 <div style="position:absolute; top:260px;right:578px">
-<a href="insertSymbol"><img width="200" height="150" src="resources/img/newSymbol.png"></a><br><br>
+<a href="insertSymbol"><img width="200" height="150" src="resources/img/siteImages/newSymbol.png"></a><br><br>
 </div>
 
 <div style="position:absolute; top:320px;right:625px">
-<a href="logout"><img width="100" height="75" src="resources/img/logout.png"></a>
+<a href="logout"><img width="100" height="75" src="resources/img/siteImages/logout.png"></a>
 </div>
 	
 

@@ -25,11 +25,11 @@
  	<link rel="stylesheet" href="<c:url value=" resources/css/style.css" />" type="text/css">
 
 	<!-- Favicon -->
-    <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+    <link rel="shortcut icon" href="<c:url value="resources/img/siteImages/favicon.ico"/>">
     
      <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/background.png');
+    background-image: url('./resources/img/siteImages/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -53,6 +53,9 @@
 <div class="normal">
 <c:forEach var="task" items="${studentTasks}">
 	<c:out value="${task.id}"></c:out><br>
+	<div style="position:absolute; top:250px;right:578px">
+<a href="homeStudent"><img width="200" height="150" src="resources/img/siteImages/studentPage.png"></a><br><br>
+</div>	
 </c:forEach>
 </div>
 </div>

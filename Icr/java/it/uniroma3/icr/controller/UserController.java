@@ -75,6 +75,11 @@ public class UserController {
 		return "registration";
 	}
 	
+	@RequestMapping(value="/homeStudent")
+	public String toHomeStudent() {
+		return "users/homeStudent";
+	}
+	
 	
 	
 }

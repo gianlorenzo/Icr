@@ -17,11 +17,11 @@
    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css"  rel="stylesheet">
 
 	<!-- Favicon -->
-    <link rel="shortcut icon" href="<c:url value="resources/img/favicon.ico"/>">
+    <link rel="shortcut icon" href="<c:url value="resources/img/siteImages/favicon.ico"/>">
     
     <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/homeAdmin.png');
+    background-image: url('./resources/img/siteImages/homeAdmin.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -47,15 +47,19 @@
     <br><br>
     <br><br>
 		
-		<a  href="studentTasks"> Task Effettuati</a><br><br>
+		
          
 		
-		<div style="position:absolute; top:220px;right:578px">
-          <a  href="newTask"><img width="200" height="150" src="resources/img/taskPage.png"></a><br><br>
+		<div style="position:absolute; top:200px;right:578px">
+          <a  href="newTask"><img width="200" height="150" src="resources/img/siteImages/taskPage.png"></a><br><br>
           </div>
          
-         <div style="position:absolute; top:275px;right:630px">
-           <a  href="login"><img width="100" height="75" src="resources/img/logout.png"></a><br><br>
+         <div style="position:absolute; top:300px;right:615px">
+           <a  href="login"><img width="120" height="95" src="resources/img/siteImages/logout.png"></a><br><br>
+          </div>
+          
+          <div style="position:absolute; top:250px;right:585px">
+          <a  href="studentTasks"><img width="180" height="130" src="resources/img/siteImages/taskPerformed.png"></a><br><br>
           </div>
 		
 		

@@ -20,11 +20,11 @@
    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/prettyPhoto.css"  rel="stylesheet">
    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css"  rel="stylesheet">
 	
-    <link rel="shortcut icon" href="resources/img/favicon.ico"/>
+    <link rel="shortcut icon" href="resources/img/siteImages/favicon.ico"/>
     
     <style type="text/css">
 	 body { 
-    background-image: url('./resources/img/background.png');
+    background-image: url('./resources/img/siteImages/background.png');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -51,7 +51,7 @@
     <div align="center">
     
 	<h1>
-		<font color="7a0000">Insert a new Symbol</font>
+		<font color="white">Insert a new Symbol</font>
 	</h1>
 	
 	<form:form method="post" action="addSymbol" modelAttribute="symbol" name="form">
@@ -70,7 +70,7 @@
 	</form:form><br>
 	
 <div style="position:absolute; top:250px;right:578px">
-<a href="homeAdmin"><img width="200" height="150" src="resources/img/endSymbols.png"></a><br><br>
+<a href="homeAdmin"><img width="200" height="150" src="resources/img/siteImages/endSymbols.png"></a><br><br>
 </div>	
 	</div>
 
