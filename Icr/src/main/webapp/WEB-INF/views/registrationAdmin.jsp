@@ -70,8 +70,8 @@
       <form:form method="post" action="addAdmin" modelAttribute="administrator" name="form2">
   	<br>
   	<input type="submit" value="Confirm Registration" /><br><br>
-  	<div style="position:absolute; top:240px;right:585px ">
-     <a href="index"><img width="200" height="175" src="<c:url value="/resources/img/toHomepage.png"/>"></a>
+  	<div style="position:absolute; top:240px;right:605px ">
+     <a href="index"><img width="150" height="125" src="<c:url value="/resources/img/siteImages/toHomepage.png"/>"></a>
      </div>
   	<form:input type="hidden" path='username' placeholder="id" /><br/>
      

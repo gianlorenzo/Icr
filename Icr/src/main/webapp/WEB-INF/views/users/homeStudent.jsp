@@ -50,7 +50,7 @@
 		
          
 		
-		<div style="position:absolute; top:200px;right:578px">
+		<div style="position:absolute; top:200px;right:700px">
           <a  href="newTask"><img width="200" height="150" src="resources/img/siteImages/taskPage.png"></a><br><br>
           </div>
          
@@ -58,7 +58,7 @@
            <a  href="login"><img width="120" height="95" src="resources/img/siteImages/logout.png"></a><br><br>
           </div>
           
-          <div style="position:absolute; top:250px;right:585px">
+          <div style="position:absolute; top:205px;right:450px">
           <a  href="studentTasks"><img width="180" height="130" src="resources/img/siteImages/taskPerformed.png"></a><br><br>
           </div>
 		

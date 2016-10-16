@@ -47,7 +47,13 @@
     <br><br>
 		
 
-<a  href="studentTasks"> Task Effettuati</a><br><br>
+<div style="position:absolute; top:230px;right:590px">
+<a  href="studentTasks"><img width="175" height="125" src="resources/img/siteImages/taskPerformed.png"></a>
+</div>
+
+<div style="position:absolute; top:300px;right:615px">
+<a  href="login"><img width="120" height="70" src="resources/img/siteImages/logout.png"></a><br><br>
+</div>
 
 </body>
 </html>

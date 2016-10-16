@@ -55,10 +55,10 @@
         </form>
         </div>
      	
-     	<div style="position:absolute; top:350px;right:580px ">
-     	<a href="registrationAdmin"><img width="200" height="150" src="<c:url value="/resources/img/siteImages/newAdmin.png"/>"></a><br><br>
-          <a  href="registration"><img width="200" height="150" src="<c:url value="/resources/img/siteImages/newAccount.png"/>"></a><br><br>
-          <a  href="index"><img width="200" height="150" src="<c:url value="/resources/img/siteImages/toHomepage.png"/>"></a>
+     	<div style="position:absolute; top:330px;right:600px ">
+     	<a href="registrationAdmin"><img width="150" height="100" src="<c:url value="/resources/img/siteImages/newAdmin.png"/>"></a><br><br>
+          <a  href="registration"><img width="150" height="100" src="<c:url value="/resources/img/siteImages/newAccount.png"/>"></a><br><br>
+          <a  href="index"><img width="150" height="100" src="<c:url value="/resources/img/siteImages/toHomepage.png"/>"></a>
 		</div>
 </body>
 </html>

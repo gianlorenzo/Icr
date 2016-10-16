@@ -96,7 +96,9 @@ public class AdminController {
 
 	@RequestMapping(value="/addJob", method = RequestMethod.POST)
 	public String confirmJob(@ModelAttribute Job job,@ModelAttribute Task task,@ModelAttribute Image image,@ModelAttribute Result result, Model model) {
-
+		
+		
+		
 		List<Image> jobImages = new ArrayList<>();
 
 		int perc1 = (job.getNumberOfImages()*job.getPercentageType1())/100;

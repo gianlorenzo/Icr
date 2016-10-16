@@ -49,8 +49,8 @@
 			<font color="white">Fantastic! You have completed all tasks available</font></h1><br><br>
           </div>
 
-<div style="position:absolute; top:230px;right:580px">
-<a  href="studentTasks"><img width="200" height="150" src="resources/img/siteImages/taskPerformed.png"></a>
+<div style="position:absolute; top:230px;right:590px">
+<a  href="studentTasks"><img width="175" height="125" src="resources/img/siteImages/taskPerformed.png"></a>
 </div>
 
 <div style="position:absolute; top:300px;right:615px">

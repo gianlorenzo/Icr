@@ -43,7 +43,7 @@
 <body>
 
  
-<div style="position:absolute; top:4px;right:50px ">
+<div style="position:absolute; top:6px;right:50px ">
 <a href="login"> <img width="150" height="100" src="<c:url value="/resources/img/siteImages/login.png"/>"></a>
  
 </div>

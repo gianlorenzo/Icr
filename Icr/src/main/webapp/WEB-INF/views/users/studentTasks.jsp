@@ -53,10 +53,12 @@
 <div class="normal">
 <c:forEach var="task" items="${studentTasks}">
 	<c:out value="${task.id}"></c:out><br>
-	<div style="position:absolute; top:250px;right:578px">
+	
+</c:forEach>
+
+<div style="position:absolute; top:300px;right:578px">
 <a href="homeStudent"><img width="200" height="150" src="resources/img/siteImages/studentPage.png"></a><br><br>
 </div>	
-</c:forEach>
 </div>
 </div>
 

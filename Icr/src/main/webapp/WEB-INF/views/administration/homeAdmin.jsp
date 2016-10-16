@@ -45,16 +45,16 @@
     
     <br><br>
     <br><br>
-<div style="position:absolute; top:200px;right:578px">
+<div style="position:absolute; top:200px;right:700px">
 <a href="insertJob"><img width="200" height="150" src="resources/img/siteImages/newJob.png"></a><br><br>
 </div>
 
-<div style="position:absolute; top:260px;right:578px">
+<div style="position:absolute; top:200px;right:450px">
 <a href="insertSymbol"><img width="200" height="150" src="resources/img/siteImages/newSymbol.png"></a><br><br>
 </div>
 
-<div style="position:absolute; top:320px;right:625px">
-<a href="logout"><img width="100" height="75" src="resources/img/siteImages/logout.png"></a>
+<div style="position:absolute; top:320px;right:605px">
+<a href="logout"><img width="150" height="125" src="resources/img/siteImages/logout.png"></a>
 </div>
 	
 

@@ -61,12 +61,12 @@
 					
 					</form:select>
 					Section:
-					<form:input type="text" path='section' placeholder="Section" />
+					<form:input type="text" path='section' placeholder="Section" /> <br>
 					Username :<font size="3" color="red">${usernameError}</font>
 					<form:input type="text" path='username' placeholder="Username" />
 				
 					Password :
-					<form:input type="Password" path='password' placeholder="Password" /><br>
+					<form:input type="Password" path='password' placeholder="Password" />
 					
 					
 					
@@ -101,7 +101,7 @@
      <form:form method="post" action="addUser" modelAttribute="student" name="form2">
      <input type="submit" value="Confirm Registration" /><br><br>
      
-     <div style="position:absolute; top:475px;right:610px ">
+     <div style="position:absolute; top:450px;right:610px ">
      <a href="index"><img width="125" height="100" src="<c:url value="/resources/img/siteImages/toHomepage.png"/>"></a>
      </div>
      

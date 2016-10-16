@@ -69,7 +69,7 @@
 		
 		</font>
 			
-	<div style="position:absolute; top:320px;right:578px">
+	<div style="position:absolute; top:270px;right:578px">
 <a href="homeAdmin"><img width="200" height="150" src="resources/img/siteImages/toHomeAdmin.png"></a><br><br>
 </div>	
 </div>
