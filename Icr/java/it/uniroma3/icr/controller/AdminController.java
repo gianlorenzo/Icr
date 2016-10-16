@@ -97,7 +97,22 @@ public class AdminController {
 	@RequestMapping(value="/addJob", method = RequestMethod.POST)
 	public String confirmJob(@ModelAttribute Job job,@ModelAttribute Task task,@ModelAttribute Image image,@ModelAttribute Result result, Model model) {
 		
+		model.addAttribute("symbols", symbolFacade.retrieveAllSymbols());
+		model.addAttribute("images", imageFacade.retrieveAllImages());
 		
+		List<String> manuscriptImage = imageFacade.findAllManuscript();
+		
+		Map<String,String> manuscripts = new HashMap<String,String>();
+		
+		for(String manuscript : manuscriptImage) {
+			manuscripts.put(manuscript, manuscript);
+		}
+		
+		
+		model.addAttribute("manuscripts", manuscripts);
+		
+		model.addAttribute("job", job);
+		model.addAttribute("task", task);
 		
 		List<Image> jobImages = new ArrayList<>();
 
@@ -109,7 +124,7 @@ public class AdminController {
 		List<Image> imgsType2 = imageFacade.getImagesForType("t2");
 		List<Image> imgsType3 = imageFacade.getImagesForType("t3");
 		
-		
+		if(job.getNumberOfImages()%job.getTaskSize() == 0) {
 		//Inserisco le Immagini secondo le percentuali di tipo 1
 
 		for(int k=0;k<job.getNumberOfImages() && k<perc1;k++) {
@@ -158,6 +173,8 @@ public class AdminController {
 	
 
 		return "administration/jobRecap";
+		}
+		return "administration/insertJob";
 	}
 
 	@RequestMapping(value="/insertSymbol")
