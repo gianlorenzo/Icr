@@ -114,7 +114,7 @@ public class TaskController {
 		}
 		resultFacade.updateListResult(results);
 
-		return "users/secondConsole";
+		return "users/homeStudent";
 
 	}
 	

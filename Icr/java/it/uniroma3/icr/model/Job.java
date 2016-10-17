@@ -19,8 +19,19 @@ public class Job {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String title;
+	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Column(nullable=false)
+	private String description;
 	
 	@Column(nullable=false)
 	private int taskSize;

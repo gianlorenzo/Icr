@@ -225,6 +225,8 @@ public class AdminController {
 		model.addAttribute("administrator", administrator);
 		return "registrationAdmin";
 	}
+	
+	
 
 
 }
