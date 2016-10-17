@@ -22,10 +22,13 @@ public class IndexController {
 	private SymbolFacade symbolFacade;
 	
 	
+	
+	
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String goToIndex() throws FileNotFoundException, IOException {
 		//imageFacade.getListImageProperties();
-		//symbolFacade.getSampleImage();
+		symbolFacade.getSampleImage();
+		//symbolFacade.insertSymbolInDb();
 		return "index";
 	}
 }

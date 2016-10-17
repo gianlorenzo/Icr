@@ -14,28 +14,27 @@ public class Sample {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column
+	@Column(nullable=false)
 	private int x;
 	
-	@Column
+	@Column(nullable=false)
 	private int y;
 	
-	@Column
+	@Column(nullable=false)
 	private int width;
 	
-	@Column
+	@Column(nullable=false)
 	private int height;
 	
-	@Column
-	private String page;
 	
-	@Column
+	
+	@Column(nullable=false)
 	private String manuscript;
 	
-	@Column
+	@Column(nullable=false)
 	private String type;
 	
-	@Column
+	@Column(nullable=false)
 	private String path;
 	
 	@ManyToOne
@@ -81,13 +80,6 @@ public class Sample {
 		this.height = height;
 	}
 
-	public String getPage() {
-		return page;
-	}
-
-	public void setPage(String page) {
-		this.page = page;
-	}
 
 	public String getManuscript() {
 		return manuscript;
@@ -129,24 +121,18 @@ public class Sample {
 	
 	public Sample(int width,int height,int xImg, int yImg,
 			
-			String manuscript, String page,String type,String path) {
+			String manuscript,String type,String path) {
 		this.width = width;
 		this.height = height;
 		this.x = xImg;
 		this.y = yImg;
 	this.manuscript = manuscript;
-		this.page = page;
 		this.type = type;
 		this.path = path;
 		
 	}
 
-	@Override
-	public String toString() {
-		return "Sample [id=" + id + ", x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + ", page="
-				+ page + ", manuscript=" + manuscript + ", type=" + type + ", path=" + path + ", symbol=" + symbol
-				+ "]";
-	}
+	
 	
 	
 	

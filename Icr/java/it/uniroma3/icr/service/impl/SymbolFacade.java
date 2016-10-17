@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import it.uniroma3.icr.dao.impl.SymbolDaoImpl;
 import it.uniroma3.icr.insertImageInDb.InsertSampleInDb;
+import it.uniroma3.icr.insertImageInDb.InsertSymbolInDb;
 import it.uniroma3.icr.model.Sample;
 import it.uniroma3.icr.model.Symbol;
 
@@ -19,11 +20,18 @@ public class SymbolFacade {
 	private SymbolDaoImpl symbolDaoImpl;
 	
 	@Autowired
+	private InsertSymbolInDb insertSymbol;
+	
+	@Autowired
 	private InsertSampleInDb insertSample;
 	
 	public Symbol retrieveSymbol(long id) {
 		return this.symbolDaoImpl.findSymbol(id);
 		
+	}
+	
+	public void insertSymbolInDb() throws FileNotFoundException, IOException {
+		insertSymbol.insertSymbolInDb();
 	}
 	
 	public List<Symbol> retrieveAllSymbols() {

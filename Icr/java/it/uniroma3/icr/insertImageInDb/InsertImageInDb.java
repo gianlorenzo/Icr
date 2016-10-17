@@ -45,7 +45,7 @@ public void getListJpegProperties() throws FileNotFoundException, IOException {
 			
 			String manuscriptName = files[i].getName();
 			
-			//prendo la pahe
+			//prendo la page
 			
 			File[] pages = files[i].listFiles();
 			for(int j = 0;j<pages.length;j++) {

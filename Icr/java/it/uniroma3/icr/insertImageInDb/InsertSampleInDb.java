@@ -64,22 +64,24 @@ public class InsertSampleInDb {
 		
 		for(int i=0;i<files.length;i++) {
 			
-			//prendo nomi cartelle transcription
-			String transcriptionSymbol = files[i].getName();
+			String symbolType = files[i].getName();
 			
-			//prendo i nomi dei manoscritti
-			File[] manuscripts = files[i].listFiles();
-			for(int j=0;i<manuscripts.length;i++) {
-				String manuscriptName = manuscripts[j].getName();
+			//prendo la page
+			
+			File[] transcriptionsSymbol = files[i].listFiles();
+			for(int j = 0;j<transcriptionsSymbol.length;j++) {
+				String transcriptionSymbol = transcriptionsSymbol[j].getName();
 				
-				//prendo i nomi delle pagine
-				File[] pages = manuscripts[j].listFiles();
-				for(int h=0; h<pages.length;h++) {
-					String pageName = pages[h].getName();
+				File[] manuscripts = transcriptionsSymbol[j].listFiles();
+				for(int m=0;m<manuscripts.length;m++) {
+					String manuscriptName = manuscripts[m].getName();
 					
-					File[] images = pages[h].listFiles();
+					File[] images = manuscripts[m].listFiles();
+					
 					for(int g=0;g<images.length;g++) {
 						String nameComplete = images[g].getName();
+						
+						
 						String pathFile = images[g].getPath();
 						
 						String newPath = pathFile.replace(images[g].separator, "/");						
@@ -92,20 +94,19 @@ public class InsertSampleInDb {
 						BufferedInputStream in = null;
 						
 						try {
-							BufferedImage b = ImageIO.read(images[g]);
+							BufferedImage f = ImageIO.read(images[g]);
 							
 							Symbol s = this.findSymbol(transcriptionSymbol);
-							String type = s.getType();
-							int width = b.getWidth();
-							int height = b.getHeight();
+							String type = symbolType;
+							int width = f.getWidth();
+							int height = f.getHeight();
 							int xImg = x;
 							int yImg = y;
-							String page = pageName;
 							String manuscript = manuscriptName;
 							String path = newPath.substring(24, newPath.length());
 							
 							Sample sample = new Sample(width,height,xImg,yImg,manuscript,
-									page,type,path);
+									type,path);
 							
 							sample.setSymbol(s);
 							this.insertSample(sample);
@@ -130,9 +131,9 @@ public class InsertSampleInDb {
 			
 		}
 		
-			
+		}
 	}
-}	
+	
 	
 	
 	

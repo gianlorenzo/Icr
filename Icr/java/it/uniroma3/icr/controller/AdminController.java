@@ -177,21 +177,7 @@ public class AdminController {
 		return "administration/insertJob";
 	}
 
-	@RequestMapping(value="/insertSymbol")
-	public String toAddSymbol(@ModelAttribute Symbol symbol) {
-		return "administration/insertSymbol";
-	}
-
-	@RequestMapping(value="/addSymbol", method = RequestMethod.POST)
-	public String addSymbol(@ModelAttribute Symbol symbol, Model model) {
-		symbolFacade.insertSymbol(symbol);
-
-		model.addAttribute("symbol", symbol);
-
-
-		return"administration/insertSymbol";
-
-	}
+	
 
 	@RequestMapping(value="/registrationAdmin", method=RequestMethod.GET)
 	public String registration(@ModelAttribute Administrator administrator, Model model) {

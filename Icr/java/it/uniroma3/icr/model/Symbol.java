@@ -33,6 +33,11 @@ public class Symbol {
 	public Symbol() {
 		
 	}
+	
+	public Symbol (String transcription, String type) {
+		this.transcription = transcription;
+		this.type = type;
+	}
 
 	public Symbol(Long id, String transcription, String type, List<Job> jobs) {
 		super();
