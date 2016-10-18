@@ -138,7 +138,7 @@
 				${student.surname}<br> <strong><c:out value="School:" /></strong>
 				${student.school}<br> <strong><c:out
 						value="SchoolGroup:" /></strong> ${student.schoolGroup}<br> <strong><c:out
-						value="Username:" /></strong> ${student.section}<br> <strong><c:out
+						value="Section:" /></strong> ${student.section}<br> <strong><c:out
 						value="Username:" /></strong> ${student.username}<br> <strong><c:out
 						value="Password:" /></strong> ${student.password}<br>
 			

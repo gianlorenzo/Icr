@@ -1,5 +1,6 @@
 package it.uniroma3.icr.model;
 
+import java.sql.*;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -7,10 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Task {
@@ -21,6 +22,12 @@ public class Task {
 	
 	@Column(nullable = false)
 	private int batch;
+	
+	@Column
+	private java.sql.Timestamp startDate;
+	
+	@Column
+	private java.sql.Timestamp endDate;
 	
 	@ManyToOne
 	private Student student;
@@ -63,12 +70,35 @@ public class Task {
 		this.results = results;
 	}
 
-	public Task(Long id, Student student, Job job, List<Result> results) {
+	
+
+	
+	public Task(Long id, int batch, Timestamp startDate, Timestamp endDate, Student student, Job job,
+			List<Result> results) {
 		super();
 		this.id = id;
+		this.batch = batch;
+		this.startDate = startDate;
+		this.endDate = endDate;
 		this.student = student;
 		this.job = job;
 		this.results = results;
+	}
+
+	public java.sql.Timestamp getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(java.sql.Timestamp startDate) {
+		this.startDate = startDate;
+	}
+
+	public java.sql.Timestamp getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(java.sql.Timestamp endDate) {
+		this.endDate = endDate;
 	}
 
 	public Task() {
@@ -76,6 +106,9 @@ public class Task {
 	}
 	
 	
+	
+	
+
 
 	public int getBatch() {
 		return batch;

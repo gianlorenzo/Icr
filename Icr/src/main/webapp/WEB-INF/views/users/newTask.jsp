@@ -80,36 +80,56 @@
 
 		<p>
 		<div style="position: inline; top: 40px;">
-			<h2>${task.job.description}: ${task.job.symbol.transcription}
-				come nell'esempio seguente:</h2>
+			<h2>${task.job.description}:${task.job.symbol.transcription}.
+				Qui trovi alcuni esempi:</h2>
 		</div>
 
-
-
-
-
 		<c:forEach var="sample" items="${samples}">
-			<img src="resources${sample.path}" alt="${sample.id}" />
+			<img src="resources${sample.path}" alt="${sample.id}" /> 
 		</c:forEach>
 
 		<form:form method="post" action="secondConsole"
 			modelAttribute="taskResults" name="form">
-			<c:forEach varStatus="vs" var="result"
-				items="${taskResults.resultList}">
 
-				<div>
-					<form:checkbox style="display:inline"
-						path="resultList[${vs.index}].answer" value="Yes" />
+			<table>
+				<c:forEach varStatus="vs" var="result"
+					items="${taskResults.resultList}">
 
-					<img style="display: inline" src="resources${result.image.path}"
-						alt="${result.image.id}" />
-				</div>
+					<c:if test="${vs.count % 5 == 1}">
 
-				<form:hidden path="resultList[${vs.index}].id" />
-				<form:hidden path="resultList[${vs.index}].image.id" />
-				<form:hidden path="resultList[${vs.index}].task.id" />
-			</c:forEach>
+						<tr>
+					</c:if>
+					<td>
+						<div class="imageBorder">
+							<p>
+							<form:checkbox style="display:inline"
+								path="resultList[${vs.index}].answer" value="Yes" />
 
+							<img style="display: inline" src="resources${result.image.path}"
+								alt="${result.image.id}" /> </p>
+						</div>
+					<td><c:if test="${vs.count % 5 == 0}">
+							</tr>
+
+
+						</c:if> <form:hidden path="resultList[${vs.index}].id" /> <form:hidden
+							path="resultList[${vs.index}].image.id" /> <form:hidden
+							path="resultList[${vs.index}].task.id" />
+							<form:hidden
+							path="resultList[${vs.index}].task.student.id" />
+							<form:hidden
+							path="resultList[${vs.index}].task.batch" />
+							<form:hidden
+							path="resultList[${vs.index}].task.job.id" />
+							<form:hidden
+							path="resultList[${vs.index}].task.startDate" />
+							
+							
+							
+				</c:forEach>
+			</table>
+			
+			
 			<div>
 				<input type="submit" value="Send">
 			</div>

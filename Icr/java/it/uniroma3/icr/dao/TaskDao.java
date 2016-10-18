@@ -11,5 +11,7 @@ public interface TaskDao {
 	public Task findTask(long id);
 	public List<Task> findAll();
 	List<Task> findTaskByStudent(Long id);
+	public void updateEndDate(Task t);
+
 	
 }

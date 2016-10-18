@@ -34,6 +34,8 @@ public class TaskFacade {
 	public Task assignTask(Student s) {
 		return this.taskDaoImpl.assignTask(s);
 	}
-	
+	public void updateEndDate(Task t) {
+		taskDaoImpl.updateEndDate(t);
+	}	
 	
 }

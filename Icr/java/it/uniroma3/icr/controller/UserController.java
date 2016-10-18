@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.icr.model.Student;
 
 import it.uniroma3.icr.service.impl.StudentFacade;
-import it.uniroma3.icr.service.impl.TaskFacade;
 
 @Controller
 public class UserController {
@@ -71,7 +70,15 @@ public class UserController {
 			model.addAttribute("usernameError", "Username Already Exists");
 			return "registration";
 		}
+			if(student.getName() == null || student.getSurname()==null || student.getSchool() == null
+					|| student.getSection() == null || student.getUsername() == null || student.getPassword() == null){
 			model.addAttribute("utente", student);
+			}
+			Map<String,String> schoolGroups = new HashMap<String,String>();
+			schoolGroups.put("3", "3");
+			schoolGroups.put("4", "4");
+			schoolGroups.put("5", "5");
+			model.addAttribute("schoolGroups", schoolGroups);
 		return "registration";
 	}
 	

@@ -16,21 +16,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
 
-<script type="text/javascript">
-	function isnum(obj) {
-
-		if (isNaN(obj.value) || parseInt(obj.value) < 0
-				|| parseInt(obj.value) > 9999)
-
-		{
-
-			alert('Nel campo è possibile immettere solo numeri!');
-			obj.value = "";
-			obj.focus();
-		}
-
-	}
-</script>
 
 <!-- Bootstrap CSS -->
 
@@ -172,6 +157,9 @@
 			</div>
 		</form:form>
 	</div>
+	
+	<script src="resources/js/file.js"></script>
+	
 
 </body>
 </html>

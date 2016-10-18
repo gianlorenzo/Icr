@@ -1,6 +1,7 @@
 package it.uniroma3.icr.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,7 +84,8 @@ public class TaskController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String s = auth.getName();
 		Student student = studentFacade.retrieveUser(s);
-
+		
+		
 		task = taskFacade.assignTask(student);
 
 		if(task!=null) {
@@ -109,6 +111,8 @@ public class TaskController {
 			Model model) {
 		List<Result> results = taskResults.getResultList();
 		for(Result result : results) {
+			Task task = result.getTask();
+			taskFacade.updateEndDate(task);
 			if(result.getAnswer() == null)
 				result.setAnswer("No");
 		}

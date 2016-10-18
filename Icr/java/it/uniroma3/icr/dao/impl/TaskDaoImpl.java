@@ -1,6 +1,9 @@
 package it.uniroma3.icr.dao.impl;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -93,6 +96,14 @@ public class TaskDaoImpl implements TaskDao {
 			if(newTaskForStudent(taskByStudent, taskList.get(i))) {
 				task = taskList.get(i);
 				task.setStudent(s1);
+				
+				Calendar calendar = Calendar.getInstance();
+				java.util.Date now = calendar.getTime();
+
+				
+				java.sql.Timestamp date = new java.sql.Timestamp(now.getTime());
+				task.setStartDate(date);
+				
 				break;
 			}
 		}
@@ -104,6 +115,24 @@ public class TaskDaoImpl implements TaskDao {
 		session.close();
 
 		return task;
+	}
+	
+	public void updateEndDate(Task t) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Calendar calendar = Calendar.getInstance();
+		java.util.Date now = calendar.getTime();
+
+		
+		java.sql.Timestamp date = new java.sql.Timestamp(now.getTime());
+		
+		t.setEndDate(date);
+		
+		session.merge(t);
+		session.getTransaction().commit();
+		session.close();
+		
+		
 	}
 
 
