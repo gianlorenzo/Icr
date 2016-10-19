@@ -52,11 +52,12 @@
 					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
+						
 
 
-							<li><a title="homeAdmin" href="homeAdmin"> Go Back to Administrator Page</a></li>
-							<li><a title="logout" href="logout"> Logout</a></li>
-
+							<a title="homeAdmin" href="homeAdmin"> Go Back to Administrator Page</a> &nbsp;
+							<a title="logout" href="logout"> Logout</a>
+						
 						</ul>
 					</nav>
 				</div>
@@ -119,6 +120,8 @@
 
 
 	</div>
+	
+	
 
 </body>
 </html>

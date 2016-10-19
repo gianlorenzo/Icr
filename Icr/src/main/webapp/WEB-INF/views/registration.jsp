@@ -39,7 +39,7 @@
 </head>
 
 <body>
-<!--******************** NAVBAR ********************-->
+	<!--******************** NAVBAR ********************-->
 	<div class="navbar-wrapper">
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
@@ -57,8 +57,8 @@
 						<ul id="menu-main" class="nav">
 
 
-							<li><a title="#" href="registrationAdmin">Student's registration page</a></li>
-							
+							<a title="#" href="#">Student's registration page</a>
+
 						</ul>
 					</nav>
 				</div>
@@ -77,51 +77,51 @@
 		<form:form method="post" action="confirmUser" modelAttribute="student"
 			name="form">
 
-				<div>
-					<h2>Name:</h2>
-					<form:input type="text" path='name' placeholder="Name" />
-				</div>
+			<div>
+				<h2>Name:</h2>
+				<form:input type="text" path='name' placeholder="Name" />
+			</div>
 
-				<div>
+			<div>
 
-					<h2>Surname:</h2>
-					<form:input type="text" path='surname' placeholder="Surname" />
-				</div>
-				<div>
+				<h2>Surname:</h2>
+				<form:input type="text" path='surname' placeholder="Surname" />
+			</div>
+			<div>
 
-					<h2>School:</h2>
-					<form:input type="text" path='school' placeholder="School" />
-				</div>
-				<div>
+				<h2>School:</h2>
+				<form:input type="text" path='school' placeholder="School" />
+			</div>
+			<div>
 
-					<h2>SchoolGroup:</h2>
-					
+				<h2>SchoolGroup:</h2>
 
-						<form:select path="schoolGroup">
-							<form:options items="${schoolGroups}" />
-						</form:select>
-					</div>
-					<div>
 
-						<h2>Section:</h2>
-						<form:input type="text" path='section' placeholder="Section" />
-					</div>
-					<div>
+				<form:select path="schoolGroup">
+					<form:options items="${schoolGroups}" />
+				</form:select>
+			</div>
+			<div>
 
-						<h2>Username:</h2>
-						<font size="3" color="red">${usernameError}</font>
-						<form:input type="text" path='username' placeholder="Username" />
-					</div>
-					<div>
+				<h2>Section:</h2>
+				<form:input type="text" path='section' placeholder="Section" />
+			</div>
+			<div>
 
-						<h2>Password:</h2>
-						<form:input type="Password" path='password' placeholder="Password" />
-					</div>
+				<h2>Username:</h2>
+				<font size="3" color="red">${usernameError}</font>
+				<form:input type="text" path='username' placeholder="Username" />
+			</div>
+			<div>
 
-					<font color="white"><springForm:errors path="username" /></font> <font
-						color="white"><springForm:errors path="password" /></font>
-				<input type="submit" value="Send" />
-				
+				<h2>Password:</h2>
+				<form:input type="Password" path='password' placeholder="Password" />
+			</div>
+
+			<font color="white"><springForm:errors path="username" /></font>
+			<font color="white"><springForm:errors path="password" /></font>
+			<input type="submit" value="Send" />
+
 		</form:form>
 
 
@@ -129,26 +129,27 @@
 
 		<c:if test="${not empty student.username}">
 			<h2>
-				 <c:out
-						value="Confirm the following information:" />
+				<c:out value="Confirm the following information:" />
 			</h2>
 			<br>
-			 <strong><c:out value="Name:" /></strong>
-				${student.name}<br> <strong><c:out value="Surname:" /></strong>
-				${student.surname}<br> <strong><c:out value="School:" /></strong>
-				${student.school}<br> <strong><c:out
-						value="SchoolGroup:" /></strong> ${student.schoolGroup}<br> <strong><c:out
-						value="Section:" /></strong> ${student.section}<br> <strong><c:out
-						value="Username:" /></strong> ${student.username}<br> <strong><c:out
-						value="Password:" /></strong> ${student.password}<br>
-			
+			<strong><c:out value="Name:" /></strong>
+				${student.name}<br>
+			<strong><c:out value="Surname:" /></strong>
+				${student.surname}<br>
+			<strong><c:out value="School:" /></strong>
+				${student.school}<br>
+			<strong><c:out value="SchoolGroup:" /></strong> ${student.schoolGroup}<br>
+			<strong><c:out value="Section:" /></strong> ${student.section}<br>
+			<strong><c:out value="Username:" /></strong> ${student.username}<br>
+			<strong><c:out value="Password:" /></strong> ${student.password}<br>
+
 			<form:form method="post" action="addUser" modelAttribute="student"
 				name="form2">
 				<input type="submit" value="Confirm" />
 				<br>
 				<br>
 
-				
+
 
 				<form:input type="hidden" path='name' placeholder="id" />
 				<br />

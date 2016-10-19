@@ -61,16 +61,18 @@ body {
 					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
+						
 
 							
-							<li><a title="newTask" href="newTask">
-									Go to Your Task Page</a></li>
+							<a title="newTask" href="newTask">
+									Go to Your Task Page</a>&nbsp;
 							
-							<li><a title="newAdmin" href="studentTasks">
-									Tasks Performed</a></li>		
+							<a title="newAdmin" href="studentTasks">
+									Tasks Performed</a>		&nbsp;
 									
-							<li><a title="logout" href="logout">
-									Logout</a></li>
+							<a title="logout" href="logout">
+									Logout</a>
+									
 
 						</ul>
 					</nav>
@@ -81,6 +83,7 @@ body {
 		</div>
 		<!-- /.navbar -->
 	</div>
+
 
 
 </body>

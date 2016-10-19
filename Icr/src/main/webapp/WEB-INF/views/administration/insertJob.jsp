@@ -63,7 +63,7 @@
 
 
 
-							<li><a title="logout" href="logout"> Logout</a></li>
+							<a title="logout" href="logout"> Logout</a>
 
 						</ul>
 					</nav>
@@ -157,9 +157,9 @@
 			</div>
 		</form:form>
 	</div>
-	
+
 	<script src="resources/js/file.js"></script>
-	
+
 
 </body>
 </html>

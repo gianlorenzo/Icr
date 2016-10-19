@@ -55,14 +55,15 @@
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
 
+							
 
 
+									<a title="newAdmin" href="studentTasks"> Tasks
+											Performed</a>&nbsp;
 
-							<li><a title="newAdmin" href="studentTasks"> Tasks
-									Performed</a></li>
-
-							<li><a title="logout" href="logout"> Logout</a></li>
-
+									<a title="logout" href="logout"> Logout</a>
+					
+						
 						</ul>
 					</nav>
 				</div>

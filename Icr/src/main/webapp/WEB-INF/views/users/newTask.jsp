@@ -63,7 +63,7 @@
 
 
 
-							<li><a title="logout" href="logout"> Logout</a></li>
+							<a title="logout" href="logout"> Logout</a>
 
 						</ul>
 					</nav>
@@ -83,11 +83,15 @@
 			<h2>${task.job.description}:${task.job.symbol.transcription}.
 				Qui trovi alcuni esempi:</h2>
 		</div>
+		<table>
+			<c:forEach varStatus="vs" var="sample" items="${samples}">
 
-		<c:forEach var="sample" items="${samples}">
-			<img src="resources${sample.path}" alt="${sample.id}" /> 
-		</c:forEach>
 
+				<img src="resources${sample.path}" alt="${sample.id}" />
+
+			</c:forEach>
+
+		</table>
 		<form:form method="post" action="secondConsole"
 			modelAttribute="taskResults" name="form">
 
@@ -100,36 +104,33 @@
 						<tr>
 					</c:if>
 					<td>
-						<div class="imageBorder">
-							<p>
+						<p>
 							<form:checkbox style="display:inline"
 								path="resultList[${vs.index}].answer" value="Yes" />
 
 							<img style="display: inline" src="resources${result.image.path}"
-								alt="${result.image.id}" /> </p>
-						</div>
-					<td><c:if test="${vs.count % 5 == 0}">
-							</tr>
+								alt="${result.image.id}" />
+						</p>
+					</td>
+					<c:if test="${vs.count % 5 == 0}">
+						</tr>
 
 
-						</c:if> <form:hidden path="resultList[${vs.index}].id" /> <form:hidden
-							path="resultList[${vs.index}].image.id" /> <form:hidden
-							path="resultList[${vs.index}].task.id" />
-							<form:hidden
-							path="resultList[${vs.index}].task.student.id" />
-							<form:hidden
-							path="resultList[${vs.index}].task.batch" />
-							<form:hidden
-							path="resultList[${vs.index}].task.job.id" />
-							<form:hidden
-							path="resultList[${vs.index}].task.startDate" />
-							
-							
-							
+					</c:if>
+					<form:hidden path="resultList[${vs.index}].id" />
+					<form:hidden path="resultList[${vs.index}].image.id" />
+					<form:hidden path="resultList[${vs.index}].task.id" />
+					<form:hidden path="resultList[${vs.index}].task.student.id" />
+					<form:hidden path="resultList[${vs.index}].task.batch" />
+					<form:hidden path="resultList[${vs.index}].task.job.id" />
+					<form:hidden path="resultList[${vs.index}].task.startDate" />
+
+
+
 				</c:forEach>
 			</table>
-			
-			
+
+
 			<div>
 				<input type="submit" value="Send">
 			</div>

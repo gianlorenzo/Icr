@@ -42,7 +42,7 @@ body {
 
 </head>
 <body>
-<!--******************** NAVBAR ********************-->
+	<!--******************** NAVBAR ********************-->
 	<div class="navbar-wrapper">
 		<div class="navbar navbar-inverse navbar-fixed-top">
 			<div class="navbar-inner">
@@ -53,19 +53,17 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span>
 					</a>
 					<h2 class="brand">
-						<a href="#">Welcome in your Administration Panel:${pageContext.request.userPrincipal.name}
-						</a>
+						<a href="#">Welcome in your Administration
+							Panel:${pageContext.request.userPrincipal.name} </a>
 					</h2>
 					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
 
 							
-							<li><a title="newAdmin" href="insertJob">
-									Create a new Job</a></li>
-							<li><a title="logout" href="logout">
-									Logout</a></li>
 
+									<a title="newAdmin" href="insertJob"><font color="white"> Create a new Job</a> &nbsp;
+									<a title="logout" href="logout"> Logout</a>
 						</ul>
 					</nav>
 				</div>
@@ -76,7 +74,7 @@ body {
 		<!-- /.navbar -->
 	</div>
 
-	
+
 
 </body>
 </html>

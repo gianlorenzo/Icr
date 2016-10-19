@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="<c:url value=" resources/css/style.css" />"
 	type="text/css">
 
+
 <!-- Favicon -->
 <link rel="shortcut icon"
 	href="<c:url value="resources/img/siteImages/favicon.ico"/>">
@@ -50,18 +51,19 @@
 					<h1 class="brand">
 						<a href="index">In Codice Ratio</a>
 					</h1>
-					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
 
-							
-							<li><a title="newAdmin" href="registrationAdmin">Sign up
-									new Admin</a></li>
-							<li><a title="newAccount" href="registration">Sign up
-									new Account</a></li>
+							<a href="registrationAdmin"> Sign
+									up new Admin</a> &nbsp;
+							<a href="registration">Sign up new
+									Account</a>
+
 
 						</ul>
+
 					</nav>
+
 				</div>
 				<!-- /.container -->
 			</div>
@@ -71,23 +73,25 @@
 	</div>
 
 	<div align="center">
-		<h2>
-			<strong>Sign in with your credentials</strong>
-		</h2>
-		<div>
-			<form method="POST" name="f"
-				action="<c:url value="/${pageContext.request.contextPath}/j_spring_security_check"/>">
-				<h3>Username</h3>
-				<input type='text' name='j_username' />
+		<div style="position: inline; top: 40px;">
 
-				<h3>Password</h3>
-				<input type='password' name='j_password'>
-				<div>
-					<input name="submit" type="submit" value="Send">
-				</div>
-			</form>
+			<div>
+				<form method="POST" name="f"
+					action="<c:url value="/${pageContext.request.contextPath}/j_spring_security_check"/>">
+					<h3>Username</h3>
+					<input type='text' name='j_username' />
+
+					<h3>Password</h3>
+					<input type='password' name='j_password'>
+					<div>
+						<input name="submit" type="submit" value="Send">
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
+
+
 
 
 </body>

@@ -57,15 +57,14 @@
 					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
+							
+									<a title="newTask" href="homeStudent"> Go to Your
+											Student Page</a>&nbsp;
 
 
-							<li><a title="newTask" href="homeStudent"> Go to Your
-									Student Page</a></li>
 
-
-
-							<li><a title="logout" href="logout"> Logout</a></li>
-
+									<a title="logout" href="logout"> Logout</a>
+								
 						</ul>
 					</nav>
 				</div>
@@ -81,16 +80,19 @@
 			<font color="white">These are your tasks performed</font>
 		</h1>
 
-	<div style="position: inline; top: 40px;">
-	
-		<c:forEach var="task" items="${studentTasks}">
-			<div>
-				<c:out value="${task.id}"></c:out>
-			</div>
-		</c:forEach>
-	</div>
+		<div style="position: inline; top: 40px;">
+
+			<c:forEach var="task" items="${studentTasks}">
+				<div>
+					<c:out value="${task.id}"></c:out>
+				</div>
+			</c:forEach>
+		</div>
 
 	</div>
+	
+		<script src="resources/js/dropdown.js"></script>
+	
 
 
 

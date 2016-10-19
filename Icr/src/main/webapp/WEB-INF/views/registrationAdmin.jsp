@@ -54,10 +54,9 @@
 					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
+							<a title="login" href="login">Administrator's
+									registration page</a>
 
-
-							<li><a title="#" href="registrationAdmin">Administrator's registration page</a></li>
-							
 						</ul>
 					</nav>
 				</div>
@@ -104,7 +103,7 @@
 				modelAttribute="administrator" name="form2">
 				<input type="submit" value="Confirm" />
 
-				
+
 				<form:input type="hidden" path='username' placeholder="id" />
 
 
