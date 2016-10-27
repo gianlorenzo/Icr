@@ -19,7 +19,8 @@ import it.uniroma3.icr.model.Image;
 @Repository
 public class InsertImageInDb {
 	
-	private static final String path ="C:\\Users\\NandG\\Documents\\img\\sources\\training\\";
+	private static final String path ="/usr/share/tomcat/webapps/InCodiceRatio/resources/img/sources/training/";
+
 	
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -61,27 +62,26 @@ public void getListJpegProperties() throws FileNotFoundException, IOException {
 						String nameComplete = images[g].getName();
 						String pathFile = images[g].getPath();
 						
-						String newPath = pathFile.replace(images[g].separator, "/");
 						
 						String name = FilenameUtils.getBaseName(nameComplete);
 						String[] parts = name.split("_");
 						
-						int x = Integer.valueOf(parts[0]);
-						int y = Integer.valueOf(parts[1]);
+						int width = Integer.valueOf(parts[0]);
+						int x = Integer.valueOf(parts[1]);
+						int y = Integer.valueOf(parts[2]);
 						
 						BufferedInputStream in = null;
 						
 						try {
 							BufferedImage b = ImageIO.read(images[g]);
 							
-							int width = b.getWidth();
 							int height = b.getHeight();
 							int xImg = x;
 							int yImg = y;
 							String page = pageName;
 							String manuscript = manuscriptName;
 							String type = typeName;
-							String path = newPath.substring(24, newPath.length());
+							String path = pathFile.substring(49, pathFile.length());
 							
 							Image img = new Image(width,height,type,page,
 									manuscript,xImg,yImg,path);;

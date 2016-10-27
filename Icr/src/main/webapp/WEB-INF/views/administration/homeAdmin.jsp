@@ -6,6 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
 
+<!-- Google Web fonts -->
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Patua+One'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css'>
+
 <!-- Bootstrap CSS -->
 
 <link type="text/css"
@@ -31,11 +41,10 @@
 
 <style type="text/css">
 body {
-	background-image: url('./resources/img/siteImages/homePage.png');
+	background-color: #000000;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
-	background-size: 1420px 650px;
 }
 </style>
 
@@ -53,17 +62,16 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span>
 					</a>
 					<h2 class="brand">
-						<a href="#">Welcome in your Administration
-							Panel:${pageContext.request.userPrincipal.name} </a>
+						<a href="#">Benvenuto nella tua pagina:
+							${pageContext.request.userPrincipal.name} </a>
 					</h2>
 					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
 
-							
 
-									<a title="newAdmin" href="insertJob"><font color="white"> Create a new Job</a> &nbsp;
-									<a title="logout" href="logout"> Logout</a>
+
+							<a title="logout" href="logout"> Logout</a>
 						</ul>
 					</nav>
 				</div>
@@ -74,6 +82,44 @@ body {
 		<!-- /.navbar -->
 	</div>
 
+	<div align="center">
+		<div style="position: inline; top: 100px;">
+			<h1>
+				<a title="newAdmin" href="insertJob"> Crea un nuovo Job</a>
+			</h1>
+			<div>
+				<h1>
+					<a title="insertImage" href="insertImage">Inserisci le immagini
+						nel Database</a>
+				</h1>
+			</div>
+			<div>
+				<h1>
+					<a title="insertSymbol" href="insertSymbol">Inserisci i simboli
+						nel Database</a>
+				</h1>
+			</div>
+			<div>
+				<h1>
+					<a title="insertSample" href="insertSample">Inserisci gli
+						esempi nel Database</a>
+				</h1>
+			</div>
+			<div>
+				<h1>
+					<a title="Jobs" href="listJobs">Job creati</a>
+				</h1>
+			</div>
+
+			<div>
+				<h1>
+					<a title="Jobs" href="resultConsole">Console dei Risultati</a>
+				</h1>
+			</div>
+			
+
+		</div>
+	</div>
 
 
 </body>

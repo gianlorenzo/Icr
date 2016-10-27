@@ -10,6 +10,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
+
+<!-- Google Web fonts -->
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Patua+One'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css'>
 <!-- Bootstrap CSS -->
 
 <link rel="stylesheet"
@@ -36,11 +46,11 @@
 <body>
 	<div style="position: absolute; top: 15px; left: 10px">
 
-		<font size="6" color="white">Student Page</font>
+		<font size="6" color="white">Pagina dello studente</font>
 	</div>
 
 	<div style="position: absolute; top: 15px; right: 40px">
-		<font size="6" color="white">Welcome:
+		<font size="6" color="white">Benvenuto:
 			${pageContext.request.userPrincipal.name}</font>
 	</div>
 

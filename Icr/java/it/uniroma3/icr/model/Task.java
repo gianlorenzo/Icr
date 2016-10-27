@@ -10,8 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 @Entity
 public class Task {
@@ -70,9 +69,6 @@ public class Task {
 		this.results = results;
 	}
 
-	
-
-	
 	public Task(Long id, int batch, Timestamp startDate, Timestamp endDate, Student student, Job job,
 			List<Result> results) {
 		super();
@@ -105,11 +101,6 @@ public class Task {
 		
 	}
 	
-	
-	
-	
-
-
 	public int getBatch() {
 		return batch;
 	}

@@ -12,6 +12,16 @@
 
 <title>ICR</title>
 
+<!-- Google Web fonts -->
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Patua+One'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css'>
+
 <!-- Bootstrap CSS -->
 
 <link rel="stylesheet"
@@ -64,7 +74,7 @@ body {
 						<ul id="menu-main" class="nav">
 
 
-							<a title="login" href="login">Sign in</a>
+							<a title="login" href="login">Login</a>
 
 
 						</ul>

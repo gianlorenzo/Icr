@@ -10,6 +10,16 @@
 <meta charset="utf-8">
 <title>ICR</title>
 
+<!-- Google Web fonts -->
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Patua+One'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css'>
+
 <!-- Bootstrap CSS -->
 
 <link rel="stylesheet"
@@ -54,10 +64,8 @@
 					<nav class="pull-right nav-collapse collapse">
 						<ul id="menu-main" class="nav">
 
-							<a href="registrationAdmin"> Sign
-									up new Admin</a> &nbsp;
-							<a href="registration">Sign up new
-									Account</a>
+							<a href="registrationAdmin"> Registra un nuovo Admin</a> 
+							<a href="registration">Registra un nuovo Studente</a>
 
 
 						</ul>
@@ -84,7 +92,7 @@
 					<h3>Password</h3>
 					<input type='password' name='j_password'>
 					<div>
-						<input name="submit" type="submit" value="Send">
+						<input name="submit" type="submit" value="Invio">
 					</div>
 				</form>
 			</div>

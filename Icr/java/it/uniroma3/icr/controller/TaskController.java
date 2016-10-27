@@ -1,32 +1,28 @@
 package it.uniroma3.icr.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.icr.model.Image;
 import it.uniroma3.icr.model.Job;
 import it.uniroma3.icr.model.Result;
 import it.uniroma3.icr.model.Sample;
 import it.uniroma3.icr.model.Student;
-import it.uniroma3.icr.model.Symbol;
 import it.uniroma3.icr.model.Task;
 import it.uniroma3.icr.model.TaskWrapper;
 import it.uniroma3.icr.service.editor.ImageEditor;
@@ -42,6 +38,7 @@ import it.uniroma3.icr.service.impl.TaskFacade;
 
 @Controller
 public class TaskController {
+	private final static Logger logger = Logger.getLogger(TaskController.class);
 
 	private @Autowired ImageEditor imageEditor;
 
@@ -76,61 +73,83 @@ public class TaskController {
 	}
 
 	@RequestMapping(value="/newTask", method = RequestMethod.GET)
-	public String task(@ModelAttribute Task task,@ModelAttribute Job job,@ModelAttribute Result result,
-			@ModelAttribute Image image,
-			@ModelAttribute("taskResults")TaskWrapper taskResults,Model model) {
+	public String task(@ModelAttribute Task task, @ModelAttribute Job job, @ModelAttribute Result result,
+			@ModelAttribute("taskResults")TaskWrapper taskResults, Model model,
+			HttpServletRequest request) {
 
+		try {
 
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String s = auth.getName();
-		Student student = studentFacade.retrieveUser(s);
-		
-		
-		task = taskFacade.assignTask(student);
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			String s = auth.getName();
+			Student student = studentFacade.retrieveUser(s);
 
-		if(task!=null) {
+			Long taskId = (Long)request.getSession().getAttribute("thisId");
 
-			List<Sample> samples = symbolFacade.findAllSamplesBySymbolId(task.getJob().getSymbol().getId());
+			task = taskFacade.assignTask(student, taskId);
 
-			List<Result> list = resultFacade.findTaskResult(task);
-			taskResults.setResultList(list);	
+			if(task!=null) {
 
-			model.addAttribute("samples", samples);
+				request.getSession().setAttribute("thisId", task.getId());
 
-			model.addAttribute("task", task);
-			model.addAttribute("taskResults", taskResults);
+				List<Sample> samples = symbolFacade.findAllSamplesBySymbolId(task.getJob().getSymbol().getId());
 
-			return "users/newTask";
+				List<Result> list = resultFacade.findTaskResult(task);
+				taskResults.setResultList(list);	
+
+				model.addAttribute("samples", samples);
+
+				model.addAttribute("task", task);
+				model.addAttribute("taskResults", taskResults);
+
+				return "users/newTask";
+			}
+			return "users/goodBye";
+		}catch(Exception e) {
+			logger.error("FATAL EXCEPTION", e);
+			model.addAttribute("error", e.getMessage());
+			return "error";
 		}
-		return "users/goodBye";
 
 	}
 
 	@RequestMapping(value="/secondConsole", method = RequestMethod.POST)
 	public String taskRecap(@ModelAttribute("taskResults")TaskWrapper taskResults,
-			Model model) {
-		List<Result> results = taskResults.getResultList();
-		for(Result result : results) {
-			Task task = result.getTask();
-			taskFacade.updateEndDate(task);
-			if(result.getAnswer() == null)
-				result.setAnswer("No");
-		}
-		resultFacade.updateListResult(results);
+			Model model, HttpServletRequest request) {
 
-		return "users/homeStudent";
+		try{
+			List<Result> results = taskResults.getResultList();
+			for(Result result : results) {
+				Task task = result.getTask();
+				taskFacade.updateEndDate(task);
+				if(result.getAnswer() == null)
+					result.setAnswer("No");
+			}
+			resultFacade.updateListResult(results);
+			request.getSession().removeAttribute("thisId");
+
+			return "users/homeStudent";
+		}catch(Exception e) {
+			logger.error("FATAL EXCEPTION", e);
+			model.addAttribute("error", e.getMessage());
+			return "error";
+		}
 
 	}
-	
+
 	@RequestMapping(value="/studentTasks")
 	public String studentTasks(Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		Student s = studentFacade.retrieveUser(auth.getName());
-    	List<Task> studentTasks = taskFacade.findTaskByStudent(s.getId());
-    	
-    	model.addAttribute("studentTasks", studentTasks);
-		return "users/studentTasks";
+		try {
+			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+			Student s = studentFacade.retrieveUser(auth.getName());
+			List<Task> studentTasks = taskFacade.findTaskByStudent(s.getId());
+			model.addAttribute("studentTasks", studentTasks);
+			return "users/studentTasks";
+		}catch(Exception e) {
+			logger.error("FATAL EXCEPTION", e);
+			model.addAttribute("error", e.getMessage());
+			return "error";
 		}
+	}
 
 }		
 

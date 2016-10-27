@@ -1,17 +1,8 @@
 package it.uniroma3.icr.dao.impl;
 
-import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
 import java.util.List;
-import java.util.Scanner;
 
-import javax.imageio.ImageIO;
-
-import org.apache.commons.io.*;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -25,12 +16,12 @@ import it.uniroma3.icr.model.Image;
 
 @Repository
 public class ImageDaoImpl implements ImageDao {
-	
+
 	public InsertImageInDb insertImageInDb;
 
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	public void insertImage(Image image) {
 		Session session = sessionFactory.openSession();
@@ -38,7 +29,7 @@ public class ImageDaoImpl implements ImageDao {
 		session.save(image);
 		session.getTransaction().commit();
 		session.close();
-		
+
 	}
 
 	@Override
@@ -46,7 +37,8 @@ public class ImageDaoImpl implements ImageDao {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Image i = (Image) session.get(Image.class, id);
-		
+		session.getTransaction().commit();
+		session.close();
 		return i;
 	}
 
@@ -64,13 +56,14 @@ public class ImageDaoImpl implements ImageDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Image> findImageForType(String type) {
+	public List<Image> findImageForTypeAndWidth(String type,int width, int limit) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s ="FROM Image i WHERE i.type = :type ORDER BY RANDOM()";
+		String s ="FROM Image i WHERE i.type = :type and i.width = :width ORDER BY RANDOM()";
 		Query query = session.createQuery(s);
 		query.setParameter("type", type);
-		List<Image> images = query.list();
+		query.setParameter("width", width);
+		List<Image> images = query.setMaxResults(limit).list();
 		session.close();
 		return images;
 	}
@@ -86,24 +79,29 @@ public class ImageDaoImpl implements ImageDao {
 		session.close();
 		return manuscripts;
 	}
-	
-	
-	
-	
-	
 
-
-	
-
+	@SuppressWarnings("unchecked")
+	@Override
+	public Object[] countImage() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		String s = "select count (*), type,width from image group by type,width";
+		Query query = session.createQuery(s);
+		List<Image> images = query.list();
+		Object[] objectList = images.toArray();
+		session.close(); 
+		
+		return objectList;
+	}
 
 }
 
 
-	
-	
-	
 
-	
-	
+
+
+
+
+
 
 

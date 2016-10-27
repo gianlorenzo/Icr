@@ -1,14 +1,13 @@
 package it.uniroma3.icr.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -54,6 +53,7 @@ public class Student {
 		return tasks;
 	}
 
+	
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
@@ -133,10 +133,5 @@ public class Student {
 	public void addTask(Task t) {
 		this.tasks.add(t);
 	}
-	
-	
-
-	
-	
 	
 }

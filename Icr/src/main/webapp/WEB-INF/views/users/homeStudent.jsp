@@ -7,6 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ICR</title>
 
+<!-- Google Web fonts -->
+
+
+<link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Patua+One'
+	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css'>
+
 <!-- Bootstrap CSS -->
 
 <link type="text/css"
@@ -55,7 +65,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span>
 					</a>
 					<h2 class="brand">
-						<a href="#">Welcome in your Student Panel:${pageContext.request.userPrincipal.name}
+						<a href="#">Benvenuto nella tua pagina: ${pageContext.request.userPrincipal.name}
 						</a>
 					</h2>
 					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
@@ -65,10 +75,10 @@ body {
 
 							
 							<a title="newTask" href="newTask">
-									Go to Your Task Page</a>&nbsp;
+									Vai al prossimo task</a>
 							
 							<a title="newAdmin" href="studentTasks">
-									Tasks Performed</a>		&nbsp;
+									Task Effettuati</a>		
 									
 							<a title="logout" href="logout">
 									Logout</a>
