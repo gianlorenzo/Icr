@@ -38,15 +38,15 @@
   </context-param>
   <context-param>
     <param-name>pathImage</param-name>
-    <param-value>C:\\Users\\NandG\\Documents\\apache-tomcat-7.0.54\\webapps\\InCodiceRatio\\resources\\img\\sources\\training\\</param-value>
+    <param-value>/usr/share/tomcat/webapps/InCodiceRatio/resources/img/sources/training/</param-value>
   </context-param>
   <context-param>
     <param-name>pathSample</param-name>
-    <param-value>C:\\Users\\NandG\\Documents\\apache-tomcat-7.0.54\\webapps\\InCodiceRatio\\resources\\img\\sources\\samples\\</param-value>
+    <param-value>/usr/share/tomcat/webapps/InCodiceRatio/resources/img/sources/samples/</param-value>
   </context-param>
   <context-param>
     <param-name>pathNegativeSample</param-name>
-    <param-value>C:\\Users\\NandG\\Documents\\apache-tomcat-7.0.54\\webapps\\InCodiceRatio\\resources\\img\\sources\\negativeSamples\\</param-value>
+    <param-value>/usr/share/tomcat/webapps/InCodiceRatio/resources/img/sources/negativeSamples/</param-value>
   </context-param>
   <filter>
     <filter-name>springSecurityFilterChain</filter-name>
