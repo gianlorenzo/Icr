@@ -14,7 +14,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class Job {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -36,6 +35,9 @@ public class Job {
 	
 	@Column(nullable=false)
 	private String imageManuscript;
+	
+	@Column
+	private String difficulty;
 	
 	@ManyToMany
 	List<Image> images;
@@ -70,8 +72,14 @@ public class Job {
 		this.numberOfImages = numberOfImages;
 	}
 
-	
-	
+	public String getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(String difficulty) {
+		this.difficulty = difficulty;
+	}
+
 	public int getNumberOfStudents() {
 		return numberOfStudents;
 	}
@@ -143,8 +151,6 @@ public class Job {
 		this.symbol = symbol;
 	}
 	
-	
-
 	public String getImageManuscript() {
 		return imageManuscript;
 	}

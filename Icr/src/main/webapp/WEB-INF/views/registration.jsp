@@ -13,138 +13,124 @@
 <meta charset="utf-8">
 <title>ICR</title>
 
-<!-- Google Web fonts -->
+<!--[if lte IE 8]><script src="resources/js/ie/html5shiv.js"></script><![endif]-->
+<link rel="stylesheet" href="resources/css/registration.css" />
 
 
-<link href='http://fonts.googleapis.com/css?family=Quattrocento:400,700'
-	rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Patua+One'
-	rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans'
-	rel='stylesheet' type='text/css'>
-
-<!-- Bootstrap CSS -->
-
-<link rel="stylesheet"
-	href="<c:url value=" resources/css/bootstrap.responsive.css" />"
-	type="text/css">
-<link rel="stylesheet"
-	href="<c:url value=" resources/css/bootstrap.css" />" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value=" resources/css/fontello-ie7.css" />"
-	type="text/css">
-<link rel="stylesheet"
-	href="<c:url value=" resources/css/fontello.css" />" type="text/css">
-<link rel="stylesheet"
-	href="<c:url value=" resources/css/prettyPhoto.css" />" type="text/css">
-<link rel="stylesheet" href="<c:url value=" resources/css/style.css" />"
-	type="text/css">
+<!--[if lte IE 8]><link rel="stylesheet" href="resources/css/ie8.css" /><![endif]-->
+<!--[if lte IE 9]><link rel="stylesheet" href="resources/css/ie9.css" /><![endif]-->
 
 <!-- Favicon -->
 <link rel="shortcut icon"
 	href="<c:url value="resources/img/siteImages/favicon.ico"/>">
-
-
-
 </head>
 
-<body>
-	<!--******************** NAVBAR ********************-->
-	<div class="navbar-wrapper">
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-					<a class="btn btn-navbar" data-toggle="collapse"
-						data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span>
-					</a>
-					<h1 class="brand">
-						<a href="index">In Codice Ratio</a>
-					</h1>
-					<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-					<nav class="pull-right nav-collapse collapse">
-						<ul id="menu-main" class="nav">
+<body class="landing">
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header" class="alt">
+			
+			<nav id="nav">
+				<ul>
+					<li class="special"><a href="#menu" class="menuToggle"><span>Menu</span></a>
+						<div id="menu">
+							<ul>
+								<li><a href="login">Log In</a></li>
+								<li><a href="registration">Registra un nuovo Studente</a></li>
+								<li><a href="index">Torna alla pagina principale</a></li>
+							</ul>
+						</div></li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+	<div class="form">
+
+		<div class="tab-content">
+			<div id="signup">
+				<h1>Registrati</h1>
+
+				<form:form method="post" action="addUser" modelAttribute="student"
+					name="f1" onsubmit="return matchpass()">
+
+					<div class="top-row">
+						<div class="field-wrap">
+							<label> Nome </label>
+							<form:input type="text" path="name" placeholder="Nome" />
+						</div>
+
+						<div class="field-wrap">
+							<label> Cognome </label>
+							<form:input type="text" path="surname" placeholder="Cognome" />
+						</div>
 
 
-							<a title="#" href="#">Pagina di registrazione dello studente</a>
+						<div class="field-wrap">
+							<label> Scuola </label>
+							<form:input type="text" path='school' placeholder="Scuola" />
+						</div>
 
-						</ul>
-					</nav>
-				</div>
-				<!-- /.container -->
+						<div class="field-wrap">
+							<label> Anno </label>
+							<form:select path="schoolGroup">
+								<form:options items="${schoolGroups}" />
+							</form:select>
+						</div>
+
+						<div class="field-wrap">
+							<label> Sezione </label>
+							<form:input type="text" path='section' placeholder="Sezione" />
+						</div>
+
+						<div class="field-wrap">
+							<label> Username<font size="3" color="red">${usernameError}</font>
+							</label>
+							<form:input type="text" path='username' placeholder="Username" />
+						</div>
+
+						<div class="field-wrap">
+							<label> Password </label>
+							<form:input type="password" path='password'
+								placeholder="Password" name="password" />
+						</div>
+						<div class="field-wrap">
+							<label> Conferma Password </label> <input type="password"
+								placeholder="Conferma Password" name="password2" />
+						</div>
+
+						<font color="white"><springForm:errors path="username" /></font>
+						<font color="white"><springForm:errors path="password" /></font>
+
+						<button type="submit" class="button button-block">Conferma</button>
+					</div>
+				</form:form>
+
 			</div>
-			<!-- /.navbar-inner -->
+
+			<div id="login"></div>
+
 		</div>
-		<!-- /.navbar -->
-	</div>
-
-	<div align="center">
-
-
-		<form:form method="post" action="addUser" modelAttribute="student"
-			name="form">
-
-			<div style="position: inline; top: 40px;">
-
-
-				<div>
-					<h2>Nome:</h2>
-					<form:input type="text" path='name' placeholder="Name" />
-				</div>
-
-				<div>
-
-					<h2>Cognome:</h2>
-					<form:input type="text" path='surname' placeholder="Surname" />
-				</div>
-				<div>
-
-					<h2>Scuola:</h2>
-					<form:input type="text" path='school' placeholder="School" />
-				</div>
-				<div>
-
-					<h2>Anno:</h2>
-
-
-					<form:select path="schoolGroup">
-						<form:options items="${schoolGroups}" />
-					</form:select>
-				</div>
-				<div>
-
-					<h2>Sezione:</h2>
-					<form:input type="text" path='section' placeholder="Section" />
-				</div>
-
-				<div>
-
-					<h2>
-						Username: <font size="3" color="red">${usernameError}</font>
-					</h2>
-					<form:input type="text" path='username' placeholder="Username" />
-				</div>
-				<div>
-
-					<h2>Password:</h2>
-					<form:input type="Password" path='password' placeholder="Password" />
-				</div>
-
-				<font color="red"><springForm:errors path="username" /></font> <font
-					color="red"><springForm:errors path="password" /></font> <input
-					type="submit" value="Invio" />
-
-
-
-
-			</div>
-
-
-		</form:form>
-
-
+		<!-- tab-content -->
 
 	</div>
+	<!-- /form -->
+
+
+
+	<!-- Scripts -->
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/jquery.scrollex.min.js"></script>
+	<script src="resources/js/jquery.scrolly.min.js"></script>
+	<script src="resources/js/skel.min.js"></script>
+	<script src="resources/js/util.js"></script>
+	<!--[if lte IE 8]><script src="resources/js/ie/respond.min.js"></script><![endif]-->
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/checkPassword.js"></script>
+
+
+
+
 </body>
 </html>

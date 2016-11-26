@@ -3,9 +3,10 @@ package it.uniroma3.icr.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -26,8 +27,6 @@ import it.uniroma3.icr.service.impl.StudentFacade;
 @Controller
 public class UserController {
 
-	private final static Logger logger = Logger.getLogger(UserController.class);
-
 	@Autowired
 	private StudentFacade userFacade;
 
@@ -42,24 +41,17 @@ public class UserController {
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public String registrazione(@ModelAttribute Student student, Model model) {
 
-		try {
-			Map<String,String> schoolGroups = new HashMap<String,String>();
-			schoolGroups.put("3", "3");
-			schoolGroups.put("4", "4");
-			schoolGroups.put("5", "5");
-			model.addAttribute("schoolGroups", schoolGroups);
+		Map<String,String> schoolGroups = new HashMap<String,String>();
+		schoolGroups.put("3", "3");
+		schoolGroups.put("4", "4");
+		schoolGroups.put("5", "5");
+		model.addAttribute("schoolGroups", schoolGroups);
 
-			return "registration";
-		}catch(Exception e) {
-			logger.error("FATAL EXCEPTION", e);
-			model.addAttribute("error", e.getMessage());
-			return "error";
-		}
+		return "registration";
 	}
 
 	@RequestMapping(value="/addUser", method = RequestMethod.POST)
-	public String confirmUser(@ModelAttribute Student student, Model model, 
-			@Validated Student p, BindingResult bindingResult) {
+	public String confirmUser(@ModelAttribute Student student, Model model, @Validated Student p, BindingResult bindingResult) {
 
 		Map<String,String> schoolGroups = new HashMap<String,String>();
 		schoolGroups.put("3", "3");
@@ -68,9 +60,10 @@ public class UserController {
 		model.addAttribute("schoolGroups", schoolGroups);
 
 		Student u = userFacade.retrieveUser(student.getUsername());
-		if(bindingResult.hasErrors()) {
+		if(bindingResult.hasErrors() || student.getName().isEmpty() || student.getSurname().isEmpty()) {
 			return "registration";
 		}
+
 		if(u!=null) {
 			model.addAttribute("usernameError","Username già esistente");
 			return "registration";
@@ -78,15 +71,39 @@ public class UserController {
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		String passwordEncode = passwordEncoder.encode(student.getPassword());
 		student.setPassword(passwordEncode);
+
 		model.addAttribute("student", student);
 
 		userFacade.addUser(student);
-		return "login";
+		return "registrationRecap";
 
 	}
 
+	@RequestMapping(value="/toChangePassword")
+	public String toChangePassword(@ModelAttribute Student student, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		student = userFacade.retrieveUser(username);
+		model.addAttribute("student", student);
+		return "users/changePassword";
+
+	}
+
+	@RequestMapping(value="/changePassword", method = RequestMethod.POST)
+	public String changePassword(@ModelAttribute Student student) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String passwordEncode = passwordEncoder.encode(student.getPassword());
+		student.setPassword(passwordEncode);
+		userFacade.updateStudent(student);
+		return "users/homeStudent";
+	}
+
 	@RequestMapping(value="/homeStudent")
-	public String toHomeStudent() {
+	public String toHomeStudent(@ModelAttribute Student student, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		student = userFacade.retrieveUser(username);
+		model.addAttribute("student", student);
 		return "users/homeStudent";
 	}
 

@@ -21,8 +21,17 @@ public class StudentFacade {
 		return this.userDaoImpl.findUser(username);
 	}
 	
-	public List<Student> findAll() {
+	public List<Student> retrieveAllStudents() {
 		return this.userDaoImpl.findAll();
 	}
+	
+	public void updateStudent(Student s) {
+		userDaoImpl.updateStudent(s);
+	}
+
+	public Student findUserBySurname(String surname) {
+		return this.userDaoImpl.findUserBySurname(surname);
+	}
+
 
 }

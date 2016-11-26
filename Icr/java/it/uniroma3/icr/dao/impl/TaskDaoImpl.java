@@ -1,15 +1,13 @@
 package it.uniroma3.icr.dao.impl;
 
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -108,7 +106,6 @@ public class TaskDaoImpl implements TaskDao {
 			}
 			if(task!=null) {
 				s1.addTask(task);
-				s1.getTasks().add(task);
 				session.merge(task);
 			}
 			session.getTransaction().commit();
@@ -128,9 +125,7 @@ public class TaskDaoImpl implements TaskDao {
 		Calendar calendar = Calendar.getInstance();
 		java.util.Date now = calendar.getTime();
 
-
 		java.sql.Timestamp date = new java.sql.Timestamp(now.getTime());
-
 		t.setEndDate(date);
 
 		session.merge(t);
@@ -139,103 +134,90 @@ public class TaskDaoImpl implements TaskDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public double  midTimeHour() {
+	public List<Object> studentsProductivity() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "Select avg(hour(enddate) - hour(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		double date=   (double) query.uniqueResult();
+		String sql = "select student.id, student.name, student.surname, count(*)/40 as numero_task from student, task, result where (student.id=task.student_id and task.id = result.task_id) group by student.id order by numero_task ";
+		Query query = session.createSQLQuery(sql);
+		List<Object> tasks = query.list();
 		session.close();
-		return date;
-	}
-	
-	@Override
-	public double  midTimeMinute() {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		String s = "Select avg(minute(enddate) - minute(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		double date=   (double) query.uniqueResult();
-		session.close();
-		return date;
-	}
-	
-	@Override
-	public double  midTimeSecond() {
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		String s = "Select avg(second(enddate) - second(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		double date=   (double) query.uniqueResult();
-		session.close();
-		return date;
+		return tasks;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public int maxTimeHour() {
-
+	public List<Object> taskTimes() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "Select max(hour(enddate) - hour(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		int date = (int) query.uniqueResult();
+		String sql= " select to_char(avg(task.enddate - task.startdate), 'HH12:MI:SS') as tempo_medio, to_char(max(task.enddate - task.startdate), 'HH12:MI:SS') as tempo_massimo, to_char(min(task.enddate - task.startdate), 'HH12:MI:SS') as tempo_minimo from task where task.enddate is not null";
+		Query query = session.createSQLQuery(sql);
+		List<Object> times = query.list();
+		System.out.println(times);
 		session.close();
-		return date;
+
+		return times;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public int maxTimeMinute() {
+	public List<Object> majorityVoting() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "Select max(minute(enddate) - minute(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		int date=   (int) query.uniqueResult();
+		String sql = "select result.image_id, symbol.transcription, count(*) as numero_Yes from symbol, job, task, result where (symbol.id=job.symbol_id and job.id=task.job_id and task.id = result.task_id) and result.answer='Yes' group by result.image_id, symbol.transcription having count(*)>1 order by symbol.transcription";
+		Query query = session.createSQLQuery(sql);
+		List<Object> voting = query.list();
 		session.close();
-		return date;
+		return voting;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public int maxTimeSecond() {
+	public List<Object> symbolAnswers() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "Select max(second(enddate) - second(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		int date = (int) query.uniqueResult();
+		String sql = "select symbol.transcription, count(*) as task_fatti from symbol, job, task, result where (symbol.id=job.symbol_id and job.id=task.job_id and task.id = result.task_id) and result.answer='Yes' group by symbol.id order by symbol.transcription";
+		Query query = session.createSQLQuery(sql);
+		List<Object> answers = query.list();
 		session.close();
-		return date;
+		return answers;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public int minTimeHour() {
+	public List<Object> voting() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "Select min(hour(enddate) - hour(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		int date = (int) query.uniqueResult();
+		String sql = "select result.image_id, symbol.transcription, count(*) as numero_Yes from symbol, job, task, result where (symbol.id=job.symbol_id and job.id=task.job_id and task.id = result.task_id) and result.answer='Yes' group by result.image_id, symbol.transcription order by symbol.transcription";
+		Query query = session.createSQLQuery(sql);
+		List<Object> voting = query.list();
 		session.close();
-		return date;
+		return voting;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public int minTimeMinute() {
+	public List<Object> symbolsMajorityAnswers() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "Select min(minute(enddate) - minute(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		int date = (int) query.uniqueResult();
+		String sql = " select transcription, count(*) from (select result.image_id, symbol.transcription, count(*) as numero_Yes  from symbol, job, task, result where (symbol.id=job.symbol_id and job.id=task.job_id and task.id = result.task_id) and result.answer='Yes' group by result.image_id, symbol.transcription having count(*)>1 order by symbol.transcription) as majorityAnswersVoting group by transcription order by transcription";
+		Query query = session.createSQLQuery(sql);
+		List<Object> majorityAnswers = query.list();
 		session.close();
-		return date;
+		return majorityAnswers;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public int minTimeSecond() {
+	public List<Object> correctStudentsAnswers() {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s = "Select min(second(enddate) - second(startdate)) FROM Task WHERE enddate is not null";
-		Query query = session.createQuery(s);
-		int date = (int) query.uniqueResult();
+		String sql = "select student.id, student.name, student.surname, count(*) as risposte_corrette from student, task, result, (select result.image_id, symbol.transcription, count(*) as numero_Yes from symbol, job, task, result where (symbol.id=job.symbol_id and job.id=task.job_id and task.id = result.task_id) and result.answer='Yes' group by result.image_id, symbol.transcription having count(*)>1 order by symbol.transcription) as majority where student.id = task.student_id and task.id = result.task_id and majority.image_id=result.image_id group by student.id order by count(*)";
+		Query query = session.createSQLQuery(sql);
+		List<Object> correct = query.list();
 		session.close();
-		return date;
+		return correct;
 	}
+
 }

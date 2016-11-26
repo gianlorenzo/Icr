@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,21 +13,21 @@ import it.uniroma3.icr.model.Student;
 
 @Repository
 public class StudentDaoImpl implements StudentDao {
-	
-	
+
+
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public void insertUser(Student user){
-		
+
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(user);
 		session.getTransaction().commit();
 		session.close();
-		
+
 	}
-	
+
 	public Student findUser(String username) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
@@ -38,7 +37,7 @@ public class StudentDaoImpl implements StudentDao {
 		Student u = (Student)query.uniqueResult();
 		session.close();
 		return u;
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,9 +46,30 @@ public class StudentDaoImpl implements StudentDao {
 		Session session = sessionFactory.openSession();
 		String hql = "FROM Student";
 		Query query = session.createQuery(hql);
-		List<Student> studentsList = query.list();
+		List<Student> students = query.list();
 		session.close();
-		return studentsList;
+		return students;
 	}
-	
+
+	@Override
+	public void updateStudent(Student s) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.merge(s);
+		session.getTransaction().commit();
+		session.close();
+	}
+
+	@Override
+	public Student findUserBySurname(String surname) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		String s = "FROM Student u WHERE u.surname = :surname";
+		Query query = session.createQuery(s);
+		query.setParameter("surname", surname);
+		Student u = (Student)query.uniqueResult();
+		session.close();
+		return u;		
+	}
+
 }

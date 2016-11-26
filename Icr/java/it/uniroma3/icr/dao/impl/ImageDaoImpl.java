@@ -1,12 +1,13 @@
 package it.uniroma3.icr.dao.impl;
 
-
 import java.util.List;
 
-
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -49,21 +50,23 @@ public class ImageDaoImpl implements ImageDao {
 		String hql = "FROM Image";
 		Query query = session.createQuery(hql);
 		List<Image> empList = query.list();
-		System.out.println("Image List:"+empList);
 		session.close();
 		return empList;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Image> findImageForTypeAndWidth(String type,int width, int limit) {
+	public List<Image> findImageForTypeAndWidth(String type,int width,String manuscript, int limit) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
-		String s ="FROM Image i WHERE i.type = :type and i.width = :width ORDER BY RANDOM()";
+		String s = "FROM Image i WHERE i.type = :type and i.width = :width and i.manuscript = :manuscript ORDER BY RANDOM()";
+		
 		Query query = session.createQuery(s);
 		query.setParameter("type", type);
 		query.setParameter("width", width);
+		query.setParameter("manuscript", manuscript);
 		List<Image> images = query.setMaxResults(limit).list();
+		
 		session.close();
 		return images;
 	}
@@ -90,8 +93,20 @@ public class ImageDaoImpl implements ImageDao {
 		List<Image> images = query.list();
 		Object[] objectList = images.toArray();
 		session.close(); 
-		
+
 		return objectList;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> findAllPages() {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		String s = "SELECT distinct page FROM Image";
+		Query query = session.createQuery(s);
+		List<String> pages = query.list();
+		session.close();
+		return pages;
 	}
 
 }

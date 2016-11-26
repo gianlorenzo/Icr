@@ -1,5 +1,7 @@
 package it.uniroma3.icr.insertImageInDb;
 
+
+
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -18,95 +20,93 @@ import it.uniroma3.icr.model.Image;
 
 @Repository
 public class InsertImageInDb {
-	
-	private static final String path ="/usr/share/tomcat/webapps/InCodiceRatio/resources/img/sources/training/";
 
-	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	public void insertImage(Image image) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save(image);
 		session.getTransaction().commit();
 		session.close();
-		
+
 	}
-	
-public void getListJpegProperties() throws FileNotFoundException, IOException {
-		
-		getListImageProperties();
+
+	public void getListJpegProperties(String p) throws FileNotFoundException, IOException {
+
+		getListImageProperties(p);
 	}
-	
-	public void getListImageProperties() throws FileNotFoundException, IOException {
-		File[] files = new File(path).listFiles();
-		
+
+	public void getListImageProperties(String p) throws FileNotFoundException, IOException {
+
+
+		File[] files = new File(p).listFiles();
+
 		for(int i=0;i<files.length;i++) {
+
+			String manuscriptImage = files[i].getParent();
+			String newManuscript = manuscriptImage.replace(File.separator, "/");
 			
-			String manuscriptName = files[i].getName();
-			
-			//prendo la page
-			
-			File[] pages = files[i].listFiles();
-			for(int j = 0;j<pages.length;j++) {
-				String pageName = pages[j].getName();
-				
-				File[] types = pages[j].listFiles();
-				for(int m=0;m<types.length;m++) {
-					String typeName = types[m].getName();
-					
-					File[] images = types[m].listFiles();
-					
-					for(int g=0;g<images.length;g++) {
-						String nameComplete = images[g].getName();
-						String pathFile = images[g].getPath();
-						
-						
-						String name = FilenameUtils.getBaseName(nameComplete);
-						String[] parts = name.split("_");
-						
-						int width = Integer.valueOf(parts[0]);
-						int x = Integer.valueOf(parts[1]);
-						int y = Integer.valueOf(parts[2]);
-						
-						BufferedInputStream in = null;
-						
-						try {
-							BufferedImage b = ImageIO.read(images[g]);
-							
-							int height = b.getHeight();
-							int xImg = x;
-							int yImg = y;
-							String page = pageName;
-							String manuscript = manuscriptName;
-							String type = typeName;
-							String path = pathFile.substring(49, pathFile.length());
-							
-							Image img = new Image(width,height,type,page,
-									manuscript,xImg,yImg,path);;
-									
-							this.insertImage(img);
+
+			String[] parts1 = newManuscript.split("/");
+			String finalManuscript = parts1[11];
+
+			String namePage = files[i].getName();
+
+			File[] types = files[i].listFiles();
+			for(int m=0;m<types.length;m++) {
+				String typeName = types[m].getName();
+				File[] images = types[m].listFiles();
+				for(int n=0;n<images.length;n++) {
+					String nameComplete = images[n].getName();
+					String pathFile = images[n].getPath();
+					String newPath = pathFile.replace(File.separator, "/");
+
+
+					String name = FilenameUtils.getBaseName(nameComplete);
+					String[] parts = name.split("_");
+
+					int width = Integer.valueOf(parts[0]);
+					int x = Integer.valueOf(parts[1]);
+					int y = Integer.valueOf(parts[2]);
+
+					BufferedInputStream in = null;
+
+					try {
+						BufferedImage b = ImageIO.read(images[n]);
+
+						int height = b.getHeight();
+						int xImg = x;
+						int yImg = y;
+						String page = namePage;
+						String type = typeName;
+						String path = newPath.substring(77, newPath.length());
+						String manuscript = finalManuscript;
+						Image img = new Image(width,height,type,manuscript,page,xImg,yImg,path);
+
+						this.insertImage(img);
+
+					}
+					finally {
+						if (in != null) {
+							try {
+
+								in.close();
+							}
+							catch (IOException e) {
+								e.printStackTrace();
+							}
 						}
-						finally {
-				            if (in != null) {
-				                try {
-				                	
-				                    in.close();
-				                }
-				                catch (IOException e) {
-				                	e.printStackTrace();
-				                }
-				           }
-				        }
 					}
 				}
-				
 			}
-			
 		}
-			
-}
+
+
+
+
+	}
 
 
 }

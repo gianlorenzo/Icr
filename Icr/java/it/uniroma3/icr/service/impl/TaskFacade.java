@@ -15,67 +15,58 @@ public class TaskFacade {
 
 	@Autowired
 	private TaskDaoImpl taskDaoImpl;
-	
+
 	public void addTask(Task t) {
 		taskDaoImpl.insertTask(t);
 	}
-	
+
 	public Task retrieveTask(long id) {
 		return this.taskDaoImpl.findTask(id);
 	}
-	
+
 	public List<Task> retrieveAllTask() {
 		return this.taskDaoImpl.findAll();
 	}
-	
+
 	public List<Task> findTaskByStudent(Long id) {
 		return this.taskDaoImpl.findTaskByStudent(id);
 	}
-	
+
 	public Task assignTask(Student s, Long id) {
 		return this.taskDaoImpl.assignTask(s, id);
 	}
 	public void updateEndDate(Task t) {
 		taskDaoImpl.updateEndDate(t);
 	}	
-	
-	public double midTimeHour() {
-		return this.taskDaoImpl.midTimeHour();
+
+	public List<Object> studentsProductivity() {
+		return this.taskDaoImpl.studentsProductivity();
 	}
 	
-	public double  midTimeMinute() {
-		return this.taskDaoImpl.midTimeMinute();
+	public List<Object> taskTimes() {
+		return this.taskDaoImpl.taskTimes();
 	}
 	
-	public double  midTimeSecond() {
-		return this.taskDaoImpl.midTimeSecond();
-	}
-	public int maxTimeHour() {
-		return this.taskDaoImpl.maxTimeHour();
+	public List<Object> majorityVoting() {
+		return this.taskDaoImpl.majorityVoting();
 	}
 	
-	public int maxTimeMinute() {
-		return this.taskDaoImpl.maxTimeMinute();
+	public List<Object> symbolAnswers() {
+		return this.taskDaoImpl.symbolAnswers();
 	}
 	
-	public int maxTimeSecond() {
-		return this.taskDaoImpl.maxTimeSecond();
+	public List<Object> voting() {
+		return this.taskDaoImpl.voting();
 	}
 	
-	public int minTimeHour() {
-		return this.taskDaoImpl.minTimeHour();
+	public List<Object> symbolsMajorityAnswers() {
+		return this.taskDaoImpl.symbolsMajorityAnswers();
 	}
-	
-	public int minTimeMinute() {
-		return this.taskDaoImpl.minTimeMinute();
+
+	public List<Object> correctStudentsAnswers() {
+		return this.taskDaoImpl.correctStudentsAnswers();
 	}
-	
-	public int minTimeSecond() {
-		return this.taskDaoImpl.minTimeSecond();
-	}
-	
 
 
 
-	
 }
